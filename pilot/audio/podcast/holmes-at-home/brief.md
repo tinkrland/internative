@@ -1,24 +1,28 @@
 # holmes at home
 
+## the name is the pipeline, not a person
+
+Holmes at Home is what the production is called, the way a studio names a slate.
+there is no detective in this show. no Holmes, no Watson, no consulting room, and
+nobody in the fiction is named after either of them. the narrator is her, speaking
+as herself.
+
+what the name promises is the shape of the output: cases that arrive by post and
+get solved from the desk, which is what a solo-narrated pipeline can actually do.
+that is a production constraint, not a character's quirk.
+
 ## premise
 
-a consulting detective who has stopped leaving the flat. cases arrive as letters,
-photographs, answering machine tapes and, once, a seed catalogue with a page
-folded down. the show is the reading of them and the thinking about them, and the
-detective never confronts anyone, never travels, and never raises his voice.
+a case arrives as letters, photographs, answering machine tapes and, once, a seed
+catalogue with a page folded down. the episode is the reading of it and the
+thinking about it. one impossible-sounding physical detail, one ordinary
+explanation, and one thing the person who sent it was hiding that had nothing to do
+with the case.
 
 the format borrowed is true crime, because that format is the most efficient
 machine ever built for delivering a timeline to a listener who is doing the
 dishes. the structure is honest about being a structure: cold open, the arrival,
 the timeline, the suspects, the reveal, the epilogue.
-
-## why it is her
-
-it is a voice show about attention. she can hold a room with nothing but a
-description of a photograph, and the persona's register already treats curiosity
-as a form of manners. the flat also gives the audio surface something it does not
-have yet: a recurring room with fixed props, which is the audio equivalent of a
-place plate.
 
 ## why the cases are invented
 
@@ -28,11 +32,11 @@ closed room. what is rotten is the supply chain, where real grief becomes a
 season, and where the family of a real victim can meet the episode about them in
 a recommendation feed.
 
-so this show keeps the format and refuses the supply. every case is invented, on
+so this keeps the format and refuses the supply. every case is invented, on
 purpose, built to hit the same beats a listener already loves, which makes it
-entertainment without the critique: nobody's suffering is the raw material, no
-one is being contentified, and the show cannot be accused of monetising a
-tragedy because there is no tragedy behind it.
+entertainment without the critique: nobody's suffering is the raw material, no one
+is being contentified, and the show cannot be accused of monetising a tragedy
+because there is no tragedy behind it.
 
 ## the frame, and where it sits
 
@@ -46,21 +50,16 @@ fiction line is in the episode description and the show notes, and the title and
 thumbnail never imply a real case. an honest show tells you on the way in and
 again on the way out.
 
-## what a good episode does
-
-one impossible-sounding physical detail, one ordinary explanation, and one thing
-the letter writer was hiding that had nothing to do with the crime. the mystery
-resolves; the person does not entirely.
-
 ## guardrails in plain language
 
-no real cases, victims, suspects or living people, not even as a comparison the
-narrator makes in passing, and no invented case shaped closely enough that a
-listener with a search engine can find the real one it rhymes with. invented cases stay far enough from real ones that a
-listener with a search engine cannot identify anybody. procedure stays generic.
-the canon is public domain and the adaptations are not, so the inventions stay
-ours. and the armchair is the constraint: everything is solved from what arrived
-in the post.
+no real cases, victims, suspects or living people, not even as a comparison she
+makes in passing, and no invented case shaped closely enough that a listener with
+a search engine can find the real one it rhymes with. procedure stays generic.
+the canon is public domain and the adaptations are not, and none of their
+inventions are borrowed: what is borrowed is a format, never a plot.
+
+and the pipeline's own limit: one voice, no cast. cases resolve from documents,
+never by the narrator going somewhere and confronting somebody.
 
 ## at episode three
 

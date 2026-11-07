@@ -44,6 +44,14 @@ content disclosure on every upload. an invented case can carry its tag at the en
 as long as the title, thumbnail and description never imply a real one, because
 the end tag only reaches people who finish.
 
+## the name of a pipeline is not a character
+
+a show can be named for what the pipeline does rather than for anyone in it.
+holmes at home is a production slate, not a detective, so it declares a narrator
+instead of a cast, with a line saying in as many words that nobody in the fiction
+is named. the checker refuses a narrator that does not say who is speaking, because
+the mistake this field exists to prevent is exactly the one we already made.
+
 ## cast, and the hard part of a show with guests
 
 a pilot with a cast declares every voice it has to keep apart: role, register and

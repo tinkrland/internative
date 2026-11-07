@@ -80,6 +80,23 @@ Deno.test("a repackaging into a surface the head does not have is refused", () =
   assertEquals(checkPilot(nowhere, "founding-fathers-show", "video/long-form").some((p) => p.includes("head does not have")), true);
 });
 
+Deno.test("holmes at home is the pipeline name, and nobody in the show is called holmes", () => {
+  assertEquals(holmes.title, "Holmes at Home");
+  assertEquals(Boolean(holmes.narrator), true);
+  assertEquals(/no detective character, no holmes/i.test(holmes.narrator!.who), true);
+  assertEquals(holmes.narrator!.who.toLowerCase().includes("persona"), true, "the narrator is her");
+  assertEquals(/production pipeline/i.test(holmes.narrator!.note), true);
+  assertEquals((holmes.cast ?? []).length, 0, "a one-voice pipeline has no cast to manage");
+  assertEquals(holmes.guardrails.some((g) => /one voice and no cast/i.test(g)), true);
+});
+
+Deno.test("a pilot that names a narrator without saying what the name is, is refused", () => {
+  const vague: Pilot = { ...holmes, narrator: { who: "", note: "" } };
+  const problems = checkPilot(vague, "holmes-at-home", "audio/podcast");
+  assertEquals(problems.some((p) => p.includes("does not say who")), true);
+  assertEquals(problems.some((p) => p.includes("what the name is")), true);
+});
+
 Deno.test("the invented case carries its tag at the end, with the packaging doing the rest", () => {
   assertEquals(holmes.fiction.placement, "end_tag");
   assertEquals(/one fast breath at the end/i.test(holmes.fiction.disclosure), true);

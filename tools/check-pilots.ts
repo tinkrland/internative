@@ -28,6 +28,7 @@ export interface Pilot {
   cadence: string;
   fiction: { kind: string; placement: string; disclosure: string };
   cast?: CastMember[];
+  narrator?: { who: string; note: string };
   repackaging?: Repackaging[];
   guardrails: string[];
   episode_zero: { title: string; running_time: string; beats: string[] };
@@ -80,6 +81,10 @@ export function checkPilot(pilot: Pilot, folderId: string, vertical: string): st
   }
   if (!Array.isArray(pilot.guardrails) || pilot.guardrails.length < MIN_GUARDRAILS) {
     problems.push(`${folderId}: fewer than ${MIN_GUARDRAILS} guardrails, so the show has no stated refusals`);
+  }
+  if (pilot.narrator) {
+    if (!pilot.narrator.who?.trim()) problems.push(`${folderId}: declares a narrator and does not say who`);
+    if (!pilot.narrator.note?.trim()) problems.push(`${folderId}: declares a narrator with no note about what the name is`);
   }
   if (pilot.cast) {
     if (pilot.cast.length < MIN_CAST) problems.push(`${folderId}: a cast of ${pilot.cast.length} is not a show with voices to manage`);

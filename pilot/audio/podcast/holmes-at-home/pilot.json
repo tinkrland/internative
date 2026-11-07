@@ -4,7 +4,7 @@
   "vertical": "audio/podcast",
   "surface": "audio",
   "form": "podcast",
-  "format": "solo narration in true crime form: cold open, the arrival, the timeline, the suspects, the reveal, the epilogue. 18 to 24 minutes, no ads read in character",
+  "format": "solo narration in true crime form: cold open, the arrival, the timeline, the suspects, the reveal, the epilogue. 18 to 24 minutes, no ads read in character. the pipeline name is the brand; the voice is hers",
   "cadence": "weekly, tuesday",
   "fiction": {
     "kind": "invented_cases",
@@ -17,7 +17,7 @@
     "the title, thumbnail and description never imply a real case: the fiction tag lives there too, because the end tag only reaches people who finish",
     "police and forensic procedure stays generic and is never presented as a real account of a real force",
     "canon only: the 1887 to 1927 stories are public domain, the modern adaptations are not, and none of their inventions are borrowed",
-    "the armchair is the constraint: the case is solved from letters, photographs and recordings, never by the narrator going somewhere and confronting somebody"
+    "cases resolve from letters, photographs and recordings, never by the narrator going somewhere and confronting somebody, because a solo-narrated pipeline has one voice and no cast"
   ],
   "episode_zero": {
     "title": "The Locked Sunroom",
@@ -31,5 +31,9 @@
       "the epilogue: what the letter writer was actually asking for, which was never the case"
     ]
   },
-  "why_invented": "true crime as a genre runs on other people's worst days, and the format itself is the thing worth keeping: the timeline, the suspects, the reveal. invented cases keep every part of that and take nobody's grief as raw material."
+  "why_invented": "true crime as a genre runs on other people's worst days, and the format itself is the thing worth keeping: the timeline, the suspects, the reveal. invented cases keep every part of that and take nobody's grief as raw material.",
+  "narrator": {
+    "who": "the persona, speaking as herself: there is no detective character, no Holmes, no Watson, and nobody in the fiction is named",
+    "note": "Holmes at Home is the name of the production pipeline, in the way a studio names a slate. the show is what the pipeline makes."
+  }
 }
