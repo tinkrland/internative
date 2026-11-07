@@ -16,6 +16,7 @@ import {
   type SurfaceName,
 } from "./schema.ts";
 import { crewProblems } from "./crew.ts";
+import { checkMediaContract } from "../media/paths.ts";
 
 // strip // and /* */ comments plus trailing commas, leaving string
 // content byte-identical. a hand-written manifest may comment anything
@@ -256,6 +257,9 @@ export function validatePersona(input: unknown): ValidationResult {
   // the crew is validated last: it depends on which surfaces were enabled,
   // so the surface checks must have passed first.
   errors.push(...crewProblems(manifest));
+  // and the media contract, because a claimed surface has to say how it gets
+  // pictures, and a persona that generates her own stills has to have a look.
+  errors.push(...checkMediaContract(manifest.surfaces, manifest.brand?.look));
 
   if (errors.length) return { ok: false, errors };
   return { ok: true, errors: [], manifest };

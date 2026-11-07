@@ -213,3 +213,29 @@ thing that can. A 400 is not recorded, because a rejected body is evidence the
 field name is wrong, not evidence it works. `verify-adapters.ts` prints observed
 adapters separately and keeps the rest under "not yet observed", so the report
 keeps telling the truth in both directions.
+
+## two paths, and why they never mix
+
+the media contract on this branch, `media/paths.ts`, is the decoupling written
+down as code rather than as a convention:
+
+| surface | path | why |
+| --- | --- | --- |
+| proskena | rendered | a photoshoot needs the same room twice, and a sample cannot promise that |
+| static | generated | volume wants samples, held together by the four consistency blocks |
+| shortform | rendered | a 9:16 cut is a crop of a decision, not a new sample |
+| longform | rendered | an episode keeps one look for forty minutes |
+| streaming | rendered | a stream cannot re-roll the face between minutes |
+| meetings | captured | a meeting is evidence, so it is captured and never composed |
+| audio, text | none | the mouth does not draw the face |
+
+a plate is deterministic and authored. a generated image is a sample. `checkSeries`
+refuses a series that mixes the two for one subject, moves character or location
+between items, or changes the wardrobe mid-shoot, because that is how a personality
+ends up with three faces and no way to say which is hers. composition is the axis a
+series is allowed to vary, which is the entire point of shooting several frames in
+one room.
+
+`checkMediaContract` runs inside the persona loader: a claimed surface must have a
+path, and a persona that claims `static` must declare a `look`, or diffusion is
+being asked to generate her with nothing to be consistent with.

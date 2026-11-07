@@ -17,7 +17,7 @@
 
 set -e
 git fetch origin main
-git checkout FETCH_HEAD -- persona personas core requirements.txt
+git checkout FETCH_HEAD -- persona personas core media generation requirements.txt
 python3 -m pip install -q -r requirements.txt 2>/dev/null || \
   echo "clawbuzz: retelldb not installed here (no python); the pin in requirements.txt still records the version."
 echo "head synced: persona/ and core/ are byte-identical to main, retelldb pinned per requirements.txt."
