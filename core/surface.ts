@@ -28,6 +28,7 @@ export const SURFACE_BRANCH: Record<SurfaceName, string> = {
   shortform: "shortform",
   longform: "longform",
   audio: "audio",
+  music: "music",
   static: "static",
   text: "text",
 };
@@ -40,6 +41,7 @@ export const SURFACE_DEFAULT_PLATFORM: Record<SurfaceName, string> = {
   shortform: "tiktok",
   longform: "youtube",
   audio: "rss",
+  music: "spotify",
   static: "instagram",
   text: "x",
 };

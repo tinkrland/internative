@@ -1,9 +1,0 @@
-.env
-.agents/.env
-node_modules/
-__pycache__/
-*.pyc
-.deno/
-dist/
-rounds/
-out/

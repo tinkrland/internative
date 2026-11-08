@@ -33,6 +33,11 @@ export const SURFACE_MEDIA: Record<MediaSurface, SurfaceMedia> = {
     owns: "photoshoots: hero, portrait, detail, environment, one authored plate per shot",
     why: "a photoshoot needs the same room twice, and a sample cannot promise that",
   },
+  music: {
+    path: "none",
+    owns: "songs: one arrangement brief, a master, a stem set, and a cover handoff",
+    why: "a song is heard, and the cover is static's job, not the mix's",
+  },
   static: {
     path: "generated",
     owns: "stills and carousels through the diffusion seam",

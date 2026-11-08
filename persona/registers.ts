@@ -21,10 +21,14 @@ export const SURFACE_MEDIUM: Record<SurfaceName, string> = {
   shortform: "clip",
   longform: "narration",
   audio: "podcast",
+  music: "song",
   static: "caption",
   text: "post",
 };
 
+// music is sung rather than spoken: its delivery comes from the arrangement and the
+// melody, not from the voice adapter's call and podcast cues, so it stays out of this
+// list on purpose.
 export const SPOKEN_SURFACES: SurfaceName[] = ["meetings", "streaming", "shortform", "longform", "audio"];
 
 export function isSpoken(surface: SurfaceName): boolean {

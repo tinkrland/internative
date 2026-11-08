@@ -5,7 +5,7 @@
 // persona. nothing here is code, and nothing here is a secret: handles
 // are the persona's own public accounts, credentials stay in env.
 //
-// the registers are required for all seven surfaces even when a persona
+// the registers are required for all eight surfaces even when a persona
 // only uses four. that is deliberate: enabling a surface later is a
 // config flip (add it to `surfaces`), not a format change.
 {
@@ -124,6 +124,18 @@
         "hashtags": "none",
         "notes": "chapters and a transcript are part of the episode, not extras"
       },
+      "music": {
+        "register": "sung, not spoken: one voice, close mic, no announcer",
+        "pace": "measured",
+        "energy": 0.7,
+        "formality": 0.15,
+        "lines": "verses, a chorus that can be sung back, no more than two ideas a song",
+        "hooks": true,
+        "cta": false,
+        "emoji": "none",
+        "hashtags": "none",
+        "notes": "the master and the stems are the work; the cover is handed to static"
+      },
       "static": {
         "register": "art directed: one frame that carries the whole idea at a glance",
         "pace": "measured",
@@ -164,7 +176,7 @@
     }
   },
 
-  "surfaces": ["meetings", "streaming", "shortform", "longform", "audio", "static", "text"],
+  "surfaces": ["meetings", "streaming", "shortform", "longform", "audio", "music", "static", "text"],
 
   "memory": {
     "persona_id": "example",
@@ -210,6 +222,13 @@
       "autonomy": "plan, script and render an episode; the feed goes out under the publishing rule",
       "trains_on": ["conversational podcasts", "the persona's call recordings"]
     },
+    "music": {
+      "role": "the one who writes the song",
+      "focus": ["one idea per song", "a chorus that lands on first listen", "an arrangement that fits the voice"],
+      "autonomy": "plan a song, write the arrangement brief and the lyric sheet, master and stem it; release goes out under the publishing rule",
+      "escalate_to_owner": ["anything that samples a recording the persona does not own", "a cover of a song by a living writer"],
+      "trains_on": ["the persona's own released songs", "public domain standards"]
+    },
     "static": {
       "role": "the frame operator",
       "focus": ["composition", "type hierarchy", "a carousel that argues in order"],
@@ -236,6 +255,7 @@
     "shortform": "daily",
     "longform": "monthly",
     "audio": "weekly",
+    "music": "monthly",
     "static": "as the set changes",
     "text": "when there is something to say"
   }

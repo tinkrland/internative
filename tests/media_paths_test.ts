@@ -18,7 +18,7 @@ const shot = (composition: string, magnification = "medium, one person, the room
   planShot(persona, libs, { place_id: "bathroom-mirror", outfit_id: "plain-tee", day: "2026-11-07", composition, magnification });
 
 Deno.test("every surface the head has says how it gets pictures", () => {
-  assertEquals(MEDIA_SURFACES.length, 8);
+  assertEquals(MEDIA_SURFACES.length, 9, "eight surfaces plus proskena, which renders but does not speak");
   for (const surface of MEDIA_SURFACES) {
     assertEquals(Boolean(SURFACE_MEDIA[surface]?.why), true, `${surface} needs a reason, not just a label`);
   }
@@ -26,6 +26,7 @@ Deno.test("every surface the head has says how it gets pictures", () => {
   assertEquals(mediaPathFor("static"), "generated");
   assertEquals(mediaPathFor("meetings"), "captured");
   assertEquals(mediaPathFor("audio"), "none");
+  assertEquals(mediaPathFor("music"), "none");
   assertEquals(mediaPathFor("nonsense"), undefined);
 });
 

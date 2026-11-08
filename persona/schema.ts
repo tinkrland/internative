@@ -20,6 +20,7 @@ export const SURFACES = [
   "shortform",
   "longform",
   "audio",
+  "music",
   "static",
   "text",
 ] as const;

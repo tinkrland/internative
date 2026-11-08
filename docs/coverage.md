@@ -73,3 +73,5 @@ and whose mouth it is.
 | run path + observation ledger (`tools/run-frame.ts`, `generation/observations.ts`) | working | dry run prints and records nothing, live run records only an accepted status, report splits observed from unproven; 92 tests on main |
 | media contract (`media/paths.ts`) | working | render vs generated vs captured declared per surface, series refuses mixed sources and wardrobe drift, loader refuses generation with no look; 101 tests on main |
 | closet inventory (`media/inventory.ts`) | working | four capture sources with provenance rules, candidate to confirmed gate, layer collisions, affiliate disclosure, media anchors per outfit and per place, mix and match; 113 tests on main |
+| aipn registry (`persona/aipn.ts`) | working | eight layer digests, pack versioning under an immutable number, retired numbers never reissued, in-memory store plus the postgres table that keeps the same rules |
+| music surface | designed | register, crew operator and media path declared on the head; the `music` branch holds the song contract |
