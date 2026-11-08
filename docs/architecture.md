@@ -49,3 +49,13 @@ definition of the persona in its own code.
   live in env (`CLAWBUZZ_CONNECTIONS`).
 - every surface stops at draft unless the persona's publishing mode says
   otherwise, and a missing credential is a refusal, never a half publish.
+
+## vocabulary, settled
+
+an **internative** (internet native) is one personality across platforms, with one
+aipn assigned to it once. a **surface** is a room that internative shows up in:
+text, shortform, longform, audio, music, streaming, meetings, static, proskena. the
+head knows both, and `persona/internative.ts` refuses the confusion of the two.
+
+a **rights holder** is the human or entity behind the internative. releases,
+distributors and payouts need one. the internative is the artist name.

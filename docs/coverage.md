@@ -78,3 +78,4 @@ and whose mouth it is.
 | publishing destinations (`publishing/destinations.ts`) | working | twelve destinations with route, tool and licence, grapheme length limits, media kinds, alt text and generated-content requirements, conservative daily caps; the one with no upload api says so |
 | publish gate (`publishing/gate.ts`) | working | approved or refused, idempotent key so a retry cannot double post, sliding window rate fuse per destination, receipts; 131 tests on the head |
 | oss survey (`docs/oss.md`) | working | licences read from the repositories on 8 november 2026, with what is in use, what is next, and what was refused and why |
+| internative (`persona/internative.ts`) | working | one person, one aipn, a set of surfaces, plus the refusal that a surface name is not a person and the artist identity a release needs (name and rights holder kept apart) |

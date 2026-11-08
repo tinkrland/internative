@@ -19,6 +19,16 @@ main        the head: identity, brand, registers, crew, wardrobe, places, aipn
   text      the written feed
 ```
 
+## the internet native
+
+the person all of this adds up to has a name for itself: an **internative**. an
+internative is one personality showing up across platforms, and it is not a surface:
+`music` is a room it sings in, not the singer. each internative is assigned exactly
+one **aipn**, once, and every surface it operates publishes under that number.
+`persona/internative.ts` keeps that distinction honest, including the two things a
+store always asks for and an internet native can never supply: a rights holder and a
+bank account.
+
 ## the one rule
 
 **the mouth never redraws the face.**
