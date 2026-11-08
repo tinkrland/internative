@@ -19,6 +19,7 @@ arguing about what a "section" is.
 | `music/master.ts` | the delivery contract: loudness, peak, and the stems |
 | `music/score.ts` | one score: chords, bass and hits per section, deterministic |
 | `music/code.ts` | the score as strudel, tidal cycles and sonic pi |
+| `music/render.ts` | the score played: deterministic wav synthesis, and its stems |
 | `music/master_check.ts` | the measurement: what the file actually is |
 | `music/distribution.ts` | the browser run that gets it to a store, and where it must stop |
 | `music/release.ts` | where it goes and what it has to carry to get there |
@@ -36,6 +37,12 @@ per cycle) and **sonic pi** (section blocks whose sleeps add up to the bars). th
 argue with each other by design: `renderProblems` refuses a rendering whose tempo,
 chord names, event count or beat total disagrees with the score, so "three cousins of
 the same song" is caught mechanically rather than by ear.
+
+`music/render.ts` plays that score as audio by arithmetic: chord tones, a bass note
+and a countable click per bar, written straight into a 16 bit wav with no model and no
+plugin. it is not a record, and it is not pretending to be: it is the thing a model
+later replaces a part of, and the thing `master_check` can measure today. stems come
+from the same bars, so a mixdown cannot disagree with them.
 
 open models fill the parts code cannot: a voice, a played instrument, texture. the
 order is score first, code second, model last, so the model is always playing something
