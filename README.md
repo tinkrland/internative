@@ -17,8 +17,45 @@ arguing about what a "section" is.
 | `music/arrangement.ts` | what plays when, and how loud it is allowed to get |
 | `music/lyrics.ts` | a section tagged lyric sheet, and the rights basis |
 | `music/master.ts` | the delivery contract: loudness, peak, and the stems |
+| `music/score.ts` | one score: chords, bass and hits per section, deterministic |
+| `music/code.ts` | the score as strudel, tidal cycles and sonic pi |
 | `music/master_check.ts` | the measurement: what the file actually is |
+| `music/distribution.ts` | the browser run that gets it to a store, and where it must stop |
 | `music/release.ts` | where it goes and what it has to carry to get there |
+
+## songs are code before they are audio
+
+a song starts as a `SongSpec` and becomes a `Score`: chords, bass and hits per
+section, derived from the key, the tempo and a seed. `composeScore` is deterministic,
+so the same song and seed are the same score, and a change to a song shows up as a
+diff rather than as a slightly different render.
+
+that score is then rendered three ways, in `music/code.ts`: **strudel** (one pattern
+per section, assembled with `arrange`), **tidal cycles** (angle brackets for one event
+per cycle) and **sonic pi** (section blocks whose sleeps add up to the bars). the three
+argue with each other by design: `renderProblems` refuses a rendering whose tempo,
+chord names, event count or beat total disagrees with the score, so "three cousins of
+the same song" is caught mechanically rather than by ear.
+
+open models fill the parts code cannot: a voice, a played instrument, texture. the
+order is score first, code second, model last, so the model is always playing something
+that can be read, reviewed and re-performed without it.
+
+## distribution is a browser job
+
+there is no open upload endpoint in the music chain. `music/distribution.ts` holds the
+free distributors as data (what they keep, which stores, what they demand) and plans a
+**browser run** against one of them: navigate, fill, upload, and three hard stops. the
+policy is not negotiable and it is a line of code rather than a paragraph:
+a session may create the draft, fill the metadata and upload the files, while account
+creation, the tax form and the final submit belong to the human behind the internative,
+because those are the human's liability. `claimProblems` waits until a release is
+actually live before a spotify for artists profile can be claimed, and one isrc may
+only be live through one distributor, since two claims on one recording gets both
+rejected.
+
+an unverified distributor is refused, not tried. that is why spacemedia is listed as a
+name and not a route.
 
 ## the rules that are actually rules
 
