@@ -79,3 +79,5 @@ and whose mouth it is.
 | publish gate (`publishing/gate.ts`) | working | approved or refused, idempotent key so a retry cannot double post, sliding window rate fuse per destination, receipts; 131 tests on the head |
 | oss survey (`docs/oss.md`) | working | licences read from the repositories on 8 november 2026, with what is in use, what is next, and what was refused and why |
 | internative (`persona/internative.ts`) | working | one person, one aipn, a set of surfaces, plus the refusal that a surface name is not a person and the artist identity a release needs (name and rights holder kept apart) |
+| presence registry (`publishing/accounts.ts`) | working | account per internative and destination with handle, platform id, instance for mastodon, did for bluesky and credential env names only; a secret in the file is refused by shape, and app-review destinations cannot post until reviewed |
+| approval (`publishing/approval.ts`) | working | queued, approved or refused with a named reviewer, a refusal reason, and an expiry so a stale yes cannot be replayed; approving one draft does not approve the next |

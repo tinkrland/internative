@@ -93,7 +93,7 @@ persona/     the head's contracts: manifest, brand, registers, crew, consistency
              shot planning, wardrobe, places, voice adapter, aipn
 personas/    the persona files themselves, jsonc, one person per file
 media/       how pictures are sourced: render vs generate, and the closet
-publishing/  where a post can go, what each place requires, and the gate it passes
+publishing/  where a post can go, what each place requires, who has an account, and the gate it passes
 generation/  provider adapters, observations, verification
 core/        the surface contract every branch implements
 tools/       sync, checkers, reports
