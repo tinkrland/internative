@@ -239,3 +239,38 @@ one room.
 `checkMediaContract` runs inside the persona loader: a claimed surface must have a
 path, and a persona that claims `static` must declare a `look`, or diffusion is
 being asked to generate her with nothing to be consistent with.
+
+## where the clothes come from
+
+`media/inventory.ts` is the closet as an inventory with provenance. wardrobe.jsonc
+answers what she wears today; this answers where the piece came from, whether it is
+hers, and whether the post has to say so.
+
+| source | hers | needs a name | needs disclosure | how it arrives |
+| --- | --- | --- | --- | --- |
+| authored | yes | no | no | written by hand |
+| whering | yes | yes | no | screenshot or photo of an item |
+| ltk | no | yes | yes | pasted look url or shop screenshot |
+| photo | yes | yes | no | a photo she already has |
+
+neither whering nor ltk publishes an api a creator can read their own closet
+through, so nothing here is an integration. it is a capture, and a capture arrives
+as pixels. pixels do not know what a garment is called or what fibre it is, so a
+capture is a `candidate` until `confirmItem` is given the kind, the detail and the
+colours: the two fields a render actually needs and a photo cannot supply. flipping
+the state is not confirming.
+
+`composeOutfit` turns the shelf into an outfit the shot planner already reads: one
+base, one outer, one pair of shoes, any number of accessories, and a second base is
+two dresses rather than a look. mixing her own pieces with a look she liked is
+normal fashion content; `outfitDisclosure` names the borrowed pieces, and
+`captionProblems` refuses a caption that calls a shop window her closet.
+
+`anchorsFor` is the part that keeps a series honest. the photograph that already
+exists is a better reference than a new one, so an outfit is scored by how much of
+it a posted picture already shows, with the unanchored items named. a series with
+no anchor is a new invention wearing her name, and now it says so.
+
+`mixMatch` returns the combinations she could actually walk out of the closet in,
+season-filtered, capped, accessories optional and never load-bearing.
+`deno run --allow-read tools/inventory-report.ts` prints all of it for one closet.
