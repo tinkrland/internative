@@ -75,3 +75,6 @@ and whose mouth it is.
 | closet inventory (`media/inventory.ts`) | working | four capture sources with provenance rules, candidate to confirmed gate, layer collisions, affiliate disclosure, media anchors per outfit and per place, mix and match; 113 tests on main |
 | aipn registry (`persona/aipn.ts`) | working | eight layer digests, pack versioning under an immutable number, retired numbers never reissued, in-memory store plus the postgres table that keeps the same rules |
 | music surface | designed | register, crew operator and media path declared on the head; the `music` branch holds the song contract |
+| publishing destinations (`publishing/destinations.ts`) | working | twelve destinations with route, tool and licence, grapheme length limits, media kinds, alt text and generated-content requirements, conservative daily caps; the one with no upload api says so |
+| publish gate (`publishing/gate.ts`) | working | approved or refused, idempotent key so a retry cannot double post, sliding window rate fuse per destination, receipts; 131 tests on the head |
+| oss survey (`docs/oss.md`) | working | licences read from the repositories on 8 november 2026, with what is in use, what is next, and what was refused and why |
