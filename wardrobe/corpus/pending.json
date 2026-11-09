@@ -1,0 +1,62 @@
+{
+  "provider": "adaption labs",
+  "endpoint": "https://api.prod.adaptionlabs.ai/api/v1/datasets/invent",
+  "model": "gemma-4-31b-it",
+  "launched_on": "2026-11-09",
+  "note": "invent returns immediately and produces rows later, about two hours for twelve. the download refuses until a run exists. poll with tools/corpus-fetch.ts, never re-invent.",
+  "runs": [
+    {
+      "name": "accessory_persistence",
+      "dataset_id": "5bf16cff-7066-46e6-aa35-1bfa4c9b6961",
+      "rows": 40,
+      "fields": [
+        "device",
+        "case",
+        "strap",
+        "charm",
+        "carried"
+      ],
+      "asked_for": "the device is identity and the case is styling: swapping a case is a visible change a person calls the same object, swapping the device is a different person. this is the corpus behind the accessory rule.",
+      "status": "running"
+    },
+    {
+      "name": "jewelry_drift",
+      "dataset_id": "d4b05375-fdc1-4fc7-8dae-cd29d9b01b82",
+      "rows": 30,
+      "fields": [
+        "piece",
+        "metal",
+        "stone",
+        "worn"
+      ],
+      "asked_for": "silver for gold, a stone appearing, or the same piece on a different body part are changes; rewording the metal is not.",
+      "status": "running"
+    },
+    {
+      "name": "hairstyle_drift",
+      "dataset_id": "a2d6f248-dae0-456f-954e-377b871adec0",
+      "rows": 30,
+      "fields": [
+        "hair",
+        "parting",
+        "texture",
+        "finish"
+      ],
+      "asked_for": "her own hair does not change between photographs, so a moved length, cut, parting or texture is not the same hairstyle however smoothly it is reworded.",
+      "status": "running"
+    },
+    {
+      "name": "outfit_series",
+      "dataset_id": "f2f9cfac-324e-49b4-8e4b-86aab3e14c93",
+      "rows": 30,
+      "fields": [
+        "base",
+        "mid",
+        "outer",
+        "footwear"
+      ],
+      "asked_for": "a whole outfit re-told, with substitutions of garment, fabric or colour labelled as the drift they are.",
+      "status": "running"
+    }
+  ]
+}

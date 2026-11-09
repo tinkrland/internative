@@ -23,6 +23,7 @@
 import { characterBlock, consistencySeed, CONSISTENCY_AXES, type ConsistencyBlocks } from "./persona/consistency.ts";
 import type { PersonaManifest } from "./persona/schema.ts";
 import { digestOf, seedFrom } from "./lock.ts";
+import { identityProblems, lookProblems, type Look } from "./wardrobe/look.ts";
 import type { OutfitLock } from "./wardrobe/module.ts";
 import { structureSource, type EnvironmentLock, type StructureSource } from "./environment/module.ts";
 
@@ -80,6 +81,44 @@ export async function planShot(
     seed: seedFrom(digest),
     structure: structureSource(place),
     wardrobe: outfit.id,
+    place: place.id,
+  };
+}
+
+// the dressed shot: the same assembly, with the wardrobe axis carrying the whole look
+// (outfit, devices, dressings, jewelry, hair) instead of an outfit alone. this is the
+// form a scheduled shoot actually calls, because a frame of a person includes her phone
+// and her hair, and both of those have identity rules of their own.
+export async function planDressedShot(
+  persona: PersonaManifest,
+  look: Look,
+  place: EnvironmentLock,
+  framing: Framing,
+): Promise<Shot> {
+  const problems = [...lookProblems(look), ...(await identityProblems(look))];
+  if (problems.length) throw new Error(`scene: cannot plan:\n  ${problems.join("\n  ")}`);
+  const axes: Record<ShotAxis, string> = {
+    character: characterBlock(persona),
+    wardrobe: look.block,
+    location: place.block,
+    composition: framing.composition.trim(),
+    magnification: framing.magnification.trim(),
+  };
+  const digest = await digestOf({
+    character: axes.character,
+    wardrobe: look.identity_digest,
+    look: look.digest,
+    location: place.digest,
+    composition: axes.composition,
+    magnification: axes.magnification,
+  });
+  return {
+    persona: persona.id,
+    axes,
+    prompt: shotPrompt(axes),
+    seed: seedFrom(digest),
+    structure: structureSource(place),
+    wardrobe: look.id,
     place: place.id,
   };
 }

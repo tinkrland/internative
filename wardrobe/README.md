@@ -39,6 +39,42 @@ same picture, not a convincing cousin of it.
 `avoid` is required and not decorative. a garment that refuses nothing drifts toward
 the model's average, which is a different garment by Thursday.
 
+## three kinds of thing, and why the wardrobe needed the distinction
+
+a coat is **styling**: it changes daily, and a shot may re-roll it from a locked set. a
+phone is **identity**: nobody buys a new handset on tuesday, so a series showing an
+iphone 13 on monday and an iphone 15 on thursday has introduced a fact nobody decided.
+the case in between is styling that rides on an identity part.
+
+so the modules are built so the distinction is structural rather than a label somebody
+could forget:
+
+| module | the lock holds | what is chosen per shot | what is an event |
+|---|---|---|---|
+| `accessory.ts` | the device (`apple iphone 13, graphite, 6.1 inch`) | the dressing, from the ones she owns (`case`, `strap`, `charm`, `chain`) | an `upgrade`, dated, with a reason |
+| `jewelry.ts` | a `fixed` piece (a band) | a `styling` piece (earrings, a cuff) | a `retired` fixed piece |
+| `hair.ts` | cut, length, parting, texture, finish | up or down, or nothing if no up-do is declared | a `restyle`, dated |
+
+two consequences worth stating, because both are enforced. a dressing she does not own
+is **refused rather than invented**: "none" is a legal answer, a silicone sleeve she does
+not have is not. and a device change without a dated upgrade is refused by name, because
+"iphone 13" and "iphone 15" are one keystroke apart and an entire product cycle apart, so
+a string comparison is the honest check.
+
+`look.ts` composes the four into one block and carries **two digests**, which is the
+point: `identity_digest` covers devices, fixed jewelry and hair, and must not move across
+a series; `digest` covers the whole block including the coat and the case, and moves
+whenever she restyles. one digest would have made a daily coat change look exactly like a
+haircut.
+
+| file | what it owns |
+|---|---|
+| `module.ts` | garments, plates, the outfit lock |
+| `accessory.ts` | devices and their dressings, the upgrade gate |
+| `jewelry.ts` | fixed and styling pieces, the series gate |
+| `hair.ts` | the cut, the up-do toggle, the restyle gate |
+| `look.ts` | the composition, and the two digests |
+
 ## corpus
 
 `corpus/` holds two sets of twelve rewrites: one written here against the invent spec,
@@ -57,5 +93,6 @@ locks and not prose. see `corpus/README.md` for the three-answer table.
 |---|---|
 | `module.ts` | the item, its plates, the outfit lock, the drift report |
 
-tests: `tests/wardrobe_lock_test.ts` (14). nothing here calls a model; this is the
+tests: `wardrobe_lock_test.ts` (14), `accessory_lock_test.ts` (11), `jewelry_lock_test.ts`
+(9), `hair_test.ts` (8), `look_test.ts` (10). nothing here calls a model; this is the
 description a call has to carry.

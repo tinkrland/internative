@@ -23,7 +23,7 @@
 // only source of sameness: the same locks and one unchanged setting should be able
 // to reproduce a frame rather than approximate it.
 
-export type LockKind = "wardrobe" | "environment";
+export type LockKind = "wardrobe" | "environment" | "accessory" | "jewelry" | "hair" | "look";
 
 export interface Lock<T> {
   kind: LockKind;

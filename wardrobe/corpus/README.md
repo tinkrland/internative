@@ -21,6 +21,19 @@ generator said "same garment" twelve times, and three of those had moved a visib
 thing (a hem, a slot, a fit). a model grading its own rewording is not a gate, which is
 why the drift check compares locks rather than prose.
 
+## the corpora being built
+
+four more are in flight, launched the same way and recorded in `pending.json` with the
+dataset ids: accessory persistence (the phone and its case), jewelry drift (metal, stone,
+and which body part), hairstyle drift (length, cut, parting, texture), and whole outfit
+series. `tools/corpus-fetch.ts` polls them and writes the provider's own jsonl into
+`raw/`; curation stays a separate step, because the generator labels its own rewrites
+generously and a corpus that inherits those labels inherits the flattery.
+
+the waiting is the part worth writing down: invent returns immediately, the rows arrive
+hours later, and until a run exists the download route refuses with "no run has started".
+that is not a failure, so poll rather than re-invent, which spends credits twice.
+
 ## the files
 
 | file | what it is |
