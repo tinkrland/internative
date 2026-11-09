@@ -55,6 +55,12 @@ could forget:
 | `jewelry.ts` | a `fixed` piece (a band) | a `styling` piece (earrings, a cuff) | a `retired` fixed piece |
 | `hair.ts` | cut, length, parting, texture, finish | up or down, or nothing if no up-do is declared | a `restyle`, dated |
 
+two of these rules are grounded in things outside the code, which is why they read as
+opinions rather than preferences: film has a paid department whose job is continuity of
+wardrobe, props, hair and makeup across scenes, and 16 cfr 23 separates gold from gold
+plated from vermeil, so "gold coloured" is an appearance rather than a material. see
+`docs/grounding-accessories.md`.
+
 two consequences worth stating, because both are enforced. a dressing she does not own
 is **refused rather than invented**: "none" is a legal answer, a silicone sleeve she does
 not have is not. and a device change without a dated upgrade is refused by name, because
@@ -94,5 +100,5 @@ locks and not prose. see `corpus/README.md` for the three-answer table.
 | `module.ts` | the item, its plates, the outfit lock, the drift report |
 
 tests: `wardrobe_lock_test.ts` (14), `accessory_lock_test.ts` (11), `jewelry_lock_test.ts`
-(9), `hair_test.ts` (8), `look_test.ts` (10). nothing here calls a model; this is the
+(11), `hair_test.ts` (9), `look_test.ts` (10). nothing here calls a model; this is the
 description a call has to carry.

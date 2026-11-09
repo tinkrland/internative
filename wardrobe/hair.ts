@@ -29,13 +29,28 @@ export interface Hairstyle {
   restyle?: { on: string; why: string };
 }
 
+// texture, in the professional sense, is two facts: strand circumference and pattern.
+// a stylist glossaries it that way (fine and coarse are a strand's thickness, not a
+// choice), and a line that says "fine" alone leaves the shape to the model's imagination.
+const STRAND = /\b(fine|medium|coarse|thick)\b/i;
+const PATTERN = /\b(straight|wave|wavy|curl|curly|coil|coily|kink|kinky|afro|crimped)\b/i;
+
+export function textureProblems(texture: string): string[] {
+  const text = (texture ?? "").trim();
+  if (text.length < 5) return ["texture required, and fine straight is not coarse wave"];
+  const problems: string[] = [];
+  if (!STRAND.test(text)) problems.push(`texture "${text}" does not say how thick the strand is (fine, medium, coarse)`);
+  if (!PATTERN.test(text)) problems.push(`texture "${text}" does not say the pattern (straight, wavy, curly)`);
+  return problems;
+}
+
 export function hairProblems(style: Hairstyle): string[] {
   const who = `hair "${style.id}"`;
   const problems: string[] = [];
   if (!/^[a-z0-9]+(?:[-_][a-z0-9]+)*$/.test(style.id ?? "")) problems.push(`${who}: id is not a slug`);
   if ((style.hair ?? "").trim().length < 8) problems.push(`${who}: length, cut and fringe belong in one line, and it needs all of them`);
   if ((style.parting ?? "").trim().length < 3) problems.push(`${who}: parting required, centre is an answer and so is none`);
-  if ((style.texture ?? "").trim().length < 5) problems.push(`${who}: texture required, and fine straight is not coarse wave`);
+  for (const problem of textureProblems(style.texture)) problems.push(`${who}: ${problem}`);
   if ((style.finish ?? "").trim().length < 5) problems.push(`${who}: finish required, air dried is not a wet look`);
   if ((style.avoid ?? []).length < 1) problems.push(`${who}: needs an avoid list, or the model adds volume`);
   if (!(style.plates ?? []).length && !(style.plates_missing_reason ?? "").trim()) {

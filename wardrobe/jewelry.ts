@@ -43,6 +43,31 @@ export interface JewelryPiece {
   retired?: { on: string; why: string };
 }
 
+// 16 CFR part 23 exists because "gold coloured" and "gold" are different products and
+// saying the wrong one is illegal, not merely imprecise: vermeil is sterling silver
+// plated with gold of at least 10 karat fineness (23.4), and gold plated, gold filled and
+// gold overlay are each defined separately (23.3). a description that says "gold" without
+// a karat has told a renderer something and a buyer nothing.
+const VAGUE_METAL = /\b(gold[- ]?colou?red|gold[- ]?tone|golden|silver[- ]?colou?red|silver[- ]?tone|precious metal|mixed metal|metal)\b/i;
+const FINENESS = /\b(\d{1,2}\s?(k|kt|karat)|925|950|sterling|plated|plate|filled|overlay|vermeil|brass|bronze|copper|steel|titanium|niobium|pewter)\b/i;
+
+export function metalProblems(metal: string): string[] {
+  const text = (metal ?? "").trim();
+  if (text.length < 3) return ["metal required and named, because \"gold coloured\" is not gold"];
+  const problems: string[] = [];
+  if (VAGUE_METAL.test(text)) {
+    problems.push(
+      `metal "${text}" names an appearance, not a material. 16 cfr 23 treats gold, gold plated and vermeil as three products, so the line has to name one`,
+    );
+  }
+  if (/\b(gold|silver)\b/i.test(text) && !FINENESS.test(text)) {
+    problems.push(
+      `metal "${text}" has no karat or alloy. gold without a fineness is the vaguest word in the sentence (16 cfr 23.3, 23.4)`,
+    );
+  }
+  return problems;
+}
+
 export function jewelryProblems(item: JewelryPiece): string[] {
   const who = `jewelry "${item.id}"`;
   const problems: string[] = [];
@@ -50,7 +75,7 @@ export function jewelryProblems(item: JewelryPiece): string[] {
   if (!PERSISTENCE.includes(item.persistence)) problems.push(`${who}: persistence must be fixed or styling`);
   if (!SITES.includes(item.site)) problems.push(`${who}: site must be one of ${SITES.join(", ")}`);
   if ((item.piece ?? "").trim().length < 3) problems.push(`${who}: piece required, because a ring and a cuff are different objects`);
-  if ((item.metal ?? "").trim().length < 3) problems.push(`${who}: metal required and named, because "gold coloured" is not gold`);
+  for (const problem of metalProblems(item.metal)) problems.push(`${who}: ${problem}`);
   if ((item.stone ?? "").trim().length < 2) problems.push(`${who}: stone required, say none when there is none`);
   if ((item.worn ?? "").trim().length < 5) problems.push(`${who}: where it is worn is required`);
   if ((item.avoid ?? []).length < 1) problems.push(`${who}: needs an avoid list, or the model adds a second stone`);

@@ -46,9 +46,26 @@ Deno.test("a piece is metal, stone and the place it sits, and nothing else", asy
   assert(!lock.block.includes("fixed"), "persistence is bookkeeping, not something a renderer draws");
 });
 
-Deno.test("a metal has to be named, because gold coloured is not gold", () => {
+Deno.test("a metal has to be named, because gold coloured is not gold (16 CFR 23)", () => {
   assert(jewelryProblems(band({ metal: "" })).some((p) => p.includes("metal required")));
-  assert(jewelryProblems(band({ metal: "gold" })).length === 0);
+  assert(jewelryProblems(band({ metal: "18k yellow gold" })).length === 0, "a karat is a material description");
+  assert(jewelryProblems(band({ metal: "sterling silver" })).length === 0, "an alloy with a standard is one too");
+});
+
+Deno.test("gold with no karat is refused, because vermeil and gold plate are different products", () => {
+  const bare = jewelryProblems(band({ metal: "gold" }));
+  assert(bare.some((p) => p.includes("no karat or alloy")), "gold alone is the vaguest word in the sentence");
+  assert(bare.some((p) => p.includes("16 cfr 23.3, 23.4")));
+  // and the three surface products are allowed when named, which is the point of the rule
+  for (const metal of ["18k gold plated brass", "gold filled overlay", "gold vermeil over sterling silver"]) {
+    assert(jewelryProblems(band({ metal })).length === 0, `"${metal}" names a real product`);
+  }
+});
+
+Deno.test("an appearance is not a material: gold tone and gold coloured are refused", () => {
+  for (const metal of ["gold tone", "gold-coloured", "golden", "precious metal"]) {
+    assert(jewelryProblems(band({ metal })).some((p) => p.includes("names an appearance, not a material")), `"${metal}"`);
+  }
 });
 
 Deno.test("a stone is said out loud even when there is none", () => {

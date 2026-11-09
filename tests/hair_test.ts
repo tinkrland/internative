@@ -65,6 +65,17 @@ Deno.test("parting and texture count as the same rule: a moved centre is a moved
   assert(restyleProblems(before, parted).some((p) => p.includes("parting")));
 });
 
+Deno.test("texture is strand thickness and pattern, because a stylist means both", () => {
+  assert(hairProblems(bob({ texture: "fine, straight, no body" })).length === 0);
+  const noStrand = hairProblems(bob({ texture: "lovely and shiny" }));
+  assert(noStrand.some((p) => p.includes("how thick the strand is")));
+  assert(noStrand.some((p) => p.includes("does not say the pattern")));
+  const strandOnly = hairProblems(bob({ texture: "coarse, no body" }));
+  assertEquals(strandOnly.filter((p) => p.includes("texture")).length, 1, "strand named, pattern still missing");
+  const patternOnly = hairProblems(bob({ texture: "soft waves, no body" }));
+  assert(patternOnly.some((p) => p.includes("how thick the strand is")));
+});
+
 Deno.test("a hairstyle has to state its length, texture and finish", () => {
   const problems = hairProblems(bob({ hair: "bob", texture: "", finish: "wet" }));
   assert(problems.some((p) => p.includes("length, cut and fringe")));
