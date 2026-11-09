@@ -1,0 +1,45 @@
+// the wardrobe: switchable outfits, one worn per day.
+//
+// identity is in the manifest and never changes; this file is the closet. the
+// detail fields are what a model needs to keep a garment the same garment
+// across shots: fabric, cut, colour, hardware. "casual top" is not an outfit.
+{
+  "persona": "example",
+  "default_outfit": "plain-tee",
+  "outfits": [
+    {
+      "id": "plain-tee",
+      "name": "off duty",
+      "garments": [
+        { "kind": "t-shirt", "detail": "boxy white heavyweight cotton, ribbed neck, no print" },
+        { "kind": "jeans", "detail": "straight leg, faded indigo, cuffed once" }
+      ],
+      "palette": ["#f4f1ea", "#3d4a5c"],
+      "accessories": ["small silver hoops"],
+      "season": "any"
+    },
+    {
+      "id": "desk-day",
+      "name": "working",
+      "garments": [
+        { "kind": "shirt", "detail": "washed oxford, pale blue, sleeves rolled to the elbow" },
+        { "kind": "trousers", "detail": "charcoal wide leg, pressed, cropped at the ankle" }
+      ],
+      "palette": ["#a8bfd4", "#3a3a3c"],
+      "accessories": ["thin gold chain"],
+      "season": "any"
+    },
+    {
+      "id": "cold-out",
+      "name": "out in the cold",
+      "garments": [
+        { "kind": "coat", "detail": "camel wool overcoat, below the knee, unbuttoned" },
+        { "kind": "knitwear", "detail": "cream ribbed turtleneck" },
+        { "kind": "jeans", "detail": "straight leg, faded indigo" }
+      ],
+      "palette": ["#b08a5a", "#efe7d7", "#3d4a5c"],
+      "accessories": ["leather gloves, worn at the thumbs"],
+      "season": "cold"
+    }
+  ]
+}
