@@ -53,7 +53,21 @@ but it does not measure the contrast, so a corrected run went out the same day: 
 12/12 split (twelve case swaps that are the same object, twelve device swaps that are
 not), plain JSON with no fences, and at most two rows per device.
 
-two lessons for the prompt shape, both now in the record. "include plenty of both" is not
+then the corrected run came back, and the first audit of it was wrong in an instructive
+way. one prompt row can carry MANY completions: the download returned 24 rows holding 410
+completions. counting them properly gives the contrast that was asked for:
+
+| corrected accessory run | completions | labelled same | labelled different |
+|---|---|---|---|
+| case swaps (styling) | 230 | 230 | 0 |
+| device swaps (identity) | 180 | 0 | 180 |
+
+so the counted split did work, and the earlier "it never varied the device" reading was a
+parser artefact: the block always said iphone 13 while the rewrite named the other device,
+and only the rewrite is the claim. 2 to 3 credits bought 410 labelled examples rather than
+24, which changes what a corpus costs.
+
+three lessons for the prompt shape, all now in the record. "include plenty of both" is not
 an instruction a generator follows, a counted split is. and a fence is not a failure:
 stripping it recovered 24 rows that had been thrown away.
 

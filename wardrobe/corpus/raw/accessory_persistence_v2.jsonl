@@ -1,0 +1,906 @@
+enhanced_prompt,enhanced_completion
+"Construct a 24-row dataset of descriptive rewrites to determine if the physical identity of a consumer electronic/luxury item is preserved.
+
+Block template:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+Response format:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Distribution:
+- 12 rows: Case modification only. (changed_fields: [""case""], human_same: true).
+- 12 rows: Device model modification (e.g., hermes tote 32cm to 26cm, iphone 13 to 15). (changed_fields: [""device""], human_same: false).
+
+Constraints:
+- Use only these devices: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14.
+- Max 2 rows per device model.
+- The 'rewrite' field must be a single-sentence prompt suitable for an AI image generator.","[
+  {""rewrite"": ""A graphite iphone 13 with a black leather case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 with a clear silicone case held in a hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a magSafe leather case on a white pedestal."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A gold iphone 15 with a woven fabric case on a modern desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hazel pixel 8 with a rugged armor case lying on a concrete surface."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hazel pixel 8 with a bright yellow case on an office desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A blue dial seamaster 36mm with a brown leather strap on a velvet cushion."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A blue dial seamaster 36mm with a black nylon strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black dial seamaster 42mm with a navy fabric strap on a rocky beach."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black dial seamaster 42mm with a rubber strap in a luxury box."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 32cm inside a beige dust bag on a chair."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An orange hermes tote 32cm with gold hardware on a boutique shelf."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black leica q2 with a leather half case on a tripod."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver sony a7iv with a silicone body case on a tripod."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A space gray macbook pro 14 in a felt sleeve on a lap."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A space gray macbook pro 14 with a clear hard shell case on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 with a walnut brown leather case carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver iphone 13 with a magSafe leather case resting on a wooden table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 with a rugged armor case held in a hand."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver iphone 15 with a woven fabric case on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A blue dial seamaster 42mm in a velvet travel case on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black dial seamaster 36mm in a wooden presentation case on a shelf."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black hermes tote 26cm inside a beige dust bag on a chair."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A gold hermes tote 32cm inside a protective plastic cover on a table."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Generate a dataset of 24 contrast pairs for product entity matching. Each pair must consist of a source block and a JSON rewrite object. 
+
+Source Block Format:
+device: [model]
+case: [material/color]
+carried: [location]
+
+JSON Output Format:
+{""rewrite"": ""[one sentence image prompt]"", ""changed_fields"": [""case"" or ""device""], ""human_same"": [true or false]}
+
+Rules:
+1. For exactly 12 rows, keep the device identical but change the case description. Set changed_fields to [""case""] and human_same to true.
+2. For exactly 12 rows, change the device model (e.g., iPhone 13 to iPhone 15, Seamaster 36mm to 42mm). Set changed_fields to [""device""] and human_same to false.
+3. Use these devices, max 2 rows each: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14.
+4. The rewrite must be a natural one-sentence image prompt.
+
+Please output the 24 rows now.","device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+{""rewrite"": ""A graphite iPhone 13 in a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: iphone 13, graphite
+case: black silicone
+carried: right hip, under the coat
+{""rewrite"": ""A graphite iPhone 13 in a black silicone case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: iphone 15, blue titanium
+case: clear protective
+carried: front pocket
+{""rewrite"": ""A blue titanium iPhone 15 in a clear protective case kept in the front pocket."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: iphone 15, blue titanium
+case: navy canvas
+carried: front pocket
+{""rewrite"": ""A blue titanium iPhone 15 in a navy canvas case kept in the front pocket."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: pixel 8, obsidian
+case: fabric grey
+carried: left hand
+{""rewrite"": ""An obsidian Pixel 8 with a grey fabric case held in the left hand."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: pixel 8, obsidian
+case: leather tan
+carried: left hand
+{""rewrite"": ""An obsidian Pixel 8 with a tan leather case held in the left hand."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: seamaster 36mm, steel
+case: nato strap green
+carried: wrist, under sleeve
+{""rewrite"": ""A 36mm steel Seamaster with a green NATO strap worn on the wrist under a sleeve."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: seamaster 36mm, steel
+case: rubber black
+carried: wrist, under sleeve
+{""rewrite"": ""A 36mm steel Seamaster with a black rubber strap worn on the wrist under a sleeve."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: seamaster 42mm, gold
+case: bracelet polished
+carried: wrist, visible
+{""rewrite"": ""A 42mm gold Seamaster with a polished bracelet worn visibly on the wrist."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: seamaster 42mm, gold
+case: leather brown
+carried: wrist, visible
+{""rewrite"": ""A 42mm gold Seamaster with a brown leather strap worn visibly on the wrist."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: hermes tote 32cm, orange
+case: none
+carried: left shoulder
+{""rewrite"": ""An orange 32cm Hermes tote carried on the left shoulder without a case."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: hermes tote 32cm, black
+case: none
+carried: left shoulder
+{""rewrite"": ""A black 32cm Hermes tote carried on the left shoulder without a case."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+{""rewrite"": ""A graphite iPhone 15 in a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: iphone 15, blue titanium
+case: clear protective
+carried: front pocket
+{""rewrite"": ""A blue titanium iPhone 13 in a clear protective case kept in the front pocket."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: pixel 8, obsidian
+case: fabric grey
+carried: left hand
+{""rewrite"": ""An obsidian Pixel 7 with a grey fabric case held in the left hand."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: seamaster 36mm, steel
+case: nato strap green
+carried: wrist, under sleeve
+{""rewrite"": ""A 42mm steel Seamaster with a green NATO strap worn on the wrist under a sleeve."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: seamaster 42mm, gold
+case: bracelet polished
+carried: wrist, visible
+{""rewrite"": ""A 36mm gold Seamaster with a polished bracelet worn visibly on the wrist."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: hermes tote 32cm, orange
+case: none
+carried: left shoulder
+{""rewrite"": ""An orange 26cm Hermes tote carried on the left shoulder without a case."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: hermes tote 26cm, black
+case: none
+carried: left shoulder
+{""rewrite"": ""A black 32cm Hermes tote carried on the left shoulder without a case."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: leica q2, black
+case: leather half-case
+carried: neck strap
+{""rewrite"": ""A black Leica Q3 with a leather half-case hanging from a neck strap."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: sony a7iv, silver
+case: cage rig
+carried: right hand
+{""rewrite"": ""A silver Sony A7III with a cage rig held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: macbook pro 14, space grey
+case: sleeve felt
+carried: backpack
+{""rewrite"": ""A space grey MacBook Pro 16 in a felt sleeve inside a backpack."", ""changed_fields"": [""device""], ""human_same"": false}
+
+device: leica q2, black
+case: silicone skin
+carried: table rest
+{""rewrite"": ""A black Leica Q2 with a silicone skin resting on a table."", ""changed_fields"": [""case""], ""human_same"": true}
+
+device: sony a7iv, silver
+case: backpack harness
+carried: chest mount
+{""rewrite"": ""A silver Sony A7IV with a backpack harness mounted on the chest."", ""changed_fields"": [""case""], ""human_same"": true}"
+"Build a contrast corpus about whether a reworded description shows the SAME physical object or a DIFFERENT one. Each row is a short block of lines and a rewrite of it.
+
+BLOCK, exactly these lines and nothing else:
+device: leica q2, black
+strap: cognac leather neck strap
+carried: left shoulder, over the trench coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case/strap line moves: changed_fields is [""case""], human_same is TRUE, because a new strap is the same camera. In the other 12 the DEVICE itself changes (leica q2 becomes leica q3, leica q2 becomes sony a7iv, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A black Leica Q2 camera with a brown leather half-case and cognac leather neck strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black Leica Q2 camera with a red leather half-case and cognac leather neck strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver Sony A7IV camera with a cognac leather neck strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver Sony A7IV camera with a black leather neck strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A space black iPhone 13 with a clear silicone case held in a hand over a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A space black iPhone 13 with a brown leather wallet case held in a hand over a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A blue iPhone 15 with a fabric case held in a hand over a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A blue iPhone 15 with a matte black case held in a hand over a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian Pixel 8 with a mint green case resting on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An obsidian Pixel 8 with a rugged armor case resting on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A MacBook Pro 14 in a cognac leather sleeve resting on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A MacBook Pro 14 in a black leather sleeve resting on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An Omega Seamaster 36mm watch with a steel bracelet worn on a wrist over a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An Omega Seamaster 36mm watch with a grey NATO strap worn on a wrist over a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An Omega Seamaster 42mm watch with a rubber strap worn on a wrist over a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An Omega Seamaster 42mm watch with a leather strap worn on a wrist over a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black Hermes tote 32cm bag with a colorful silk scarf tied to the handle carried on the left shoulder over a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black Hermes tote 32cm bag with a gold chain strap carried on the left shoulder over a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black Hermes tote 26cm bag with a cognac leather strap carried on the left shoulder over a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black Hermes tote 26cm bag with a leather neck strap carried on the left shoulder over a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black Leica Q2 camera with a black nylon wrist strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black Leica Q2 camera with a woven fabric strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver Sony A7IV camera with a grey canvas shoulder strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver Sony A7IV camera with a braided leather strap carried over the left shoulder on a trench coat."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat","{""rewrite"": ""A graphite iPhone 13 in a walnut brown leather case carried on the right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true}"
+"Execute a data generation task to test object permanence in our inventory descriptions using the specific block format below.
+
+BLOCK:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Create 24 rows. In exactly 12 instances, leave the device line unchanged and modify only the case line; assign changed_fields as [""case""] and human_same as true, acknowledging that a case change implies the same phone. In the other 12 instances, alter the DEVICE itself (such as iphone 13 to iphone 15, seamaster 36mm to seamaster 42mm, or tote 32cm to tote 26cm); assign changed_fields as [""device""] and human_same as false, since a device change defines a new object. Draw from these devices with a maximum of two rows each: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite field must contain one sentence written as an image prompt.","{""rewrite"": ""A close-up photo of a graphite iphone 13 in a walnut brown leather case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A detailed shot of a graphite iphone 13 with a midnight blue leather case held in hand."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""An image of an iphone 15 in a graphite finish with a clear protective case."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A studio shot of an iphone 15 featuring a textured blue fabric case."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A pixel 8 smartphone with a matte black case lying on a concrete surface."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A pixel 8 device shown with a vibrant red leather case in natural light."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A seamaster 36mm watch on a wrist with a green nylon strap case."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A seamaster 36mm timepiece displayed with a stainless steel bracelet case."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A seamaster 42mm diver watch with a rubber strap case on a dark background."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A seamaster 42mm watch featuring a nylon nato strap case in bright sunlight."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A hermes tote 32cm bag with a canvas protective case on a marble floor."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A hermes tote 32cm handbag shown with a felt dust bag case indoors."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A titanium iphone 15 in a walnut brown leather case resting on a wooden table."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iphone 15 pro model in titanium finish resting on a notebook."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A pixel 8 pro phone in bay color lying on a fabric surface."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A clear product shot of a pixel 8 positioned on a minimalist white surface."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A seamaster 42mm watch with a walnut brown leather strap on a wooden table."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A seamaster 36mm aqua terra watch on a velvet cushion."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A hermes tote 26cm bag in orange leather sitting on a chair."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A clear product shot of a hermes tote 26cm positioned on a minimalist white surface."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A leica q2 camera with a silver finish on a photography desk."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A clear product shot of a leica q2 positioned on a minimalist white surface."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A sony a7iv mirrorless camera with a lens attached on a tripod."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A macbook pro 14 laptop open on a desk with coffee nearby."", ""changed_fields"": [""device""], ""human_same"": false}"
+"Build a contrast corpus about whether a reworded description shows the SAME physical object or a DIFFERENT one. Each row is a short block of lines and a rewrite of it.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a black leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a blue leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 in a clear silicone case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 in a magsafe leather case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An obsidian pixel 8 in a rugged armor case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An obsidian pixel 8 in a slim fit case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm with a leather strap worn on the wrist under a coat sleeve."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm with a steel bracelet worn on the wrist under a coat sleeve."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 42mm with a rubber strap worn on the wrist under a coat sleeve."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 42mm with a nylon strap worn on the wrist under a coat sleeve."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 32cm with a dustbag placed on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 32cm without a dustbag placed on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian pixel 8 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A steel seamaster 42mm with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A steel seamaster 36mm with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 26cm with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 32cm with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sony a7iv with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A macbook pro 14 with a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iphone 13 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iphone 15 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A pixel 8 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Create 24 contrast pairs to test if a model can distinguish between an accessory change and a hardware change. 
+
+Input Block Format:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+Output Format:
+Return ONLY a JSON object: {""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Logic Constraints:
+- Group A (12 samples): Only the 'case' field is modified. Set changed_fields to [""case""] and human_same to true.
+- Group B (12 samples): The 'device' field is modified to a different model (e.g., iphone 13 to iphone 15, leica q2 to sony a7iv, or seamaster 36mm to 42mm). Set changed_fields to [""device""] and human_same to false.
+- Device Pool: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14.
+- Limit: No more than 2 occurrences of any specific device.
+- The rewrite must be a fluid, single-sentence image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 with a walnut brown leather case carried on the right hip under the coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 with a black silicone case carried on the right hip under the coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a navy blue fabric case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a red leather case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black pixel 8 with a clear protective case resting on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black pixel 8 with a matte black case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm with a brown nylon strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm with a black rubber strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 42mm with a brown leather strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 42mm with a black leather strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 32cm with a gold twilly wrap placed on a velvet sofa."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 32cm with a silk scarf wrap placed on a velvet sofa."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 with a walnut brown leather case carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver iphone 13 with a walnut brown leather case carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A pixel 8 with a clear plastic case resting on a marble counter."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iphone 15 with a clear plastic case resting on a marble counter."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 42mm with a navy strap on a wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 36mm with a navy strap on a wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 26cm in tan leather placed on a chair."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 32cm in tan leather placed on a chair."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sony a7iv with a black leather strap on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 with a black leather strap on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A space gray macbook pro 14 with a clear shell case on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A space gray pixel 8 with a clear shell case on a desk."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"When troubleshooting smart home inventory logs, it is critical to distinguish between a peripheral update and a core device replacement to maintain accurate firmware tracking. Generate a dataset of 24 entries comparing original device descriptions against rewrites. Half must represent the same phone with a new case (e.g., iPhone 13 with a different leather cover), marking 'human_same' as true and 'changed_fields' as ['case']. The other half must represent a genuine hardware upgrade or swap (e.g., iPhone 13 to iPhone 15, Seamaster 36mm to 42mm, Hermes Tote 32cm to 26cm, or swaps involving Pixel 8, Leica Q2, Sony A7IV, MacBook Pro 14), marking 'human_same' as false and 'changed_fields' as ['device']. Format the result as a single JSON object per row containing the rewrite sentence, the specific field changed, and the boolean identity flag.
+
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat","{""rewrite"": ""A graphite iPhone 13 in a black silicone case tucked into a right hip pocket under a coat."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 enclosed in a clear plastic case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 15 in a navy blue fabric case held in hand under natural light."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 15 enclosed in a black hard shell case sitting on a desk."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite Pixel 8 in a mint green case placed on a stone surface."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite Pixel 8 featuring a minimalist grey case photographed from above."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Seamaster 36mm with a rubber strap on a wrist, partially hidden under a coat sleeve."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Seamaster 36mm fitted with a steel bracelet displayed on a stand."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Seamaster 42mm with a nylon strap resting on a velvet cushion."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Seamaster 42mm with a leather band captured in macro detail."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Leica Q2 with a black leather half-case, carried on a strap under a coat."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Leica Q2 wrapped in a vintage brown leather case ready for travel."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A swap from iPhone 13 to iPhone 15 depicted with both devices on a charger."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An upgraded iPhone 15 replacing an older model shown side by side on a counter."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 replacing a previous phone displayed on a minimalist shelf."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A transition from an older smartphone to a Pixel 8 captured in a hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Seamaster 36mm watch exchanged for a Seamaster 42mm model on a display tray."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A comparison shot showing a Seamaster 36mm next to a Seamaster 42mm watch."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Hermes tote 32cm bag swapped for a Hermes tote 26cm version on a table."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A size transition from Hermes tote 32cm to Hermes tote 26cm shown in a studio setting."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Leica Q2 camera replacing an older compact camera on a leather strap."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Sony A7IV camera upgraded from a previous model resting on a tripod."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A MacBook Pro 14 laptop replacing an older unit on a workspace desk."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A MacBook Pro 14 enclosed in a hard shell plastic case placed on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true}"
+"Generate a contrastive evaluation set consisting of 24 pairs of descriptions. 
+
+Format for the source block:
+device: macbook pro 14
+case: frosted hard shell
+carried: leather messenger bag
+
+Requirement for the JSON output:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Logic for the pairs:
+1. 12 items: Update the case (e.g., frosted hard shell -> leather folio). changed_fields: [""case""], human_same: true.
+2. 12 items: Update the device (e.g., macbook pro 14 -> iphone 15). changed_fields: [""device""], human_same: false.
+
+Device Pool: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. Max 2 rows per device. The 'rewrite' should be a natural language image generation prompt.","[
+  {""rewrite"": ""A photo of an iphone 13 in a leather folio case on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of an iphone 13 in a clear bumper case on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of an iphone 15 in a silicone skin case on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of an iphone 15 in a fabric weave case on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a pixel 8 in a rugged armor case on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a pixel 8 in a velvet pouch on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a seamaster 36mm with a steel bracelet on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a seamaster 36mm with a rubber strap on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a seamaster 42mm with a gold bracelet on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a seamaster 42mm with a nylon strap on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a hermes tote 32cm in tan leather on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a hermes tote 32cm in black leather on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a hermes tote 26cm in a dust bag on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a hermes tote 26cm in a woven basket on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a leica q2 in a leather pouch on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a leica q2 in a hard shell case on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a sony a7iv in a canvas cover on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a sony a7iv in a silicone sleeve on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a macbook pro 14 in a frosted hard shell on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a macbook pro 14 in a leather sleeve on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a leica q2 on a vintage tripod next to a coffee cup."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a sony a7iv on a vintage tripod next to a coffee cup."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of an iphone 15 on a marble counter next to a coffee cup."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a pixel 8 on a marble counter next to a coffee cup."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Build a contrast corpus about whether a reworded description shows the SAME physical object or a DIFFERENT one. Each row is a short block of lines and a rewrite of it.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a black leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a navy leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a tan leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a red leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a green leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a blue leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a grey leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a white leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a yellow leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a pink leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a purple leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a gold leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An iphone 15 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A pixel 8 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 36mm in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 42mm in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 32cm in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 26cm in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sony a7iv in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A macbook pro 14 in a walnut brown leather case tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iphone 15 in a navy blue silicone case held in hand."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A pixel 8 with a clear protective case resting on a white counter."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 with a brown leather neck strap hanging in a gallery."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"In assessing the lifecycle impact of personal electronics, I need to verify if a description change implies a distinct physical asset or merely an accessory swap. Analyze the following contrast corpus rows where each block defines a device state and its rewrite. Ensure exactly 12 rows show only a case change (human_same: true, changed_fields: [""case""]) and 12 rows show a device model change (human_same: false, changed_fields: [""device""]), utilizing pairs like iPhone 13/15, Pixel 8, Seamaster 36mm/42mm, Hermes Tote 32cm/26cm, Leica Q2, Sony A7IV, and MacBook Pro 14. The output must be a strict JSON object with keys 'rewrite', 'changed_fields', and 'human_same'.
+
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat","[
+  {""rewrite"": ""A graphite iPhone 13 in a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 with a navy blue silicone case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iPhone 15 with a clear protective case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iPhone 15 with a black MagSafe case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Pixel 8 in hazel color with a fabric case on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Pixel 8 in rose color with a leather case on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 36mm watch with a steel bracelet on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 36mm watch with a nylon strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 42mm watch with a rubber strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 42mm watch with a steel bracelet on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Hermes tote 32cm in orange leather on a chair."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Hermes tote 32cm in black leather on a chair."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Hermes tote 26cm in blue leather placed on a shelf."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Hermes tote 26cm in gold leather placed on a shelf."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Leica Q2 camera with a black finish on a tripod."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Leica Q2 monochrom camera with a black finish on a tripod."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony A7IV camera with a lens attached on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony A7IV camera with a different lens attached on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A MacBook Pro 14 in space gray open on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A MacBook Pro 14 in silver open on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iPhone 13 with a red case in a pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver iPhone 15 with a green case in a pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 in white with a yellow case on a stand."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Leica Q2 camera with a brown leather bag nearby."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Generate a contrast corpus to determine if a reworded description refers to the SAME physical luxury good or a DIFFERENT one. Provide a block of lines followed by a rewrite.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a black leather case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a navy blue silicone case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A blue iphone 15 in a clear protective case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A blue iphone 15 in a black leather wallet case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hazel pixel 8 in a woven fabric case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hazel pixel 8 in a hard plastic white case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm on a brown leather strap, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm on a nylon strap, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 42mm with a blue dial, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 42mm with a black dial, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black leica q2 in a leather half-case, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver macbook pro 14 in a sleeve, tucked into the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A blue iphone 15 in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian pixel 8 in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hazel pixel 8 in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A steel seamaster 36mm in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A blue seamaster 36mm in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A steel seamaster 42mm in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black seamaster 42mm in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A gold hermes tote 32cm in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver hermes tote 26cm in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black leica q2 in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A space gray macbook pro 14 in a walnut brown leather case, tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Generate a dataset for evaluating object identity persistence across rewrites. Each entry consists of a structured block and a natural language rewrite.
+
+BLOCK STRUCTURE:
+device: [model, color]
+case: [material, color]
+carried: [location]
+
+Example Block:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT FORMAT (JSON only):
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+REQUIREMENTS:
+1. Total rows: 24.
+2. 12 rows: Case changes, Device stays. Result: changed_fields=[""case""], human_same=true.
+3. 12 rows: Device changes (e.g., iphone 13 -> iphone 15, seamaster 36mm -> 42mm, hermes tote 32cm -> 26cm). Result: changed_fields=[""device""], human_same=false.
+4. Devices allowed: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. Max 2 rows per device.
+5. The 'rewrite' must be a single sentence formatted as a descriptive image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a blue silicone case resting on a marble countertop."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a clear plastic case resting on a marble countertop."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A titanium iphone 15 in a black leather case sitting on a bedside table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A titanium iphone 15 in a red silicone case sitting on a bedside table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hazel pixel 8 with a textured green case lying on a white desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hazel pixel 8 with a smooth black case lying on a white desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver seamaster 36mm with a black rubber strap worn on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver seamaster 36mm with a nylon strap worn on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver seamaster 42mm with a steel bracelet displayed on a velvet stand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver seamaster 42mm with a rubber strap displayed on a velvet stand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An orange hermes tote 32cm in silver leather resting on a velvet chair."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 26cm in brown leather resting on a velvet chair."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A titanium iphone 15 in a blue silicone case resting on a marble countertop."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A porcelain pixel 8 in a black leather case sitting on a bedside table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 with a textured green case lying on a white desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver seamaster 42mm with a black rubber strap worn on a wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver seamaster 36mm with a steel bracelet displayed on a velvet stand."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black hermes tote 26cm in silver leather resting on a velvet chair."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An orange hermes tote 32cm in brown leather resting on a velvet chair."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black leica q2 in a leather half-case hanging from a neck strap."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black sony a7iv in a leather sleeve resting on a photography studio table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A space gray macbook pro 14 in a clear hardshell sitting on a glass desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black leica q2 in a neoprene sleeve resting on a photography studio table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A space gray macbook pro 14 in a leather sleeve sitting on a glass desk."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Build a contrast corpus about whether a reworded description shows the SAME physical object or a DIFFERENT one. Each row is a short block of lines and a rewrite of it.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a midnight black leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a forest green leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 in a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver iphone 15 with a red silicone case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in a navy blue leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a crimson red leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An obsidian pixel 8 with a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian pixel 8 with a clear plastic case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in a slate grey leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a tan leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A steel seamaster 36mm with a walnut brown leather strap carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A steel seamaster 42mm with a walnut brown leather strap carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in a purple leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a yellow leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hermes tote 32cm in walnut brown leather tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 26cm in walnut brown leather tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in a white leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a pink leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black leica q2 with a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sony a7iv with a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in a teal leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a gold leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A macbook pro 14 with a walnut brown leather sleeve carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in an orange leather case tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true}
+]"
+"Build a contrast corpus about whether a reworded description shows the SAME physical object or a DIFFERENT one. Each row is a short block of lines and a rewrite of it.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iPhone 13 in a black leather case, tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a navy blue leather case, tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iPhone 15 with a clear case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iPhone 15 with a tan leather case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Pixel 8 with a black silicone case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Pixel 8 with a clear bumper case resting on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 36mm with a steel bracelet worn on the left wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 36mm with a leather strap worn on the left wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 42mm with a NATO strap worn on the left wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Seamaster 42mm with a steel bracelet worn on the left wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Hermes tote 32cm in black leather carried on the shoulder."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A Hermes tote 32cm in gold leather carried on the shoulder."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 becomes a silver iPhone 15 with the same walnut brown leather case."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 with a clear case becomes a graphite iPhone 13 with the same clear case."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Seamaster 36mm worn on the wrist becomes a Seamaster 42mm worn on the wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Seamaster 42mm on the wrist becomes a Seamaster 36mm on the wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Hermes tote 32cm in hand becomes a Hermes tote 26cm in hand."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Hermes tote 26cm on the shoulder becomes a Hermes tote 32cm on the shoulder."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Leica Q2 resting on a table becomes a Sony A7IV resting on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony A7IV with a lens becomes a Leica Q2 with a lens."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 15 held in hand becomes a Pixel 8 held in hand."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 resting on a desk becomes a MacBook Pro 14 resting on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A MacBook Pro 14 in a black sleeve on a desk becomes an iPhone 13 in a black sleeve on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 13 in a walnut case becomes a MacBook Pro 14 in a walnut case."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat","{""rewrite"": ""A graphite iPhone 13 in a walnut brown leather case carried on the right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true}"
+"To ensure precise material tracking in our durability tests, we must categorize whether a textual variation describes the same underlying object or a distinct specimen with different physical properties. Construct a contrast corpus of 24 rows. In 12 instances, alter only the carrying case (e.g., changing the leather type on an iPhone 13) while keeping the device constant; label these with 'changed_fields': ['case'] and 'human_same': true. In the remaining 12 instances, alter the device model itself (switching between iPhone 13/15, Pixel 8, Seamaster 36mm/42mm, Hermes Tote 32cm/26cm, Leica Q2, Sony A7IV, or MacBook Pro 14); label these with 'changed_fields': ['device'] and 'human_same': false. The rewrite field must be a natural language image prompt, and the final output for each row must be a valid JSON object.
+
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat","{""rewrite"": ""A graphite iPhone 13 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a black silicone case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a clear plastic case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a red leather case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a blue fabric case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a green suede case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a white marble case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a yellow rubber case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a purple velvet case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a silver metallic case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a brown snakeskin case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 13 in a navy blue leather case tucked under a coat at the right hip"", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A graphite iPhone 15 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Pixel 8 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Seamaster 36mm in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Seamaster 42mm in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Hermes Tote 32cm in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Hermes Tote 26cm in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Leica Q2 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Sony A7IV in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite MacBook Pro 14 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite iPhone 15 in a black leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Pixel 8 in a black leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A graphite Seamaster 36mm in a black leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false}"
+"Create a contrast dataset to distinguish between a change in accessory (same object) and a change in the core product (different object). Each sample pairs a block of text with a rewrite.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 with a walnut brown leather case clipped to a right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 with a black silicone case clipped to a right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a navy blue leather case clipped to a right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a red fabric case clipped to a right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A pixel 8 in obsidian with a green textured case clipped to a right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A pixel 8 in obsidian with a clear protective case clipped to a right hip under a coat"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A seamaster 36mm watch with a steel bracelet on a wrist under a sleeve"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A seamaster 36mm watch with a nylon strap on a wrist under a sleeve"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A seamaster 42mm watch with a steel bracelet on a wrist under a sleeve"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A seamaster 42mm watch with a rubber strap on a wrist under a sleeve"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hermes tote 32cm in gold leather carried on a shoulder"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hermes tote 32cm in black leather carried on a shoulder"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite pixel 8 in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 36mm with a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 42mm with a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 32cm in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 26cm in a walnut brown leather case tucked under a coat at the right hip"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 camera held in hand instead of a phone"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sony a7iv camera held in hand instead of a phone"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A macbook pro 14 opened on a desk instead of a phone"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A macbook pro 14 closed on a desk instead of a phone"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iphone 13 in silver held in hand instead of the graphite model"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iphone 15 in graphite held in hand instead of the silver model"", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Produce 24 rows of data to analyze the difference between accessory swaps and device replacements. 
+
+Each row starts with this block structure:
+device: pixel 8
+case: clear silicone
+carried: front pocket
+
+And ends with this JSON structure:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Constraints:
+- Exactly 12 rows must modify only the 'case' field: changed_fields = [""case""], human_same = true.
+- Exactly 12 rows must modify the 'device' field (e.g., pixel 8 to iphone 13, or hermes tote 32cm to hermes tote 26cm): changed_fields = [""device""], human_same = false.
+- Permitted devices: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. (Max 2 rows per device).
+- The rewrite must be a single sentence formatted as an image prompt.","[
+  {""rewrite"": ""A photo of a pixel 8 in a clear silicone case resting in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a pixel 8 in a leather case resting in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of an iphone 13 in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of an iphone 15 in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of an iphone 13 with a rugged black case in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of an iphone 15 with a leather case in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a seamaster 36mm in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a seamaster 42mm in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a seamaster 36mm with a leather strap in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a seamaster 42mm with a steel bracelet in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a hermes tote 32cm in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a hermes tote 26cm in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a hermes tote 32cm with a dust bag inside in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a hermes tote 26cm in orange leather in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a leica q2 in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a sony a7iv in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a leica q2 with a protective leather half case in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a sony a7iv with a cage and handle attachment in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a macbook pro 14 in a clear silicone case resting in a front pocket."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A photo of a pixel 8 in a matte black case resting in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a macbook pro 14 with a clear hard shell case in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a pixel 8 in a marble case resting in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a pixel 8 in a carbon fiber case resting in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A photo of a pixel 8 in a wooden case resting in a front pocket."", ""changed_fields"": [""case""], ""human_same"": true}
+]"
+"Create a dataset of 24 examples to test if a model can distinguish between a change in accessory versus a change in the core electronic device. 
+
+Input format (BLOCK):
+device: sony a7iv
+case: black neoprene sleeve
+carried: shoulder strap, crossbody
+
+Output format (JSON):
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Guidelines:
+- 12 samples: Change only the 'case' field. Set changed_fields to [""case""] and human_same to true (same camera, different sleeve).
+- 12 samples: Change the 'device' field (e.g., sony a7iv to leica q2, or seamaster 36mm to seamaster 42mm). Set changed_fields to [""device""] and human_same to false (different hardware).
+- Use a mix of these devices: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14.
+- Limit each device to 2 occurrences. Rewrites must be expressed as descriptive image prompts.","[
+  {""rewrite"": ""A close-up photo of an iphone 13 protected by a clear silicone case on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of an iphone 13 protected by a black leather wallet case on a wooden table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of an iphone 15 protected by a blue fabric case on a white desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of an iphone 15 protected by a red hard shell case on a white desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a pixel 8 protected by a green rugged case in natural light."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a pixel 8 protected by a leather wallet case on a neutral background."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a seamaster 36mm watch with a steel bracelet in a velvet box."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a seamaster 42mm watch with a leather strap in a velvet box."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a hermes tote 32cm bag inside a dust bag on a shelf."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a hermes tote 26cm bag inside an organizer insert on a shelf."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a leica q2 camera inside a brown leather half-case on a table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A close-up photo of a sony a7iv camera inside a black neoprene sleeve on a table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A detailed shot of an iphone 13 sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of an iphone 15 sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a pixel 8 sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a leica q2 sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a seamaster 36mm watch sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a seamaster 42mm watch sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a hermes tote 32cm bag sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a hermes tote 26cm bag sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a sony a7iv camera sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A detailed shot of a macbook pro 14 laptop sitting on a desk with soft lighting."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A close-up photo of an iphone 13 with a pristine screen on a concrete surface."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A close-up photo of an iphone 15 with a cracked screen on a concrete surface."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"We need to validate our asset tracking logic by generating a contrast corpus that distinguishes between peripheral modifications and core hardware replacements. Process the following block structure:
+
+BLOCK:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Produce 24 data rows. For 12 of them, the device line must remain identical while only the case line changes; mark these with changed_fields: [""case""] and human_same: true, since swapping a case preserves the phone's identity. For the remaining 12, the DEVICE must change (examples: iphone 13 becoming iphone 15, seamaster 36mm becoming seamaster 42mm, tote 32cm becoming tote 26cm); mark these with changed_fields: [""device""] and human_same: false, because a different device is inherently a different object. Limit usage to two rows per device from: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. Ensure each rewrite is a single sentence formatted as an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a clear silicone case carried on the right hip under a coat."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A titanium iphone 15 in a navy blue leather case resting on a wooden desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An obsidian pixel 8 in a fabric textured case sitting on a glass table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A stainless steel seamaster 36mm with a black nylon strap worn on the left wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A blue dial seamaster 42mm with a rubber dive strap displayed on a watch stand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hermes tote 32cm in gold leather with a silver charm resting on a chair."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A hermes tote 26cm in red leather with a gold charm placed on a marble floor."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black leica q2 with a protective skin resting inside a camera bag."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A sony a7iv with a cage rig mounted on a carbon fiber tripod."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A space gray macbook pro 14 with a hard shell case open on a desk."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a black leather wallet case resting on a nightstand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A titanium iphone 15 in a clear transparent case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A titanium iphone 15 in a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A graphite iphone 13 in a clear silicone case sitting on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian pixel 8 in a walnut brown leather case carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 42mm with a brown leather strap worn on a wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A seamaster 36mm with a stainless steel bracelet displayed in a box."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 26cm in blue leather resting on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A hermes tote 32cm in black leather sitting on a chair."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 with a black leather strap resting on a table."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sony a7iv with a black leather strap mounted on a tripod."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A macbook pro 14 with a silver skin resting on a desk."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian pixel 8 in a clear protective case resting on a wooden surface."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A leica q2 with a brown leather strap displayed on a shelf."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Build a contrast corpus to evaluate if a rewrite describes the SAME physical luxury item or a DIFFERENT one. Each entry consists of a block of specifications and a rewritten version.
+
+BLOCK, exactly these lines and nothing else:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case line moves: changed_fields is [""case""], human_same is TRUE, because a new case is the same phone. In the other 12 the DEVICE itself changes (iphone 13 becomes iphone 15, iphone 13 becomes iphone 14, seamaster 36mm becomes seamaster 42mm, tote 32cm becomes tote 26cm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","[
+  {""rewrite"": ""A graphite iPhone 13 in a black leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a tan leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a red leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a blue leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a green leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a white leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a grey leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a pink leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a navy leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a gold leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a purple leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iPhone 13 in a yellow leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""An iPhone 15 in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Seamaster 36mm in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Seamaster 42mm in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Hermes tote 32cm in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Hermes tote 26cm in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Leica Q2 in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony A7IV in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A MacBook Pro 14 in a walnut brown leather case tucked under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 15 in a walnut brown leather case under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 in a walnut brown leather case under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Leica Q2 in a walnut brown leather case under a coat on the right hip, photorealistic"", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Build a contrast corpus about whether a reworded description shows the SAME physical object or a DIFFERENT one. Each row is a short block of lines and a rewrite of it.
+
+BLOCK, exactly these lines and nothing else:
+device: hermes tote 32cm, gold
+case: matching clochette
+caaried: right hand, elbow crook
+
+OUTPUT, exactly this JSON object and nothing else, no code fences, no prose:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+RULES FOR THE ROWS. Produce 24 rows. In EXACTLY 12 of them the device line is untouched and only the case/accessory line moves: changed_fields is [""case""], human_same is TRUE, because a new accessory is the same bag. In the other 12 the DEVICE itself changes (hermes tote 32cm becomes hermes tote 26cm, iphone 13 becomes iphone 15, pixel 8 becomes pixel 9, seamaster 36mm becomes seamaster 42mm): changed_fields is [""device""], human_same is FALSE, because a different device is a different object however smoothly the sentence is reworded. Use at most two rows per device. Devices to use: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be one sentence a person might write as an image prompt.","{""rewrite"": ""A gold Hermes tote 32cm with a leather charm, carried in the right hand elbow crook."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A gold Hermes tote 32cm with a silk scarf, carried in the right hand elbow crook."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A gold Hermes tote 32cm with a silver clasp, carried in the right hand elbow crook."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A gold Hermes tote 32cm with a key ring, carried in the right hand elbow crook."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A sleek iPhone 13 with a clear protective case held in hand."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A sleek iPhone 13 with a leather wallet case held in hand."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""An iPhone 15 with a silicone MagSafe case resting on a table."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""An iPhone 15 with a transparent bumper case held in hand."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Pixel 8 smartphone with a fabric textured case on a desk."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Pixel 8 with a silicone bumper case on a table."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Seamaster 36mm watch with a nylon NATO strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A Seamaster 42mm watch with a rubber dive strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true}
+{""rewrite"": ""A gold Hermes tote 26cm with a matching clochette, carried in the right hand elbow crook."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A gold Hermes tote 26cm with a leather charm, held in the elbow crook of the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 15 with a matching case, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 15 in a matching cover, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 with a matching case, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 in a matching cover, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Seamaster 36mm with a matching strap, worn on the wrist."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Seamaster 42mm with a matching strap, worn on the wrist."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Leica Q2 with a matching strap, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Leica Q2 camera hanging from a neck strap."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Sony a7IV with a matching strap, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A MacBook Pro 14 with a matching sleeve, held in the right hand."", ""changed_fields"": [""device""], ""human_same"": false}"
+"Analyze the following inventory blocks to determine if a reworded description refers to the SAME physical object or a DIFFERENT one, paying close attention to how minor accessory changes differ from fundamental device swaps in our supply chain records.
+
+BLOCK:
+device: iphone 13, graphite
+case: walnut brown leather
+carried: right hip, under the coat
+
+OUTPUT:
+{""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}
+
+Generate 24 rows total. In exactly 12 rows, keep the device line untouched and only alter the case line; set changed_fields to [""case""] and human_same to TRUE, reflecting that a new case does not change the identity of the phone. In the other 12 rows, change the DEVICE itself (e.g., iphone 13 to iphone 15, seamaster 36mm to seamaster 42mm, tote 32cm to tote 26cm); set changed_fields to [""device""] and human_same to FALSE, as a different device constitutes a distinct object regardless of phrasing. Use at most two rows per device from this list: iphone 13, iphone 15, pixel 8, seamaster 36mm, seamaster 42mm, hermes tote 32cm, hermes tote 26cm, leica q2, sony a7iv, macbook pro 14. The rewrite must be a single sentence suitable for an image prompt.","[
+  {""rewrite"": ""A graphite iphone 13 in a walnut brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 13 in a black silicone case, tucked under a coat at the right hip."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a clear protective case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A silver iphone 15 with a navy blue magsafe case held in hand."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black pixel 8 with a rugged armor case resting on a table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black pixel 8 with a slim fabric case resting on a table."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A stainless steel seamaster 36mm with a black rubber strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A stainless steel seamaster 36mm with a red nylon strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A stainless steel seamaster 42mm with a steel bracelet on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A stainless steel seamaster 42mm with a green canvas strap on a wrist."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A gold hermes tote 32cm with a canvas liner on a shoulder."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A gold hermes tote 32cm with a tan suede liner on a shoulder."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 26cm with a leather liner on a shoulder."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black hermes tote 26cm with a white leather liner on a shoulder."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black leica q2 with a black leather half-case on a strap."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black leica q2 with a brown leather half-case on a strap."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black sony a7iv with a cage rig on a tripod."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A black sony a7iv with a battery grip on a tripod."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A space gray macbook pro 14 with a grey felt sleeve in a bag."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A space gray macbook pro 14 with a walnut brown leather sleeve in a bag."", ""changed_fields"": [""case""], ""human_same"": true},
+  {""rewrite"": ""A graphite iphone 15 in a walnut brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A black pixel 8 in a walnut brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A stainless steel seamaster 36mm with a walnut brown leather strap on a wrist."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A stainless steel seamaster 42mm with a walnut brown leather strap on a wrist."", ""changed_fields"": [""device""], ""human_same"": false}
+]"

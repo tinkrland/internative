@@ -1,5 +1,5 @@
 import { assertEquals, assert } from "jsr:@std/assert@1";
-import { rowsFromJsonl, promptBody, completionJson } from "../tools/corpus-fetch.ts";
+import { rowsFromJsonl, promptBody, completionJson, completionsJson } from "../tools/corpus-fetch.ts";
 
 // the shape the provider actually sends: a header record, then two quoted fields per row,
 // with newlines and doubled quotes inside them.
@@ -43,4 +43,19 @@ Deno.test("a fenced completion is still a completion", () => {
 Deno.test("prose instead of json is reported as nothing, not as a row with empty fields", () => {
   assertEquals(completionJson("Sure! Here is the JSON you asked for."), null);
   assertEquals(completionJson(""), null);
+});
+
+Deno.test("one prompt can come back with several completions", () => {
+  const raw = '```json\n[{"human_same": true, "changed_fields": ["case"]}, {"human_same": true, "changed_fields": ["case"]}]\n```';
+  assertEquals(completionsJson(raw).length, 2);
+});
+
+Deno.test("a completion that echoes the block first still parses from its first brace", () => {
+  const raw = 'device: iphone 13, graphite\ncase: walnut\n{"rewrite": "a case", "human_same": true}';
+  assertEquals(completionsJson(raw).length, 1);
+  assertEquals(completionsJson(raw)[0].human_same, true);
+});
+
+Deno.test("prose with no object at all yields nothing", () => {
+  assertEquals(completionsJson("Here is the JSON you asked for:"), []);
 });

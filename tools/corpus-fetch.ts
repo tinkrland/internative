@@ -84,6 +84,24 @@ export function completionJson(raw: string): Record<string, unknown> | null {
   }
 }
 
+// a prompt can come back with MORE than one completion, as a bare json array, and once
+// it came back as the block echoed plus the object, so the first "{" is where the answer
+// starts rather than the first character. one row in the file is not one row of data.
+export function completionsJson(raw: string): Record<string, unknown>[] {
+  let text = (raw ?? "").trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+  if (!text) return [];
+  const start = text.search(/[[{]/);
+  if (start < 0) return [];
+  text = text.slice(start);
+  try {
+    const parsed = JSON.parse(text);
+    const list = Array.isArray(parsed) ? parsed : [parsed];
+    return list.filter((entry): entry is Record<string, unknown> => !!entry && typeof entry === "object");
+  } catch {
+    return [];
+  }
+}
+
 // the prompt comes back with the generator's own instructions appended after a blank
 // line, because it copied the task text into the field it was asked to fill.
 export function promptBody(prompt: string): string {
