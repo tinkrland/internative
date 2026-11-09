@@ -10,7 +10,7 @@
 // caller says so. memory is never fabricated to fill a hole, and a drop
 // the head decided on is returned, not swallowed.
 
-import { scopePayload, type MemoryScope } from "./memory_scope.ts";
+import { scopePayload, type MemoryScope } from "./scope.ts";
 
 export interface MemoryNode {
   id: string;
