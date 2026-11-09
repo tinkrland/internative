@@ -1,0 +1,645 @@
+import { Hono } from "hono";
+import {
+  getMeetingByBotId,
+  getPendingCaptureRequestsByMeeting,
+  updateCaptureRequest,
+} from "../../services/supabase.ts";
+import { captureScreenshot } from "../../services/screenshots.ts";
+import { registerDefaultScreenshotEngines } from "../../services/screenshot_engines.ts";
+import { detectTerms } from "../../services/term_detector.ts";
+import { notifyCaptureMatch } from "../../services/notify.ts";
+import { hostReceiptLine } from "../../services/memory_recall.ts";
+import { detectScarcity } from "../../services/scarcity.ts";
+import { extractExpiryWindow } from "../../services/expiry_window.ts";
+import { expiryReceiptLine } from "../../services/notify.ts";
+import { redeemAndNotify } from "../../services/form_entry.ts";
+import { extractPromoCode } from "../../services/promo.ts";
+import {
+  type QnaAskState,
+  nextQnaAction,
+  buildPermissionChatMessage,
+  PERMISSION_SILENCE_MS,
+} from "../../services/qna_flow.ts";
+import { botProvider } from "../../services/browserbase_provider.ts";
+import { createAttendanceMessage, updateMeeting } from "../../services/supabase.ts";
+import { enterForm } from "../../services/form_entry.ts";
+import { chooseFormEmail } from "../../services/form_email.ts";
+import {
+  decideChatForm,
+  alreadyAttempted,
+  markAttempted,
+} from "../../services/chat_form_attendance.ts";
+import { recordChatLine } from "../../services/chat_takehome.ts";
+import {
+  type DocAccessReceipt,
+  extractSharedDocLink,
+  pageState,
+  buildAccessNudge,
+  alreadyAttempted as docAlreadyAttempted,
+  markAttempted as docMarkAttempted,
+} from "../../services/doc_access.ts";
+import {
+  createSession,
+  navigateTo,
+  stopSession,
+  cdpExecute,
+} from "../../services/browserbase.ts";
+
+// the door rule of this repo: unset secret = route closed, not open.
+// whoever posts transcript/chat events (the recall webhook, a relay)
+// carries the same secret in x-realtime-secret.
+const realtimeWebhook = new Hono();
+
+realtimeWebhook.use("*", async (c, next) => {
+  const secret = Deno.env.get("REALTIME_WEBHOOK_SECRET");
+  const provided = c.req.header("x-realtime-secret");
+  if (!secret) {
+    console.warn("clawbuzz: REALTIME_WEBHOOK_SECRET is not set, the realtime door is CLOSED");
+    return c.json({ error: "server not configured: set REALTIME_WEBHOOK_SECRET" }, 503);
+  }
+  if (provided !== secret) return c.json({ error: "unauthorized" }, 401);
+  await next();
+});
+
+// scarcity she has heard per meeting (the announcement usually precedes
+// the link by minutes). in-memory by design: it is live-call urgency,
+// not durable truth. supabase keeps the capture.
+const scarcityHeard = new Map<string, string>();
+
+// expiry windows she has heard per meeting, same design: "the code only
+// lasts 10 minutes" is usually said a moment BEFORE the code, so the
+// window is remembered and applied when the capture lands. the capture
+// row in supabase is the durable record; this map is live-call memory.
+const expiryHeard = new Map<string, string>();
+
+// the q&a ask flow state, per meeting (the owner, oct 21 2026). in-memory by
+// the same design: live-call urgency, not durable truth. the capture
+// request in supabase is the record. the camera is NEVER part of this
+// flow: no branch turns it on, ever.
+const qnaStates = new Map<string, QnaAskState>();
+
+// drive the q&a ask flow with one observed event. returns nothing; the
+// actions (chat sends, the out-loud ask) happen inside.
+async function advanceQna(
+  meeting: any,
+  botId: string,
+  kind: "transcript" | "chat",
+  text: string,
+  pendingCaptures: any[],
+): Promise<void> {
+  const state = qnaStates.get(meeting.id);
+  let outcome = nextQnaAction(state, { kind, text });
+
+  // silence deadline: she asked in chat, the q&a window is short, and
+  // two minutes of no objection means she posts the question in the
+  // chat, which is exactly what she asked permission for.
+  if (state?.phase === "asked_permission" && outcome.action === "none" &&
+      Date.now() - (state.permissionAskedAt || 0) > PERMISSION_SILENCE_MS) {
+    outcome = { action: "post_question_in_chat" };
+  }
+
+  if (outcome.action === "open_window") {
+    // only an ask-type request she has not yet had answered opens the
+    // flow; other raised hands go first, she is not one of them.
+    const ask = pendingCaptures.find((r) => r.type === "ask" && r.question);
+    if (ask?.question) {
+      qnaStates.set(meeting.id, {
+        phase: "hands_up",
+        pendingQuestionId: ask.id,
+        question: ask.question,
+      });
+      console.log(`clawbuzz: qna window open in ${meeting.id}, waiting for raised hands first`);
+    }
+    return;
+  }
+
+  if (outcome.action === "hands_clear" && state) {
+    // the ask goes to the host directly when she read who is running
+    // the room (the dm seam, the owner's organizer case, oct 22 2026).
+    // broadcast is the explicit fallback when the dm cannot be made:
+    // host blocks private chat, or no host name was read. never both.
+    const permissionMsg = buildPermissionChatMessage(meeting.host_name);
+    let sent = false;
+    if (meeting.host_name && botProvider.sendDirectChatMessage) {
+      sent = await botProvider.sendDirectChatMessage(botId, permissionMsg, meeting.host_name);
+    }
+    if (!sent) {
+      sent = await botProvider.sendChatMessage(botId, permissionMsg);
+    }
+    if (sent) {
+      state.phase = "asked_permission";
+      state.permissionAskedAt = Date.now();
+      await createAttendanceMessage({
+        meeting_id: meeting.id,
+        message_text: buildPermissionChatMessage(meeting.host_name),
+        sent_status: "sent",
+        trigger: "qna",
+      }).catch(() => {});
+      console.log(`clawbuzz: qna permission asked in chat in ${meeting.id}`);
+    } else {
+      // if she cannot even chat, she stands down; the request stays
+      // pending and post-meeting transcript search still applies.
+      state.phase = "done";
+    }
+    return;
+  }
+
+  if (outcome.action === "post_question_in_chat" && state) {
+    const sent = await botProvider.sendChatMessage(botId, state.question);
+    state.phase = sent ? "asked_in_chat" : "done";
+    if (sent) {
+      await createAttendanceMessage({
+        meeting_id: meeting.id,
+        message_text: state.question,
+        sent_status: "sent",
+        trigger: "qna",
+      }).catch(() => {});
+      console.log(`clawbuzz: qna question posted in chat in ${meeting.id}`);
+    }
+    return;
+  }
+
+  if (outcome.action === "unmute_and_ask" && state) {
+    // a human prompted her to speak: unmute and ask out loud, only
+    // then. engines with no mic get the honest fallback: the question
+    // still goes out, through the chat.
+    const spoke = await (botProvider.unmuteAndSpeak?.(botId, state.question) ?? false);
+    if (spoke) {
+      state.phase = "asked_out_loud";
+      console.log(`clawbuzz: prompted to speak, unmuted and asked out loud in ${meeting.id}`);
+    } else {
+      const sent = await botProvider.sendChatMessage(botId, state.question);
+      state.phase = sent ? "asked_in_chat" : "done";
+      if (sent) console.log(`clawbuzz: engine has no mic, question sent via chat in ${meeting.id}`);
+    }
+    return;
+  }
+
+  if (outcome.action === "stand_down" && state) {
+    state.phase = "done";
+    console.log(`clawbuzz: qna ask declined in ${meeting.id}, standing down`);
+  }
+}
+
+// shared doc access (the owner, oct 21 2026): the host shares a google
+// link, she clicks it from a side session (the call session never
+// navigates away from the join page), and if she lacks access she
+// requests it and asks in the chat, addressing the host by name when
+// she read the room. honest caveat in the service: the request only
+// goes through if the page accepts her email; confirmation is read
+// from the page, never assumed.
+async function maybeHandleSharedDocAccess(meeting: any, botId: string, chatText: string): Promise<void> {
+  const url = extractSharedDocLink(chatText);
+  if (!url) return;
+  if (docAlreadyAttempted(meeting.id, url)) return;
+  docMarkAttempted(meeting.id, url);
+
+  const email = Deno.env.get("CLAWBUZZ_GOOGLE_EMAIL");
+  if (!email) {
+    console.warn("clawbuzz: shared doc without CLAWBUZZ_GOOGLE_EMAIL, cannot ask for access");
+    return;
+  }
+
+  console.log(`clawbuzz: shared doc link in chat for ${meeting.id}: ${url}`);
+  const receipt: DocAccessReceipt = { url, denied: false, requested: false, nudged_in_chat: false, detail: "" };
+
+  // the tell first (the owner, oct 22 2026): the chat link may be padded
+  // with a shortener and trackers, and she does not hand it to
+  // wheregoes.com or any third party. theurltell walks the chain in
+  // house, and the side session only ever opens the destination.
+  const { theUrlTell } = await import("../../services/theurltell/mod.ts");
+  const tell = await theUrlTell(url);
+  if (!tell.destination) {
+    receipt.denied = true;
+    receipt.detail = `link not opened: ${tell.reason}`;
+    console.log(`clawbuzz: doc link told unsafe for ${meeting.id}: ${tell.reason}`);
+    // the attempt goes on the record even though nothing was opened
+    await createAttendanceMessage({
+      meeting_id: meeting.id,
+      message_text: `doc link not opened: ${tell.reason}`,
+      trigger: "access",
+      sent_status: "failed",
+      sent_at: new Date().toISOString(),
+    }).catch(() => {});
+    return;
+  }
+
+  // a side session, NOT the call session: the call tab is untouched
+  const side = await createSession();
+  try {
+    await assertLinkSafeFor(tell.destination);
+    await navigateTo(side.id, tell.destination);
+    await new Promise((r) => setTimeout(r, 5000)); // google pages settle slowly
+
+    const state = await readDocPageState(side.id);
+    if (state === "open") {
+      receipt.detail = "doc is open to her, no request needed";
+      console.log(`clawbuzz: shared doc already accessible in ${meeting.id}`);
+    } else {
+      receipt.denied = true;
+      if (state === "requested") {
+        // a request already exists from a previous attempt
+        receipt.requested = true;
+        receipt.detail = "access request already pending";
+      } else {
+        receipt.requested = await tryRequestAccess(side.id, email);
+        receipt.detail = receipt.requested
+          ? "access request submitted"
+          : "request flow did not confirm, falling back to asking in chat";
+      }
+
+      // back to the meeting tab: the nudge IS the synchronous path
+      const nudge = buildAccessNudge(meeting.host_name, email, receipt.requested);
+      const sent = await botProvider.sendChatMessage(botId, nudge);
+      receipt.nudged_in_chat = sent;
+      if (sent) {
+        await createAttendanceMessage({
+          meeting_id: meeting.id,
+          message_text: nudge,
+          trigger: "access",
+          sent_status: "sent",
+          sent_at: new Date().toISOString(),
+        }).catch(() => {});
+        console.log(`clawbuzz: access nudge sent in chat for ${meeting.id} (requested: ${receipt.requested})`);
+      }
+    }
+  } catch (err: any) {
+    console.error(`clawbuzz: shared doc handling failed in ${meeting.id}: ${err.message}`);
+    receipt.detail = `failed: ${err.message}`;
+  } finally {
+    await stopSession(side.id);
+  }
+}
+
+// reads the access state off the page text
+async function readDocPageState(sessionId: string): Promise<"denied" | "requested" | "open"> {
+  const result = await cdpExecute(sessionId, "Runtime.evaluate", {
+    expression: "document.body.innerText.slice(0, 3000)",
+    returnByValue: true,
+  });
+  return pageState(result?.result?.value || "");
+}
+
+// google's own request flow, best effort, confirmed by page text.
+// a throwaway session is not signed in, so the click usually exposes
+// an email field or a sign-in wall; either way the page state decides.
+async function tryRequestAccess(sessionId: string, email: string): Promise<boolean> {
+  const click = await cdpExecute(sessionId, "Runtime.evaluate", {
+    expression: `
+      (() => {
+        const btns = [...document.querySelectorAll('button, a[role="button"]')];
+        const btn = btns.find((b) => /request access|ask for access|request permission/i.test(b.textContent || ""));
+        if (btn) { btn.click(); return "clicked"; }
+        return "no_button";
+      })()
+    `,
+    returnByValue: true,
+  });
+  if (click?.result?.value !== "clicked") return false;
+
+  await new Promise((r) => setTimeout(r, 3000));
+
+  // an email field may appear: fill it with her email, never the owner's
+  const typed = await cdpExecute(sessionId, "Runtime.evaluate", {
+    expression: `
+      (() => {
+        const input = document.querySelector('input[type="email"], input[autocomplete*="email" i]');
+        if (input) { input.value = ${JSON.stringify(email)}; input.dispatchEvent(new Event("input", { bubbles: true })); return "typed"; }
+        return "no_email_field";
+      })()
+    `,
+    returnByValue: true,
+  });
+  if (typed?.result?.value === "typed") {
+    await cdpExecute(sessionId, "Runtime.evaluate", {
+      expression: `
+        (() => {
+          const btns = [...document.querySelectorAll('button, div[role="button"]')];
+          const btn = btns.find((b) => /request access|send|submit/i.test(b.textContent || ""));
+          if (btn) btn.click();
+        })()
+      `,
+      returnByValue: true,
+    });
+    await new Promise((r) => setTimeout(r, 4000));
+  }
+
+  // the page decides: only "requested" counts
+  return (await readDocPageState(sessionId)) === "requested";
+}
+
+async function assertLinkSafeFor(url: string) {
+  const { assertLinkSafe } = await import("../../services/link_safety.ts");
+  const verdict = await assertLinkSafe(url);
+  if (!verdict.safe) throw new Error(`link blocked by safety gate: ${verdict.reason}`);
+}
+
+// the chat attendance form (the owner, oct 21 2026): the host posts a
+// google form in the chat, she fills it. same enterForm as the pre-set
+// attendance path: safety gate, her identity (never the owner's), no credit
+// card fields ever. one attempt per link per meeting.
+async function maybeFillChatAttendanceForm(meeting: any, chatText: string): Promise<void> {
+  const decision = decideChatForm(
+    meeting,
+    chatText,
+    !!Deno.env.get("CLAWBUZZ_FORM_EMAIL"),
+  );
+  if (!decision.should_fill || !decision.url) return;
+  if (alreadyAttempted(meeting.id, decision.url)) return;
+  markAttempted(meeting.id, decision.url);
+
+  console.log(`clawbuzz: attendance form in chat for ${meeting.id} (${decision.reason}): ${decision.url}`);
+
+  try {
+    const formEmail = await chooseFormEmail(null, decision.url);
+    if (!formEmail) {
+      console.warn("clawbuzz: chat attendance form skipped, no CLAWBUZZ_FORM_EMAIL");
+      return;
+    }
+
+    const receipt = await enterForm(decision.url, {
+      email: formEmail.address,
+      name: Deno.env.get("CLAWBUZZ_FORM_NAME") || "clawbuzz",
+    });
+    const detail = receipt.submitted
+      ? `attendance form submitted: ${receipt.detail}`
+      : `attendance form entry failed: ${receipt.detail}`;
+
+    await createAttendanceMessage({
+      meeting_id: meeting.id,
+      message_text: `attendance form from chat: ${decision.url}. ${detail}`,
+      trigger: "form",
+      sent_status: receipt.submitted ? "sent" : "failed",
+      sent_at: new Date().toISOString(),
+    });
+    if (receipt.submitted) {
+      await updateMeeting(meeting.id, { attendance_messages_sent: true });
+      console.log(`clawbuzz: chat attendance form submitted for ${meeting.id}`);
+    }
+  } catch (err: any) {
+    console.error(`clawbuzz: chat attendance form failed in ${meeting.id}`, err);
+  }
+}
+
+registerDefaultScreenshotEngines();
+
+// generic realtime webhook. whatever engine clawbuzz runs on (browserbase in-page
+// chat monitor today, anything else later) pushes events here in a neutral shape:
+//   { bot_id, kind: "chat" | "transcript", speaker?, text }
+
+realtimeWebhook.post("/", async (c) => {
+  try {
+    const payload = await c.req.json();
+    const botId = payload.bot_id;
+    const kind = payload.kind;
+    const text = (payload.text || "").trim();
+
+    console.log(`clawbuzz: realtime webhook received "${kind}" event for bot ${botId || "unknown"}`);
+
+    if (!botId || !text) {
+      return c.json({ status: "acknowledged", note: "missing bot_id or text" });
+    }
+
+    const meeting = await getMeetingByBotId(botId);
+    if (!meeting) {
+      console.warn(`clawbuzz: no meeting found for bot_id ${botId}`);
+      return c.json({ status: "acknowledged", note: "meeting not found" });
+    }
+
+    const pendingCaptures = await getPendingCaptureRequestsByMeeting(meeting.id);
+    if (pendingCaptures.length === 0) {
+      return c.json({ status: "acknowledged", note: "no pending capture requests" });
+    }
+
+    if (kind === "transcript") {
+      const speaker = payload.speaker || "speaker";
+      const lowerText = text.toLowerCase();
+
+      // the q&a ask flow watches speech too: chat and meet go hand in
+      // hand, and a spoken "sure clawbuzz, go ahead" counts as much as a
+      // chat reply.
+      await advanceQna(meeting, botId, "transcript", text, pendingCaptures);
+
+      // the words being said are the only expiry source: "this code
+      // expires in 10 minutes" spoken before the code is remembered,
+      // and the capture that lands next inherits the urgency
+      if (extractExpiryWindow(text)) {
+        expiryHeard.set(meeting.id, `${speaker}: ${text}`);
+      }
+
+      // scarcity with no number in it is the same urgency: "once
+      // they're out they're out" said before the link is remembered
+      // the same way, for every capture, not just redeem ones
+      const scarce = detectScarcity(text);
+      if (scarce.scarce) {
+        scarcityHeard.set(meeting.id, `${speaker}: ${text}`);
+        console.log(
+          `clawbuzz: scarcity heard in ${meeting.id}: ${scarce.matched.join(", ")}`,
+        );
+      }
+
+      for (const req of pendingCaptures) {
+        let matched = false;
+
+        if (req.keywords && req.keywords.length > 0) {
+          matched = req.keywords.some((kw) => kw && lowerText.includes(kw.toLowerCase()));
+        }
+
+        // a keyword-less capture request ("get me the access code") has no
+        // watch words to fire on, so the term detector is the trigger: a
+        // code-shaped or figure-shaped utterance is exactly the thing the
+        // request was sent for. a keyword-less request that never hears one
+        // honestly stays pending.
+        if (!matched && req.type === "capture" && (!req.keywords || req.keywords.length === 0)) {
+          const terms = detectTerms(text);
+          matched = terms.some((t) => t.kind === "code" || t.kind === "math");
+        }
+
+        if (!matched && req.type === "ask" && req.question) {
+          const questionWords = req.question.toLowerCase().split(/\s+/).filter((w) => w.length > 3);
+          const matches = questionWords.filter((qw) => lowerText.includes(qw));
+          if (matches.length >= Math.min(2, questionWords.length)) {
+            matched = true;
+          }
+        }
+
+        if (matched) {
+          console.log(`clawbuzz: keyword matched for capture request "${req.title}" in meeting ${meeting.id}`);
+          const captureSnippet = `${speaker}: ${text}`;
+
+          // a capture with screenshot_enabled grabs the frame at the
+          // moment of the hit, through whichever engine rendered the
+          // meeting. the pipeline does not know or care which.
+          let screenshotUrl: string | undefined;
+          if (req.screenshot_enabled && payload.session_id) {
+            try {
+              screenshotUrl = await captureScreenshot(payload.session_id, meeting.platform);
+            } catch (err: any) {
+              console.warn(`clawbuzz: screenshot on capture failed: ${err.message}`);
+            }
+          }
+
+          // an answered ask retires the q&a flow for this meeting
+          if (req.type === "ask") {
+            const st = qnaStates.get(meeting.id);
+            if (st && st.pendingQuestionId === req.id) qnaStates.delete(meeting.id);
+          }
+
+          // the urgency of the capture is the words around it: the
+          // matching utterance first ("use code X, expires in 10
+          // minutes"), else the last expiry-shaped sentence she heard
+          // in this call. never a guess, always a quote.
+          const expiry = extractExpiryWindow(text, {
+              meetingEndsAt: meeting.end_time,
+            }) ??
+            (expiryHeard.has(meeting.id)
+              ? extractExpiryWindow(expiryHeard.get(meeting.id)!, {
+                  meetingEndsAt: meeting.end_time,
+                })
+              : null);
+
+          await updateCaptureRequest(req.id, {
+            status: req.type === "ask" ? "answered" : "captured",
+            captured_content: req.captured_content
+              ? `${req.captured_content}\n${captureSnippet}`
+              : captureSnippet,
+            captured_screenshot_url: screenshotUrl || req.captured_screenshot_url || undefined,
+            answer: req.type === "ask" ? text : req.answer,
+            expiry_kind: expiry?.kind ?? null,
+            expiry_minutes: expiry?.minutes ?? null,
+            expires_at: expiry?.expiresAt ?? null,
+            expiry_quote: expiry?.quote ?? null,
+          });
+
+          // redemption-window case: a code that only works during the
+          // meeting is useless in a post-meeting recap, so the owner
+          // hears about it the moment she does. a heard window lands in
+          // the subject line: the inbox IS the push.
+          await notifyCaptureMatch({
+            hostLine: hostReceiptLine(meeting),
+            meetingTitle: meeting.title,
+            captureTitle: req.title,
+            snippet: captureSnippet,
+            link: screenshotUrl,
+            capturedAt: new Date(),
+            expiry,
+            scarcity: scarcityHeard.get(meeting.id) ?? null,
+          }).catch(() => false);
+        }
+      }
+    }
+
+    if (kind === "chat") {
+      const speaker = payload.speaker || "participant";
+
+      // the chat is a take-home artifact too: every line is kept,
+      // triggers run on it and the transcript carries it home (the owner,
+      // oct 27 2026).
+      await recordChatLine({ meeting_id: meeting.id, speaker, message: text, source: "chat" });
+      const urlRegex = /(https?:\/\/[^\s"'<>]+)/gi;
+      const links = text.match(urlRegex) || [];
+
+      // the q&a ask flow: a chat reply prompting her to speak up
+      // unmutes her, only then.
+      await advanceQna(meeting, botId, "chat", text, pendingCaptures);
+
+      // sometimes the attendance IS a form posted in the chat. she
+      // fills it with her form identity, once per link per meeting.
+      await maybeFillChatAttendanceForm(meeting, text);
+
+      // a shared google doc she cannot open: she requests access and
+      // asks in the chat, without ever leaving the call.
+      await maybeHandleSharedDocAccess(meeting, botId, text);
+
+      // expiry words land in chat too: "link expires in 10 mins" is
+      // the same window, typed instead of spoken
+      if (extractExpiryWindow(text)) {
+        expiryHeard.set(meeting.id, `[chat] ${speaker}: ${text}`);
+      }
+
+      // and so does supply scarcity: "limited so get yours quickly"
+      if (detectScarcity(text).scarce) {
+        scarcityHeard.set(meeting.id, `[chat] ${speaker}: ${text}`);
+      }
+
+      console.log(`clawbuzz: chat message from ${speaker}: "${text}"`);
+
+      for (const req of pendingCaptures) {
+        if (!req.check_chat) continue;
+
+        let matched = links.length > 0;
+        if (!matched && req.keywords) {
+          const lowerChat = text.toLowerCase();
+          matched = req.keywords.some((kw) => kw && lowerChat.includes(kw.toLowerCase()));
+        }
+
+        if (matched) {
+          const existingLinks = req.captured_chat_links || [];
+          const newLinks = Array.from(new Set([...existingLinks, ...links]));
+
+          const chatSnippet = `[chat] ${speaker}: ${text}`;
+
+          // the chat carries the same urgency: the message itself
+          // first, else the last window she heard in this call
+          const expiry = extractExpiryWindow(text, {
+              meetingEndsAt: meeting.end_time,
+            }) ??
+            (expiryHeard.has(meeting.id)
+              ? extractExpiryWindow(expiryHeard.get(meeting.id)!, {
+                  meetingEndsAt: meeting.end_time,
+                })
+              : null);
+
+          await updateCaptureRequest(req.id, {
+            status: "captured",
+            captured_chat_links: newLinks,
+            captured_content: req.captured_content
+              ? `${req.captured_content}\n${chatSnippet}`
+              : chatSnippet,
+            expiry_kind: expiry?.kind ?? null,
+            expiry_minutes: expiry?.minutes ?? null,
+            expires_at: expiry?.expiresAt ?? null,
+            expiry_quote: expiry?.quote ?? null,
+          });
+
+          // a redeem-enabled request is the fcfs case: she enters the
+          // owner's email herself in her own session (never the meeting
+          // session) and pushes the receipt. fire-and-forget: the capture
+          // in supabase is the record of truth.
+          if (req.redeem && links.length > 0) {
+            redeemAndNotify(links[0], {
+              meetingTitle: meeting.title,
+              captureTitle: req.title,
+              scarce: scarcityHeard.get(meeting.id),
+              expiry: expiry ? expiryReceiptLine(expiry) : undefined,
+              promoCode: extractPromoCode(chatSnippet),
+              emailMode: (req.form_email_mode as any) ?? null,
+            }).catch((err: any) =>
+              console.warn(`clawbuzz: redeem attempt failed: ${err.message}`)
+            );
+          } else {
+            // same instant push for chat: forms and links dropped mid-call
+            // often close when the call does
+            await notifyCaptureMatch({
+            hostLine: hostReceiptLine(meeting),
+              meetingTitle: meeting.title,
+              captureTitle: req.title,
+              snippet: chatSnippet,
+              link: links[0],
+              capturedAt: new Date(),
+              expiry,
+              scarcity: scarcityHeard.get(meeting.id) ?? null,
+            }).catch(() => false);
+          }
+        }
+      }
+    }
+
+    return c.json({ status: "success", kind });
+  } catch (err: any) {
+    console.error("clawbuzz: error processing realtime webhook", err);
+    return c.json({ error: err.message || "webhook processing failed" }, 500);
+  }
+});
+
+export default realtimeWebhook;

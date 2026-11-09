@@ -1,0 +1,20 @@
+{
+  "name": "clawbuzz",
+  "version": "0.1.0",
+  "exports": {
+    "./persona": "./persona/loader.ts",
+    "./core": "./core/surface.ts"
+  },
+  "tasks": {
+    "test": "deno test --allow-env --allow-read",
+    "check": "deno check persona/*.ts core/*.ts",
+    "matrix": "deno run --allow-env --allow-read tools/matrix.ts",
+    "serve": "deno run --allow-net --allow-env interactive/src/index.ts"
+  },
+  "imports": {
+    "hono": "npm:hono@^4.0.0",
+    "hono/cors": "npm:hono@^4.0.0/cors",
+    "@supabase/supabase-js": "npm:@supabase/supabase-js@^2.39.8",
+    "googleapis": "npm:googleapis@^134.0.0"
+  }
+}

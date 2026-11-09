@@ -1,0 +1,130 @@
+import { Hono } from "hono";
+import { cors } from "hono/cors";
+
+import meetingsRouter from "./routes/meetings.ts";
+import captureRouter from "./routes/capture.ts";
+import transcriptsRouter from "./routes/transcripts.ts";
+import deployRouter from "./routes/deploy.ts";
+import profilesRouter from "./routes/profiles.ts";
+import statsRouter from "./routes/stats.ts";
+import browserbaseRouter from "./routes/browserbase.ts";
+import lumaRouter from "./routes/luma.ts";
+import calendlyRouter from "./routes/calendly.ts";
+import hinglishRouter from "./routes/hinglish.ts";
+import inboxRouter from "./routes/inbox.ts";
+import liveLinksRouter from "./routes/live_links.ts";
+import discordRouter from "./routes/discord.ts";
+import forumLinksRouter from "./routes/forum_links.ts";
+import voiceAgentRouter from "./routes/voice_agent.ts";
+import memoriumRouter from "./routes/memorium.ts";
+import memoriumTagsRouter from "./routes/memorium_tags.ts";
+import voicePresetsRouter from "./routes/voice_presets.ts";
+import { agentMailRouter } from "./routes/agentmail.ts";
+import memoryRouter from "./routes/memory.ts";
+import { dearAgentRouter } from "./routes/webhooks/dearagent.ts";
+import { carlyEmailRouter } from "./routes/webhooks/carlyemail.ts";
+import wahaRouter from "./routes/webhooks/waha.ts";
+import { zoomRouter } from "./routes/zoom.ts";
+
+import realtimeWebhook from "./routes/webhooks/realtime.ts";
+import googleCalendarWebhook from "./routes/webhooks/google_calendar.ts";
+
+import { meetingManager } from "./scheduler/meeting_manager.ts";
+
+const app = new Hono();
+
+// cors: origins come from CLAWBUZZ_ALLOWED_ORIGINS (comma separated).
+// unset = no cors (same-origin only); "*" was a hole, not a feature.
+const allowedOrigins = (Deno.env.get("CLAWBUZZ_ALLOWED_ORIGINS") || "")
+  .split(",").map((o) => o.trim()).filter(Boolean);
+if (allowedOrigins.length > 0) {
+  app.use("*", cors({
+    origin: allowedOrigins,
+    allowMethods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowHeaders: ["Content-Type", "Authorization", "x-api-token"],
+    credentials: false,
+  }));
+}
+
+// the /api door: bearer token required, closed when unconfigured.
+// webhooks and the health route sit outside this middleware on purpose.
+import { requireApiToken } from "./services/api_auth.ts";
+app.use("/api/*", requireApiToken);
+
+app.get("/", (c) => {
+  return c.json({
+    name: "clawbuzz",
+    status: "ok",
+    message: "clawbuzz is online and standing by for meetings",
+    timestamp: new Date().toISOString(),
+    routes: [
+      "/api/meetings", "/api/capture", "/api/transcripts", "/api/deploy",
+      "/api/profiles", "/api/stats", "/api/browserbase", "/api/luma",
+      "/api/calendly", "/api/hinglish", "/api/inbox", "/api/live-links",
+      "/api/forum", "/api/voice", "/api/memorium", "/api/voice-presets",
+      "/api/agentmail", "/api/zoom", "/api/discord",
+    ],
+  });
+});
+
+// api routes
+app.route("/api/meetings", meetingsRouter);
+app.route("/api/capture", captureRouter);
+app.route("/api/transcripts", transcriptsRouter);
+app.route("/api/deploy", deployRouter);
+app.route("/api/profiles", profilesRouter);
+app.route("/api/stats", statsRouter);
+app.route("/api/browserbase", browserbaseRouter);
+app.route("/api/luma", lumaRouter);
+app.route("/api/calendly", calendlyRouter);
+app.route("/api/hinglish", hinglishRouter);
+app.route("/api/inbox", inboxRouter);
+app.route("/api/live-links", liveLinksRouter);
+app.route("/api/discord", discordRouter);
+app.route("/api/memory", memoryRouter);
+app.route("/api/forum", forumLinksRouter);
+app.route("/api/voice", voiceAgentRouter);
+app.route("/api/memorium", memoriumRouter);
+app.route("/api/memorium", memoriumTagsRouter);
+app.route("/api/voice-presets", voicePresetsRouter);
+app.route("/api/agentmail", agentMailRouter);
+app.route("/api/zoom", zoomRouter);
+
+// webhooks
+app.route("/webhooks/realtime", realtimeWebhook);
+app.route("/webhooks/google-calendar", googleCalendarWebhook);
+// her inbox: forward a meeting invite to her agentmail address and she joins
+app.route("/webhooks/agentmail", agentMailRouter);
+
+// the true-inbox providers (anne, oct 28 2026): for people whose custom
+// domain's mail should live in a REAL inbox (self-hosted on their own
+// cloudflare via dearagent.sh, or hosted with custom domains via
+// carlyemail.com) instead of forwarding to an agentmail address.
+// same shared core: whitelisted senders only, extractMeetingUrl, she
+// joins. both closed by default (their signing secrets in env).
+app.route("/webhooks/dearagent", dearAgentRouter);
+app.route("/webhooks/carlyemail", carlyEmailRouter);
+// whatsapp text rail (WAHA, oct 29 2026): hmac-signed events, whitelisted
+// senders, a join link inside the text runs the same path as a forward.
+// unset WAHA_HMAC_KEY = closed.
+app.route("/webhooks/waha", wahaRouter);
+
+// her imessage: text her a link and she joins (photon/spectrum, hmac
+// signed, whitelisted senders only, same contract as the inbox door)
+import { photonRouter } from "./routes/photon.ts";
+app.route("/webhooks/photon", photonRouter);
+
+// scheduler
+const enableScheduler = Deno.env.get("ENABLE_SCHEDULER") !== "false";
+if (enableScheduler) {
+  meetingManager.startScheduler(60000);
+} else {
+  console.log("clawbuzz: meeting manager scheduler disabled");
+}
+
+const port = Number(Deno.env.get("PORT")) || 8000;
+console.log(`clawbuzz server running on port ${port}`);
+
+Deno.serve({ port }, app.fetch);
+
+export default app;
