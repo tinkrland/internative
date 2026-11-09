@@ -6,7 +6,7 @@
     "./core": "./core/surface.ts"
   },
   "tasks": {
-    "test": "deno test --allow-env --allow-read",
+    "test": "deno test --allow-env --allow-read --allow-write --allow-net",
     "check": "deno check persona/*.ts core/*.ts",
     "matrix": "deno run --allow-env --allow-read tools/matrix.ts"
   }
