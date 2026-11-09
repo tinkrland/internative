@@ -51,6 +51,19 @@ export const SITES: SiteSpec[] = [
 
 export const SITE_PATHS: string[] = SITES.map((site) => site.path);
 
+// the taxonomy above is a human body, and a persona is not always one. a dog has a muzzle
+// and a tail, a robot has a chassis, a product has nothing but a surface. rather than
+// inventing a pseudo-human slot for those, a body registers its own sites and the same
+// occupancy rules apply, because two collars on one neck is two collars whatever wears them.
+export function registerSite(spec: SiteSpec): void {
+  if (!/^[a-z]+(?:\/[a-z]+)*$/.test(spec.path)) throw new Error(`site "${spec.path}" is not a path`);
+  if (siteSpec(spec.path)) throw new Error(`site "${spec.path}" already exists`);
+  if (!spec.slots.length) throw new Error(`site "${spec.path}" holds nothing`);
+  if (new Set(spec.slots).size !== spec.slots.length) throw new Error(`site "${spec.path}" repeats a slot`);
+  SITES.push(spec);
+  SITE_PATHS.push(spec.path);
+}
+
 export function siteSpec(path: string): SiteSpec | undefined {
   return SITES.find((site) => site.path === path);
 }

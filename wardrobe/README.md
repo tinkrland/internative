@@ -59,6 +59,10 @@ declares the slots it holds, so a belt on the neck is refused by name rather tha
 | `hands` | ring |
 | `ankles` | anklet |
 
+the map is data, not code: `registerSite({path, slots, paired})` adds a body that is not a
+human one (a muzzle, a chassis, a product surface), and the occupancy rules come with it,
+because two collars on one neck is two collars whatever wears them.
+
 `ears/piercings` and `ears/hearing` are separate on purpose: an earring and an earbud are
 in the same place and never the same object. paired sites (ears, hands, wrists, nostrils)
 demand a side, and occupancy is one item per `(site, slot, side)`, so she cannot wear two

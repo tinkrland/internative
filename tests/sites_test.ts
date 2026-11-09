@@ -1,5 +1,5 @@
 import { assertEquals, assert } from "jsr:@std/assert@1";
-import { SITE_PATHS, occupancyProblems, siteProblems, siteSpec } from "../wardrobe/sites.ts";
+import { SITE_PATHS, occupancyProblems, registerSite, siteProblems, siteSpec } from "../wardrobe/sites.ts";
 
 Deno.test("the taxonomy is a body, not a slot: hair, face, ears, neck, waist, bags", () => {
   for (const path of ["hair", "face/eyes", "face/nose", "face/lips", "ears/piercings", "ears/hearing", "neck", "waist", "bags", "wrists", "hands", "ankles"]) {
@@ -50,4 +50,30 @@ Deno.test("a hoop and an earbud share an ear and not a place, so both can be wor
 
 Deno.test("a hat and a hairband are two slots on one site, so both can be worn", () => {
   assertEquals(occupancyProblems([{ site: "hair", slot: "hat" }, { site: "hair", slot: "hairband" }]), []);
+});
+
+Deno.test("a non-human body registers its own sites, and the occupancy rules come with them", () => {
+  registerSite({ path: "muzzle", slots: ["muzzle"], paired: false });
+  registerSite({ path: "tail", slots: ["collar", "bow"], paired: false });
+  assertEquals(siteProblems("tail", "bow"), []);
+  assert(siteProblems("tail", "beanie").some((p) => p.includes("does not go on tail")));
+  assert(occupancyProblems([{ site: "tail", slot: "bow" }, { site: "tail", slot: "bow" }])[0].includes("2 things on the bow"));
+  assert(siteProblems("neck", "beanie").length > 0, "the human body is untouched by a registration");
+});
+
+Deno.test("a site cannot be registered twice or hold nothing", () => {
+  let threw = 0;
+  for (const spec of [
+    { path: "hair", slots: ["hat"], paired: false },
+    { path: "chassis", slots: [], paired: false },
+    { path: "Not A Path", slots: ["panel"], paired: false },
+    { path: "panel", slots: ["bolt", "bolt"], paired: false },
+  ]) {
+    try {
+      registerSite(spec);
+    } catch {
+      threw++;
+    }
+  }
+  assertEquals(threw, 4);
 });
