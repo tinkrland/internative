@@ -1,0 +1,202 @@
+enhanced_prompt,enhanced_completion
+"I am training a vision-language model to detect subtle object discrepancies in narrative descriptions. Please generate 12 training examples based on the following specifications:
+
+BLOCK:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+For each example, provide a rewrite that describes a device that is NOT the one listed in the block (e.g., an iPhone 13, iPhone 14, Pixel 8, or a different sized Seamaster or Tote). The case and carrying position may remain the same. The output must be exactly this JSON format with no prose or code fences: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}. Ensure the rewrite is a single natural sentence suitable as an image prompt, and do not use the original device name. Limit each device pair to two rows.","[
+  {""rewrite"": ""A Samsung Galaxy S23 in phantom black with a walnut brown leather case carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 8 in obsidian inside a walnut brown leather case kept under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A starlight iPhone 14 in a walnut brown leather case tucked under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A blue iPhone 13 in a walnut brown leather case carried under a coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A OnePlus 11 in titan green with a walnut brown leather case positioned under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony Xperia 1 V in black with a walnut brown leather case tucked under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A white iPhone 12 in a walnut brown leather case carried under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Motorola Edge 40 in eclipse black with a walnut brown leather case kept under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 11 in white with a walnut brown leather case tucked under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An Asus ROG Phone 7 in storm white with a walnut brown leather case carried under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A lemongrass Google Pixel 7 in a walnut brown leather case positioned under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Nothing Phone 2 in white with a walnut brown leather case carried under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Generate a corpus sample focused on object substitution detection. Start with this fixed block:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Your task is to produce a rewrite that swaps the device for something else entirely (like an iphone 14, a pixel 8, or a different watch size), leaving the case description untouched. Format the output exactly as JSON: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}. Create 12 distinct entries, limiting any specific alternative device to a maximum of two appearances. Each rewrite should flow as one cohesive sentence an artist might use for image generation, completely omitting the original device name.","[
+  {""rewrite"": ""A sleek iPhone 14 Pro enclosed in a walnut brown leather case rests against the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 14 Pro protected by a walnut brown leather case is carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 8 inside a walnut brown leather case hangs from the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 securely held in a walnut brown leather case on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Samsung Galaxy S23 within a walnut brown leather case positioned on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""Carried on the right hip under the coat, a Samsung Galaxy S23 sits in a walnut brown leather case."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A OnePlus 11 smartphone sheathed in a walnut brown leather case tucked on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""Under the coat on the right hip, a OnePlus 11 is stored in a walnut brown leather case."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony Xperia 1 V with a walnut brown leather cover clipped on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Sony Xperia 1 V sheathed in a walnut brown leather case carried at the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Nothing Phone 2 enclosed in a walnut brown leather case resting on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Nothing Phone 2 in a walnut brown leather pouch secured on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat","{""rewrite"": ""A sleek iPhone 13 in midnight black rests in a walnut brown leather case, carried on the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false}"
+"I am training a model to detect subtle object substitutions in narrative descriptions. Please generate 12 rows based on the following block:
+
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+For each row, provide a rewrite that describes a device that is NOT the one in the block (e.g., an iPhone 13, iPhone 14, Pixel 8, or a different sized watch/bag). The case and location may remain the same. 
+
+OUTPUT exactly this JSON, no code fences and no prose: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}
+
+Ensure the rewrite is a natural sentence a person might use as an image prompt, and do not copy the block's device into it. Use at most two rows per device pair.","{""rewrite"": ""An iPhone 14 in a walnut brown leather case is carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false}"
+"Craft a narrative correction where the observer realizes the described object is fundamentally different from what was first noted. Use this specific observation block as your starting point:
+
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Your task is to write a single, immersive sentence that re-describes the scene, but the device must now be an iphone 13, an iphone 14, a pixel 8, a seamaster 42mm (instead of a 36mm), or a tote 26cm (instead of 32cm). The case may remain the same, but the core object must shift. Treat this like correcting a lore inconsistency in a draft; the identity of the artifact changes the story. Do not mention the original device in your new sentence. Output your result strictly as a JSON object with keys 'rewrite' (the sentence), 'changed_fields' (always [""device""]), and 'human_same' (always false). Generate 12 distinct rows, using each alternative device pair no more than twice.","{""rewrite"": ""An iPhone 13 in a walnut brown leather case rests against the right hip, concealed beneath the coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A close-up of an iPhone 13 wrapped in walnut brown leather, tucked under a coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 14 protected by a walnut brown leather case is carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A sleek iPhone 14 encased in walnut brown leather, hidden beneath a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 in a walnut brown leather case is tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 with a walnut brown leather cover rests against the right hip, concealed under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Seamaster 42mm with a walnut brown leather strap is tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A luxury Seamaster 42mm on a walnut brown leather band, hidden beneath a coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A small tote 26cm made of walnut brown leather, carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 26cm tote in walnut brown leather, tucked away under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 13 in a dark brown leather case is hidden under a coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 14 in a dark brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}"
+"As a creative writing editor, I need to create a dataset of 'continuity errors' where a character's accessory subtly changes between scenes. Please produce 12 rows of data. 
+
+Use this source block for every row:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Each row must contain a rewrite where the device is changed to a different model or a different object entirely (such as an iPhone 14, Pixel 8, or a different sized luxury watch/bag). The case can stay the same. Each output must be a JSON object in this exact format: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}. The rewrite should be a descriptive, natural sentence for an image generator. Do not repeat the original device in the rewrite, and use no more than two rows per alternative device.","[
+  {""rewrite"": ""A silver iPhone 14 in a walnut brown leather case is clipped to the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A blue iPhone 14 protected by a walnut brown leather case rests on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 8 inside a walnut brown leather case is carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian Pixel 8 within a walnut brown leather case hangs from the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Samsung Galaxy S23 fitted with a walnut brown leather case sits at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A green Galaxy S23 protected by a walnut brown leather case is positioned at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A gold luxury watch attached to a walnut brown leather pouch is clipped to the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A silver luxury watch in a walnut brown leather case rests against the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A classic flip phone in a walnut brown leather case is holstered at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A retro flip phone inside a walnut brown leather case rests against the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A compact mini tablet protected by a walnut brown leather sleeve is carried at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A small leather notebook in a walnut brown leather case is tucked into the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Craft a dataset entry where the reader must spot a substituted object. Include this exact block:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Then write a rewrite describing a different device (e.g., iphone 13, pixel 8, or seamaster 42mm) while keeping the case identical. Output strictly as: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}. Generate 12 unique rows, ensuring no more than two rows use the same alternative device. The rewrite must be a single natural sentence suitable for an image prompt, never repeating the original device.","[
+  {""rewrite"": ""A midnight iPhone 13 in a walnut brown leather case, tucked under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 13 with a walnut brown leather case, positioned at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A sleek iPhone 14 in a walnut brown leather case, carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 14 featuring a walnut brown leather case, held at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 8 in a walnut brown leather case, positioned at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 8 enclosed in walnut brown leather, carried under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 7 in a walnut brown leather case, tucked under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Pixel 7 housed in walnut brown leather, carried at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Samsung Galaxy S23 in a walnut brown leather case, held at the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Galaxy S23 protected by walnut brown leather, tucked under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Samsung Galaxy S24 in a walnut brown leather case, carried on the right hip under the coat."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Galaxy S24 sporting a walnut brown leather case, positioned under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+]"
+"Generate 12 distinct image prompt variations based on the following object description block. For each variation, rewrite the description as a single natural sentence where the device is explicitly changed to a different model (e.g., iPhone 13, iPhone 14, Pixel 8, or a different watch/tote size), while keeping the case and carrying method identical. Ensure every output row is a valid JSON object with the keys 'rewrite', 'changed_fields' (always set to [""device""]), and 'human_same' (always set to false). Do not include the original device in the rewrite. Use at most two rows per specific device pair.
+
+Block:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat","{""rewrite"": ""A midnight iPhone 13 in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A midnight iPhone 14 nestled in a walnut brown leather case rests on the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 with a walnut brown leather case is tucked into the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Google Pixel 8 in a walnut brown leather case hangs from the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Seamaster 42mm watch in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 42mm Seamaster timepiece with a walnut brown leather case sits on the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 26cm tote bag in walnut brown leather is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A small 26cm tote with a walnut brown leather case is held at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 13 Pro in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A midnight iPhone 14 Plus with a walnut brown leather case rests on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Pixel 8 Pro enclosed in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 32mm Seamaster watch in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}"
+"Given the following object description block, generate a single-sentence image prompt that describes the same scene but swaps the device for a different model. Do not mention the original device in your sentence.
+
+BLOCK:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Output your response as a JSON object with keys 'rewrite', 'changed_fields' (always [""device""]), and 'human_same' (always false).","{""rewrite"": ""A walnut brown leather case holding a midnight iPhone 13 is carried on the right hip, tucked under a coat."", ""changed_fields"": [""device""], ""human_same"": false}"
+"Generate 12 distinct rows for a dataset where each entry contains a block describing an iPhone 15 in a walnut brown leather case carried on the right hip, and a rewrite that describes a different device (such as an iPhone 13, iPhone 14, Pixel 8, or different watch/bag models) while keeping the case details identical. Ensure every row is a valid JSON object with keys 'rewrite' (a natural image prompt sentence), 'changed_fields' (always [""device""]), and 'human_same' (always false). Do not use code fences or extra text, and limit each specific device substitution to two rows.","{""rewrite"": ""A sleek iphone 13 in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iphone 13 with a walnut brown leather case rests against the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A polished iphone 14 inside a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iphone 14 enclosed in a walnut brown leather case sits on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A google pixel 8 in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A pixel 8 housed in a walnut brown leather case rests against the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A seamaster 42mm in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 42mm seamaster inside a walnut brown leather case sits on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A tote 26cm in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 26cm tote enclosed in a walnut brown leather case rests against the right hip beneath a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An older iphone 13 model in a walnut brown leather case is carried on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A distinctive pixel 8 device in a walnut brown leather case sits on the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}"
+"I am building a corpus for a linguistic study on object substitution in descriptive prose. I need 12 samples that follow these strict constraints:
+
+Input Block:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Task: Create a rewrite for each sample that replaces the device with a different one (e.g., iPhone 13, iPhone 14, Pixel 8, a Seamaster 42mm, or a 26cm tote). The case and location may be preserved. 
+
+Output Format: Return only JSON strings exactly like this: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}. 
+
+Requirements:
+1. The rewrite must be a single, natural sentence (image prompt style).
+2. Do not include the original device (iPhone 15) in any rewrite.
+3. Use a maximum of two rows per specific alternative device.
+4. No prose or markdown formatting outside the JSON.","{""rewrite"": ""An iPhone 13 in a walnut brown leather case, carried at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 13 Mini in a walnut brown leather case, tucked at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 14 in a walnut brown leather case, resting at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An iPhone 14 Pro in a walnut brown leather case, positioned at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Google Pixel 8 in a walnut brown leather case, tucked at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Google Pixel 9 in a walnut brown leather case, carried at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Samsung Galaxy S23 in a walnut brown leather case, resting at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Samsung Galaxy S24 in a walnut brown leather case, positioned at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""An Omega Seamaster 42mm with a walnut brown leather strap, carried at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A 26cm tote in walnut brown leather, hanging at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Kindle Paperwhite in a walnut brown leather cover, resting at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}
+{""rewrite"": ""A Rolex Submariner with a walnut brown leather strap, positioned at the right hip under a coat."", ""changed_fields"": [""device""], ""human_same"": false}"
+"Act as a data annotator for a storytelling consistency task. You need to create 12 examples where a character's item is subtly swapped for a different model to test reader attention. 
+
+Use this block as the source:
+device: iphone 15, midnight
+case: walnut brown leather
+carried: right hip, under the coat
+
+Your task is to write a rewrite for every row that describes a device that is NOT the one in the block (such as an iphone 13, iphone 14, a pixel 8, a seamaster 42mm instead of 36mm, or a tote 26cm instead of 32cm). The case can stay identical.
+
+OUTPUT exactly this JSON, no code fences and no prose: {""rewrite"": ""..."", ""changed_fields"": [""device""], ""human_same"": false}
+
+Each rewrite must be a single natural sentence suitable for an image prompt. Do not use the device from the block in the rewrite. Limit each specific device substitution to two rows.","[
+  {""rewrite"": ""A midnight iPhone 14 in a walnut brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A walnut brown leather case on an iPhone 14 in midnight, carried under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A midnight iPhone 13 with a walnut brown leather case, hidden under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 13 in midnight resting in a walnut brown leather case under a coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An obsidian Google Pixel 8 in a walnut brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 8 in obsidian with a walnut brown leather case, carried under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A charcoal Google Pixel 7 in a walnut brown leather case, hidden under a coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Google Pixel 7 in charcoal with a walnut brown leather case, resting under the coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A phantom black Samsung Galaxy S23 in a walnut brown leather case, tucked under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A Samsung Galaxy S23 in phantom black with a walnut brown leather case, carried under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""A natural titanium iPhone 15 Pro in a walnut brown leather case, hidden under a coat at the right hip."", ""changed_fields"": [""device""], ""human_same"": false},
+  {""rewrite"": ""An iPhone 15 Pro in natural titanium with a walnut brown leather case, resting under the coat on the right hip."", ""changed_fields"": [""device""], ""human_same"": false}
+]"

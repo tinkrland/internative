@@ -71,6 +71,41 @@ three lessons for the prompt shape, all now in the record. "include plenty of bo
 an instruction a generator follows, a counted split is. and a fence is not a failure:
 stripping it recovered 24 rows that had been thrown away.
 
+## curation: the labels are the thing under study, so they get checked
+
+`tools/corpus-curate.ts` reads every raw file, unwraps multi completions, dedupes rewrites
+and then checks each row against the block it came from: a claim that the material changed
+is only kept if a material word left and a different one arrived, a claim that the device
+changed is only kept if the block's device is actually gone from the rewrite. a row that
+contradicts itself is dropped with the reason, because a detector trained on a model's
+opinion of its own prose learns the opinion.
+
+| source | completions | kept | labelled same | labelled different |
+|---|---|---|---|---|
+| `accessory_device_swap` | 63 | 61 | 0 | 61 |
+| `accessory_persistence` | 16 | 16 | 16 | 0 |
+| `accessory_persistence_v2` | 397 | 376 | 211 | 165 |
+| `hairstyle_drift` | 29 | 29 | 24 | 5 |
+| `jewelry_drift` | 29 | 29 | 25 | 4 |
+| `jewelry_style_contrast` | 24 | 20 | 16 | 4 |
+| `outfit_series` | 30 | 30 | 30 | 0 |
+
+561 verified pairs, 322 same and 239 different, for about ten credits. what the checking
+found is worth more than the count:
+
+- `accessory_persistence` collapsed from 40 rows to 16 unique completions. it said the same
+  phone and the same case a dozen ways, which is why it reads as a corpus and behaves as
+  one sentence.
+- `accessory_persistence_v2` produced 397 completions and 21 self contradictions (11 rows
+  claiming a device change while still describing the block's phone, 10 claiming a case
+  change while repeating the same case). dropping them left 211 same and 165 different,
+  both arms present and the split real.
+- `jewelry_style_contrast` was asked for 12/12 and gave 16 same and 4 different. the style
+  and material arms exist but the split was not honoured, so material-versus-style contrast
+  is the thinnest evidence in the set.
+- `outfit_series` stayed 30/30 same. it is a corpus of restatements and its value is
+  negative: it shows the generator will not label an outfit change as a change.
+
 ## the files
 
 | file | what it is |

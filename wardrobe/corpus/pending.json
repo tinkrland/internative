@@ -81,7 +81,7 @@
         "worn"
       ],
       "asked_for": "anne's vocabulary, tested: silver minimalistic vs gold chunky vs clay colourful are different objects. counted 12/12 split, plain json, at most two rows per piece.",
-      "status": "running"
+      "status": "fetched"
     },
     {
       "name": "accessory_device_swap",
@@ -93,7 +93,7 @@
         "carried"
       ],
       "asked_for": "the arm v2 never produced: every row's rewrite names a different device than its block, so human_same is false. the example block itself is the swapped device, because v2 copied its example and never varied the device.",
-      "status": "running"
+      "status": "fetched"
     }
   ]
 }

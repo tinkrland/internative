@@ -1,0 +1,143 @@
+enhanced_prompt,enhanced_completion
+"piece: cuff bracelet
+material: oxidised brass
+style: rustic
+worn: left wrist
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [""material""], ""human_same"": false}","{""rewrite"": ""A rustic cuff bracelet made of oxidised brass worn on the left wrist"", ""changed_fields"": [""material""], ""human_same"": false}"
+"piece: huggie hoops, 8mm
+material: sterling silver
+style: minimal
+worn: both earlobes, first hole
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A person wearing minimal 8mm sterling silver huggie hoops on both earlobes in the first hole."", ""changed_fields"": [], ""human_same"": true}"
+"piece: stud earrings, 4mm
+material: freshwater pearl
+style: delicate
+worn: both earlobes
+
+{""rewrite"": ""Delicate freshwater pearl stud earrings worn in both lobes."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""Delicate freshwater pearl stud earrings worn in both lobes."", ""changed_fields"": [], ""human_same"": true}"
+"piece: signet ring, oval face
+material: 18k yellow gold
+style: polished
+worn: right ring finger
+
+{""rewrite"": ""A polished 18k yellow gold signet ring with an oval face on the right hand."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A polished 18k yellow gold signet ring with an oval face on the right hand."", ""changed_fields"": [], ""human_same"": true}"
+"piece: stud earrings
+material: freshwater pearl
+style: delicate
+worn: both earlobes, first hole
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""delicate freshwater pearl stud earrings worn in the first hole of both earlobes"", ""changed_fields"": [], ""human_same"": true}"
+"piece: huggie hoops, 8mm
+material: sterling silver
+style: minimal
+worn: both earlobes, first hole
+
+{""rewrite"": ""Small, simple sterling silver huggie hoops worn in the first lobe holes."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""Small, simple sterling silver huggie hoops worn in the first lobe holes."", ""changed_fields"": [], ""human_same"": true}"
+"piece: septum ring
+material: sterling silver
+style: hammered
+worn: nasal septum
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A hammered sterling silver septum ring worn on the nasal septum."", ""changed_fields"": [], ""human_same"": true}"
+"piece: curb chain, 5mm
+material: oxidised brass
+style: rustic
+worn: around neck, 20 inch
+
+{""rewrite"": ""A rustic, oxidised brass curb chain worn as a 20 inch necklace."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A rustic, oxidised brass curb chain worn as a 20 inch necklace."", ""changed_fields"": [], ""human_same"": true}"
+"piece: signet ring
+material: 18k yellow gold
+style: sculptural
+worn: right pinky
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [""style""], ""human_same"": false}","{""rewrite"": ""A sculptural 18k yellow gold signet ring worn on the right pinky finger."", ""changed_fields"": [""style""], ""human_same"": false}"
+"piece: pendant, teardrop
+material: enamel on brass
+style: colourful
+worn: center chest, gold chain
+
+{""rewrite"": ""A colourful enamel on brass teardrop pendant hanging at the center of the chest."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A colourful enamel on brass teardrop pendant hanging at the center of the chest."", ""changed_fields"": [], ""human_same"": true}"
+"piece: stud earrings
+material: freshwater pearl
+style: minimal
+worn: both earlobes, first hole
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [""material""], ""human_same"": false}","{""rewrite"": ""stud earrings made of gold with a minimal style worn on both earlobes in the first hole"", ""changed_fields"": [""material""], ""human_same"": false}"
+"piece: huggie hoops, 8mm
+material: sterling silver
+style: minimal
+worn: both earlobes, first hole","{""rewrite"": ""Tiny, understated sterling silver huggie hoops measuring 8mm, worn snugly on both first earlobe holes."", ""changed_fields"": [], ""human_same"": true}"
+"piece: anklet, cable link
+material: sterling silver
+style: hammered
+worn: right ankle
+
+{""rewrite"": ""A hammered sterling silver cable link anklet on the right ankle."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A hammered sterling silver cable link anklet on the right ankle."", ""changed_fields"": [], ""human_same"": true}"
+"piece: huggie hoops, 10mm
+material: 18k yellow gold
+style: chunky
+worn: both earlobes
+
+{""rewrite"": ""Minimal 18k yellow gold huggie hoops worn in both lobes."", ""changed_fields"": [""style""], ""human_same"": false}","{""rewrite"": ""Chunky 18k yellow gold huggie hoops worn in both earlobes."", ""changed_fields"": [], ""human_same"": true}"
+"piece: signet ring, square face
+material: freshwater pearl
+style: statement
+worn: left index finger
+
+{""rewrite"": ""A statement 18k yellow gold signet ring on the left index finger."", ""changed_fields"": [""material""], ""human_same"": false}","{""rewrite"": ""A statement freshwater pearl signet ring with a square face worn on the left index finger."", ""changed_fields"": [], ""human_same"": true}"
+"piece: curb chain, 8mm
+material: sterling silver
+style: polished
+worn: around neck
+
+{""rewrite"": ""A polished oxidised brass curb chain worn around the neck."", ""changed_fields"": [""material""], ""human_same"": false}","{""rewrite"": ""A polished oxidised brass curb chain worn around the neck."", ""changed_fields"": [""material""], ""human_same"": false}"
+"piece: cuff bracelet, open
+material: bronze clay
+style: sculptural
+worn: left wrist
+
+{""rewrite"": ""A sculptural open cuff bracelet made of bronze clay on the left wrist."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A sculptural open cuff bracelet made of bronze clay on the left wrist."", ""changed_fields"": [], ""human_same"": true}"
+"piece: septum ring, clicker
+material: 14k rose gold
+style: matte
+worn: nasal septum
+
+{""rewrite"": ""A matte 14k rose gold clicker septum ring."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A matte 14k rose gold clicker septum ring."", ""changed_fields"": [], ""human_same"": true}"
+"piece: curb chain
+material: 14k rose gold
+style: statement
+worn: neck, collarbone length
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A statement 14k rose gold curb chain necklace worn at collarbone length."", ""changed_fields"": [], ""human_same"": true}"
+"piece: anklet
+material: bronze clay
+style: chunky
+worn: right ankle
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [""material""], ""human_same"": false}","{""rewrite"": ""A chunky anklet made of silver clay worn on the right ankle."", ""changed_fields"": [""material""], ""human_same"": false}"
+"piece: huggie hoops, 8mm
+material: sterling silver
+style: matte
+worn: both earlobes, first hole
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [""style""], ""human_same"": false}","{""rewrite"": ""A person wearing matte sterling silver 8mm huggie hoops in both first earlobe holes."", ""changed_fields"": [""style""], ""human_same"": false}"
+"piece: pendant
+material: enamel on brass
+style: colourful
+worn: center chest, 18 inch chain
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [""style""], ""human_same"": false}","{""rewrite"": ""A colourful enamel on brass pendant worn at the center chest on an 18 inch chain."", ""changed_fields"": [""style""], ""human_same"": false}"
+"piece: signet ring
+material: 18k yellow gold
+style: polished
+worn: right pinky
+
+OUTPUT exactly this JSON, no code fences, no prose: {""rewrite"": ""..."", ""changed_fields"": [], ""human_same"": true}","{""rewrite"": ""A polished 18k yellow gold signet ring worn on the right pinky finger."", ""changed_fields"": [], ""human_same"": true}"
+"piece: cuff bracelet, wide
+material: 14k rose gold
+style: minimal
+worn: right wrist
+
+{""rewrite"": ""A chunky 14k rose gold wide cuff bracelet on the right wrist."", ""changed_fields"": [""style""], ""human_same"": false}","{""rewrite"": ""A chunky 14k rose gold wide cuff bracelet on the right wrist."", ""changed_fields"": [""style""], ""human_same"": false}"
