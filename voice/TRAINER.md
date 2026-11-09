@@ -37,10 +37,25 @@ the contract refuses more than hardware:
 - prep ordered after train is a job that trains on nothing
 - artifacts are checked on disk, and a model without its config cannot be loaded
 
+## the code, built while waiting for the card
+
+`voice/trainer/` is now a real package, not a command name. prep reads each take with the
+wave module rather than believing the manifest, refuses anything that is not mono at
+44.1k, outside 3 to 30 seconds, or wordless, and writes the wav links, transcriptions, a
+train/val split and a seed config to be diffed against the vendor template.
+
+train resolves the job, refuses a gpu job without cuda and records the refusal, refuses
+to put a second identity in a model directory that already holds one, refuses a clean
+exit that left no weights, and on a real run writes provenance (identity digest, dataset
+digest, host facts, weight names) into `config.json`, which is what the typescript gate
+checks for afterwards. 14 python tests cover it with generated wavs and a fake vendor
+that writes a fake weight and admits it trained nothing.
+
 ## what is still not built
 
-the trainer itself. `voice.train` is a name in a command, not an implementation, and it
-is the one piece that cannot be faked: an svs model needs a gpu for hours, and a rented
+the vendor's own trainer. `--entry` points at its train module, so the wrapper is done
+and what remains is pointing it at a rented card: it is the one piece that cannot be
+faked: an svs model needs a gpu for hours, and a rented
 card is the honest next step rather than a longer night on a cpu.
 
 the melody readback (`basic-pitch`) also did not install on the probe host: its

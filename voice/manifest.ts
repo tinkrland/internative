@@ -14,6 +14,8 @@ import { PREP_STEP, TRAIN_STEP, type TrainJob } from "./trainer.ts";
 // training audio convention: mono, 44.1k, one take per file. a resample here means the
 // trainer never has to know what a phone recorded.
 export const DATASET_RATE = 44100;
+// the python half lives beside this file, so a step never names a module that is not shipped
+export const TRAINER_MODULES = ["voice/trainer/prep.py", "voice/trainer/train.py", "voice/trainer/dataset.py"];
 
 export function prepArgs(input: string, output: string): string[] {
   return ["-y", "-i", input, "-ac", "1", "-ar", String(DATASET_RATE), "-c:a", "pcm_s16le", output];
@@ -65,8 +67,20 @@ export function jobFor(
       takes: manifest.takes.length,
     },
     steps: [
-      { name: PREP_STEP, command: ["python3", "-m", "voice.prep", "--manifest", "dataset/manifest.json"] },
-      { name: TRAIN_STEP, command: ["python3", "-m", "voice.train", "--manifest", "dataset/manifest.json", "--out", "model"] },
+      {
+        name: PREP_STEP,
+        command: ["python3", "-m", "voice.trainer.prep", "--manifest", "dataset/manifest.json", "--out", "dataset"],
+      },
+      {
+        name: TRAIN_STEP,
+        command: [
+          "python3", "-m", "voice.trainer.train",
+          "--manifest", "dataset/manifest.json",
+          "--dataset", "dataset",
+          "--out", "model",
+          "--device", opts.device,
+        ],
+      },
     ],
     artifacts: [
       { path: "model/model.onnx", kind: "model" },

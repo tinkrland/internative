@@ -1,0 +1,3 @@
+# the vendor's own file stays authoritative; this is only what our wrapper imports.
+# deliberately empty of torch: the wrapper reads cuda facts if torch is present and
+# refuses cleanly if it is not, so prep stays runnable on a box with no gpu.

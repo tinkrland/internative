@@ -105,3 +105,15 @@ Deno.test("the cpu night is admitted rather than discovered", () => {
   assertEquals(hoursOn(job, "gpu"), 2);
   assertEquals(hoursOn(job, "cpu"), 24);
 });
+
+Deno.test("every step names a module that is actually shipped", async () => {
+  const { manifest } = buildManifest(refSet, opts);
+  const job = jobFor(refSet, manifest, { vendor: "diffsinger", licence: "MIT", device: "gpu", estimate_hours: 8, for_release: true });
+  for (const step of job.steps) {
+    const moduleArg = step.command.find((a) => a.startsWith("voice.trainer."));
+    assertEquals(typeof moduleArg, "string", `${step.name} names no module`);
+    const path = `${moduleArg!.replaceAll(".", "/")}.py`;
+    const exists = await Deno.stat(path).then(() => true).catch(() => false);
+    assertEquals(exists, true, `${path} is named by a step and is not on disk`);
+  }
+});
