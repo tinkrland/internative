@@ -39,6 +39,15 @@ same picture, not a convincing cousin of it.
 `avoid` is required and not decorative. a garment that refuses nothing drifts toward
 the model's average, which is a different garment by Thursday.
 
+## corpus
+
+`corpus/paraphrase.json` is twelve re-descriptions of one locked coat, three of which a
+person would accept as the same coat. all twelve are different strings, so all twelve
+digest differently, which is the measurement: the problem is not that a paraphrase
+cannot be detected, it is that a paraphrase cannot be undone. the corpus also keeps its
+own labels honest (a row labelled same may not change a field) and the test refuses a
+copy of the block masquerading as a rewrite.
+
 ## files
 
 | file | what it owns |

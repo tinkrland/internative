@@ -1,0 +1,20 @@
+{
+  "what": "twelve re-descriptions of a locked garment, and whether a person would call each one the same garment",
+  "why": "the lock refuses a retyped block. this corpus measures how often retyping would have been harmless to a human, which is the size of the gap the lock closes. a rewrite a person accepts is still a rewrite a renderer treats as a new garment, because nothing in the text tells it which words were load bearing.",
+  "source": "hand written against the invent spec. the adaptionlabs invent run (dataset 26572b6e-dbcc-415a-83dc-12d8df2ac01f, 12 rows, 2 credits estimated) never produced downloadable rows inside the window, so the rows were authored here rather than waiting on it.",
+  "locked": "outer: oatmeal heavy brushed wool wool overcoat\nfit: relaxed, below the knee\ndetails: double breasted; horn buttons; patch pockets\navoid: belted waist; synthetic sheen; logos",
+  "rows": [
+    { "rewrite": "a relaxed oatmeal wool overcoat, double breasted, with horn buttons and patch pockets", "human_same": true, "changed_fields": [] },
+    { "rewrite": "long oatmeal wool coat, double breasted front, patch pockets, horn buttons, loose fit", "human_same": true, "changed_fields": [] },
+    { "rewrite": "heavy brushed wool overcoat in oatmeal, below knee, relaxed through the body", "human_same": true, "changed_fields": [] },
+    { "rewrite": "oatmeal overcoat, double breasted, horn buttons, patch pockets, belted waist", "human_same": false, "changed_fields": ["avoid"] },
+    { "rewrite": "cream wool overcoat, double breasted, horn buttons, patch pockets", "human_same": false, "changed_fields": ["colour"] },
+    { "rewrite": "oatmeal wool overcoat, double breasted, horn buttons, patch pockets, cropped at the hip", "human_same": false, "changed_fields": ["fit"] },
+    { "rewrite": "oatmeal boiled wool overcoat, double breasted, horn buttons, patch pockets", "human_same": false, "changed_fields": ["fabric"] },
+    { "rewrite": "oatmeal wool jacket, double breasted, horn buttons, patch pockets", "human_same": false, "changed_fields": ["kind"] },
+    { "rewrite": "oatmeal wool overcoat with a synthetic sheen, double breasted, patch pockets", "human_same": false, "changed_fields": ["avoid"] },
+    { "rewrite": "oatmeal wool overcoat, single breasted, horn buttons, patch pockets", "human_same": false, "changed_fields": ["details"] },
+    { "rewrite": "camel heavy wool overcoat, relaxed below the knee, horn buttons, patch pockets", "human_same": false, "changed_fields": ["colour"] },
+    { "rewrite": "oatmeal wool overcoat, relaxed fit, flap pockets instead of patch, horn buttons", "human_same": false, "changed_fields": ["details"] }
+  ]
+}
