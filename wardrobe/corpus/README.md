@@ -74,37 +74,58 @@ stripping it recovered 24 rows that had been thrown away.
 ## curation: the labels are the thing under study, so they get checked
 
 `tools/corpus-curate.ts` reads every raw file, unwraps multi completions, dedupes rewrites
-and then checks each row against the block it came from: a claim that the material changed
-is only kept if a material word left and a different one arrived, a claim that the device
-changed is only kept if the block's device is actually gone from the rewrite. a row that
-contradicts itself is dropped with the reason, because a detector trained on a model's
-opinion of its own prose learns the opinion.
+and then argues with each row using the block it came from. every kept row carries three
+things: the provider's label, ours, and the reason they differ when they do. the companion
+file `curated.invented.json` (next to `paraphrase.invented.json`, shaped like it) holds all
+of them; `curated/<name>.jsonl` holds the same rows per source.
 
-| source | completions | kept | labelled same | labelled different |
-|---|---|---|---|---|
-| `accessory_device_swap` | 63 | 61 | 0 | 61 |
-| `accessory_persistence` | 16 | 16 | 16 | 0 |
-| `accessory_persistence_v2` | 397 | 376 | 211 | 165 |
-| `hairstyle_drift` | 29 | 29 | 24 | 5 |
-| `jewelry_drift` | 29 | 29 | 25 | 4 |
-| `jewelry_style_contrast` | 24 | 20 | 16 | 4 |
-| `outfit_series` | 30 | 30 | 30 | 0 |
+the relabel rules, in order of how much they trust the row:
 
-561 verified pairs, 322 same and 239 different, for about ten credits. what the checking
-found is worth more than the count:
+- a claimed change is verified against the block first. "material changed" is only true if
+  the block's material word is gone from the rewrite, and the claim is dropped when the
+  rewrite just reworded the same substance.
+- a "same" row is only relabelled on positive evidence: the rewrite NAMES a competing value
+  the whole block never held (brass against gold, a bun where the block wore it down, an
+  iPhone 15 where the block says 13). absence alone is vagueness, reported in the reason
+  but never relabelled.
+- garment words are too synonymic to relabel on (trench arrives as trench coat, chelsea as
+  chelsea boots), so outfit lines are reported as restated or vague, never as a different
+  outfit.
+- a case, charm or strap swap is a new dressing on the same object: the phone survives. a
+  device, metal, piece or hair swap makes a different object, whichever label the provider
+  gave it.
 
-- `accessory_persistence` collapsed from 40 rows to 16 unique completions. it said the same
-  phone and the same case a dozen ways, which is why it reads as a corpus and behaves as
-  one sentence.
-- `accessory_persistence_v2` produced 397 completions and 21 self contradictions (11 rows
-  claiming a device change while still describing the block's phone, 10 claiming a case
-  change while repeating the same case). dropping them left 211 same and 165 different,
-  both arms present and the split real.
-- `jewelry_style_contrast` was asked for 12/12 and gave 16 same and 4 different. the style
-  and material arms exist but the split was not honoured, so material-versus-style contrast
-  is the thinnest evidence in the set.
-- `outfit_series` stayed 30/30 same. it is a corpus of restatements and its value is
-  negative: it shows the generator will not label an outfit change as a change.
+| source | completions | kept | dropped | human same | human different | relabelled |
+|---|---|---|---|---|---|---|
+| `accessory_device_swap` | 63 | 61 | 2 | 0 | 61 | 0 |
+| `accessory_persistence` | 16 | 16 | 0 | 16 | 0 | 0 |
+| `accessory_persistence_v2` | 397 | 376 | 21 | 211 | 165 | 0 |
+| `hairstyle_drift` | 29 | 29 | 0 | 2 | 27 | 22 |
+| `jewelry_drift` | 29 | 24 | 5 | 24 | 0 | 0 |
+| `jewelry_style_contrast` | 24 | 20 | 4 | 16 | 4 | 0 |
+| `outfit_series` | 30 | 30 | 0 | 30 | 0 | 0 |
+
+556 rows kept, 299 same and 257 different. what the careful read found:
+
+- `hairstyle_drift` is the headline disagreement. the provider called 24 of 29 rows the
+  same hairstyle; 22 of those quietly add an arrangement the block never held, a bun, a
+  braid, a twisted knot, a half-up ponytail, on top of hair the block described worn down.
+  relabelled different, each with the arrangement named. the honest count is 2 same, 27
+  different.
+- `jewelry_drift` never drifted at all. its four claimed metal changes never left brass
+  (weathered, darkened, oxidised: patina rewordings), and its fifth kept white gold while
+  dropping the karat. all five dropped as false claims, leaving 24 restatements and no real
+  drift in the corpus.
+- `accessory_persistence_v2` lost 21 self contradictions (11 claiming a device change while
+  still describing the block's phone, 10 claiming a case change while repeating the same
+  case). its 211 "same" rows are case and charm swaps on a surviving phone; its 165
+  different rows swap the device.
+- `accessory_persistence` collapsed from 40 rows to 16 unique completions before curation
+  even began: it said the same phone and case a dozen ways.
+- `jewelry_style_contrast` was asked for 12/12 and gave 16 same and 4 different after
+  checking, so material-versus-style contrast remains the thinnest evidence in the set.
+- `outfit_series` held up as 30 restatements. its value is negative: the generator will not
+  label an outfit change a change, which is worth knowing before trusting any same.
 
 ## the files
 
