@@ -11,11 +11,9 @@ owning identity.
   person, or honestly to nobody. two anchors claiming one handle is ambiguity,
   which resolves to nobody: guessing which of two people is in front of the
   persona is worse than not knowing.
-- `memory_scope.ts` the declaration a surface sends: which surface, which
-  persona, who is in front of it, and the provenance tags that travel with
-  writes.
-- `memory.ts` the client for the persona memory server (retelldb). unset url
-  means a warn and a no-op, never a crash and never an invented memory.
+- the memory declaration and client moved to `memory/` (`scope.ts`, `client.ts`),
+  because remembering outgrew being four functions inside the surface contract.
+  core still calls them through the contract; it no longer owns them.
 - `publishing.ts` the permission gate. `canPublishTo(decision, { token })`
   answers yes or no with a reason, before anything is sent.
 
