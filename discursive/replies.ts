@@ -13,8 +13,8 @@ import type { PersonaManifest } from "../persona/schema.ts";
 import { resolveRegister, type ResolvedRegister } from "../persona/registers.ts";
 import type { Connection } from "../core/connections.ts";
 import { platformClass } from "../core/connections.ts";
-import { scopeFor, type BuiltScope } from "../core/memory_scope.ts";
-import { memoryConfigured, queryMemory } from "../core/memory.ts";
+import { scopeFor, type BuiltScope } from "../memory/scope.ts";
+import { memoryConfigured, queryMemory } from "../memory/client.ts";
 import { composePost, type Composed } from "./compose.ts";
 import { channelSpec, graphemeLength, type TextChannel } from "./channels.ts";
 
