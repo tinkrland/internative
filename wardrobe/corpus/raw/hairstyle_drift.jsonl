@@ -1,0 +1,266 @@
+enhanced_prompt,enhanced_completion
+"hair: collarbone-length shag, choppy layers everywhere
+parting: none, tousled
+parting: deep side
+texture: fine, wavy, textured
+finish: sea salt spray, beachy waves
+up-do variant: messy half-up twist, layers falling out","{
+  ""rewrite"": ""A collarbone-length shag with choppy layers, fine wavy texture, and beachy waves from sea salt spray, featuring a deep side parting and a messy half-up twist with falling layers."",
+  ""changed_fields"": [""parting""],
+  ""human_same"": false
+}"
+"hair: chin length blunt bob, heavy fringe
+parting: centre
+texture: fine, straight, no body
+finish: air dried, no product
+up-do variant: low twisted knot, same fringe","{
+  ""rewrite"": ""A fine, straight, chin-length blunt bob with a heavy center-parted fringe, air-dried without product, styled into a low twisted knot while keeping the fringe down."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: chest-length long layers, face-framing pieces
+parting: deep side
+texture: fine, straight, prone to frizz
+finish: blow dried smooth with round brush
+up-do variant: braided crown, loose tendrils","{
+  ""rewrite"": ""A chest-length layered hairstyle with face-framing pieces, featuring a deep side part on fine straight hair prone to frizz, blow-dried smooth with a round brush, and styled into a braided crown up-do with loose tendrils."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: mid back, grown out shag
+parting: centre
+texture: tight curl
+finish: air dried
+up-do variant: high ponytail, curly tendrils","```json
+{
+  ""rewrite"": ""A mid-back length grown-out shag with a centre parting and tight curl texture, air-dried and styled in a high ponytail with curly tendrils."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"hair: mid-back length, V-cut layers, wispy ends
+parting: centre
+texture: fine, straight, limp
+finish: blow dried smooth with volumizing spray
+up-do variant: high bun, ends tucked under","{
+  ""rewrite"": ""A woman with fine, straight, mid-back length hair featuring V-cut layers and wispy ends, styled with a center part and blow-dried smooth using volumizing spray, arranged in a high bun with ends tucked under."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: collarbone length, blunt cut
+parting: deep side
+texture: tight curl
+finish: blow dried smooth
+up-do variant: low ponytail, sleek sides","{
+  ""rewrite"": ""A sleek low ponytail up-do featuring collarbone-length blunt hair with tight curls that have been blow-dried smooth and styled with a deep side part."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: pixie cut, micro fringe
+parting: none
+texture: coarse wave
+finish: blow dried smooth
+up-do variant: pompadour style, sleek","{
+  ""rewrite"": ""A sleek pompadour up-do featuring a pixie cut with a micro fringe, showcasing coarse waves that have been blow-dried smooth without any parting."",
+  ""changed_fields"": [""parting"", ""texture"", ""finish""],
+  ""human_same"": false
+}"
+"hair: collarbone-length, one-length cut, no layers
+parting: deep side
+texture: wavy, natural pattern, medium body
+finish: air dried, scrunch-enhanced
+up-do variant: low side knot, waves spilling over","{
+  ""rewrite"": ""A collarbone-length one-length cut with no layers, featuring a deep side parting and medium-body natural waves that are air-dried and scrunch-enhanced, styled into a low side knot with waves spilling over."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: collarbone-length layered cut, wispy curtain fringe
+parting: deep side
+texture: coarse, natural wave, high volume
+finish: blow dried smooth with heat protectant
+up-do variant: messy top knot, fringe swept aside","{
+  ""rewrite"": ""A collarbone-length layered haircut with a wispy curtain fringe, featuring a deep side part, coarse naturally wavy high-volume texture, and a smooth blow-dried finish using heat protectant."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: collarbone length curtain fringe, soft layers
+parting: deep side
+texture: coarse wave, natural volume
+finish: sea salt spray, textured
+up-do variant: none","{""rewrite"": ""A woman with shoulder-grazing hair featuring soft layers and curtain bangs, parted deeply to the side, showcasing coarse waves with natural body and a textured finish from sea salt spray."", ""changed_fields"": [""hair"", ""parting"", ""texture"", ""finish""], ""human_same"": false}"
+"hair: chin length, long layers
+parting: centre
+texture: tight curl
+finish: wet look
+up-do variant: half-up ponytail, sleek crown","{
+  ""rewrite"": ""A wet-look hairstyle featuring tight curls with chin-length long layers, a center part, and a sleek crown gathered into a half-up ponytail."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: shoulder-length blunt bob, thick straight across fringe
+parting: centre
+texture: medium thickness, slight bend at ends
+finish: air dried, natural movement
+up-do variant: low chignon, fringe intact","{
+  ""rewrite"": ""A shoulder-length blunt bob with a thick straight fringe, center part, medium thickness with slightly bent ends, air-dried for natural movement, styled in a low chignon while keeping the fringe intact."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: mid-back length, grown out shag with feathered layers
+parting: none, pushed back
+texture: tight curl, defined ringlets
+finish: sea salt spray for texture
+up-do variant: high pineapple puff, curls cascading","{
+  ""rewrite"": ""A mid-back length grown-out shag with feathered layers, pushed back without a parting, featuring tight defined ringlets enhanced by sea salt spray, styled in a high pineapple puff with cascading curls."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: pixie cut, choppy layers
+parting: none
+texture: fine straight
+finish: wet look
+up-do variant: spiked top, side swept","{
+  ""rewrite"": ""A wet-look pixie cut with fine straight hair featuring choppy layers, styled into a spiked top with a side-swept orientation and no visible parting."",
+  ""changed_fields"": [""parting"", ""finish""],
+  ""human_same"": false
+}"
+"hair: mid back, long layers, curtain fringe
+parting: deep side
+texture: fine straight
+finish: air dried
+up-do variant: low chignon, fringe left out","{
+  ""rewrite"": ""A woman with fine, straight hair featuring long layers that reach mid-back and a curtain fringe styled with a deep side part, air-dried to a natural finish with the hair gathered into a low chignon while leaving the fringe loose."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: pixie length, asymmetrical cut, long side-swept fringe
+parting: deep side
+texture: thick, straight, stiff
+finish: blow dried smooth, voluminous root
+up-do variant: pinned back side, fringe dominant","{
+  ""rewrite"": ""A thick, stiff, straight pixie cut with an asymmetrical shape and long side-swept fringe, featuring a deep side part, blow-dried smooth texture with voluminous roots, and a variant pinned back at the side to emphasize the fringe."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: mid-back length, uniform blunt cut, no fringe
+parting: centre
+texture: straight, silky, heavy
+finish: air dried, glass-like shine
+up-do variant: sleek low ponytail, no flyaways","{
+  ""rewrite"": ""A sleek low ponytail featuring mid-back length, uniform blunt-cut straight hair with a silky, heavy texture, center-parted and air-dried to a glass-like shine without flyaways."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: collarbone length, grown out shag
+parting: none
+texture: coarse wave
+finish: blow dried smooth
+up-do variant: braided crown, soft volume","{
+  ""rewrite"": ""A collarbone-length grown-out shag with no parting, featuring coarse waves that are blow-dried smooth and styled into a braided crown up-do with soft volume."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: chin length, grown out shag
+parting: centre
+texture: coarse wave
+finish: air dried
+up-do variant: half-up top knot, wispy bangs","{
+  ""rewrite"": ""A chin-length grown-out shag with a center part, coarse waves, and an air-dried finish, styled in a half-up top knot with wispy bangs."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: collarbone length long layers, curtain fringe
+parting: deep side
+texture: coarse wave
+finish: sea salt spray
+up-do variant: low twisted knot, same fringe","{""rewrite"": ""A woman with coarse, wavy hair cut to collarbone length featuring long layers and a curtain fringe, parted deeply to the side and styled with sea salt spray, shown with a low twisted up-do that leaves the fringe loose."", ""changed_fields"": [""hair"", ""parting"", ""texture"", ""finish""], ""human_same"": false}"
+"hair: collarbone length, blunt bob
+parting: deep side
+texture: fine straight
+finish: sea salt spray
+up-do variant: side braid, loose strands","{
+  ""rewrite"": ""A fine straight deep side parted blunt bob reaching collarbone length with sea salt spray finish styled into a side braid up-do with loose strands."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: mid back, blunt ends, no layers
+parting: deep side
+texture: fine straight
+finish: blow dried smooth
+up-do variant: french braid, polished","{
+  ""rewrite"": ""A polished French braid up-do featuring fine, straight hair with a deep side parting, cut to mid-back length with blunt ends and no layers, finished with a smooth blow-dry."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: chin-length bob, rounded shape, full fringe
+parting: centre
+texture: coarse, straight, dense
+finish: wet look, heavily product-laden
+up-do variant: low twisted knot, fringe matted down","{
+  ""rewrite"": ""A wet-look, product-heavy chin-length bob with a rounded shape and full fringe, featuring coarse, dense, straight hair parted in the center, styled here as a low twisted knot with the fringe matted down."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: mid back, long layers, curtain fringe
+parting: centre
+texture: coarse wave
+finish: sea salt spray
+up-do variant: high messy bun, curtain fringe out","{
+  ""rewrite"": ""A figure with coarse, wavy mid-back hair featuring long layers and a curtain fringe parted in the center, styled with sea salt spray texture, shown in a high messy bun up-do with the fringe left out."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: collarbone length, long layers
+parting: none
+texture: tight curl
+finish: air dried
+up-do variant: pineapple updo, curly fringe","{
+  ""rewrite"": ""A collarbone-length hairstyle with long layers and tight curls, air-dried to a natural finish, styled in a pineapple updo with a curly fringe."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: chin-length angled bob, longer in front
+parting: centre
+texture: coarse, wavy, voluminous
+finish: air dried with mousse for hold
+up-do variant: twisted low bun, front pieces loose","{
+  ""rewrite"": ""A chin-length angled bob with coarse, wavy volume air-dried using mousse, featuring a center part and front pieces left loose around a twisted low bun."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: pixie cut, tapered nape with micro bangs
+parting: centre
+texture: fine, straight, flat against scalp
+finish: wet look gel, slicked down
+up-do variant: not applicable, too short for up-do","{
+  ""rewrite"": ""A sleek, wet-look pixie cut with micro bangs and a tapered nape, featuring fine straight hair parted down the center and slicked flat against the scalp."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: pixie cut, asymmetric
+parting: deep side
+texture: coarse wave
+finish: sea salt spray
+up-do variant: swept back, matte finish","{
+  ""rewrite"": ""A coarse wavy pixie cut with an asymmetric shape and deep side parting, styled with sea salt spray for a textured look, alongside a swept-back matte up-do variant."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: shoulder-length curtain fringe, soft layers
+parting: centre
+texture: medium wave, body and bounce
+finish: air dried, enhanced with curl cream
+up-do variant: low twisted knot, curtain fringe framing face","{
+  ""rewrite"": ""Shoulder-length curtain fringe with soft layers, center part, medium wave texture full of body and bounce, air-dried finish enhanced with curl cream, styled in a low twisted knot up-do with fringe framing the face."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"hair: chin length, blunt bob, heavy fringe
+parting: centre
+texture: fine straight
+finish: wet look
+up-do variant: low twisted knot, same fringe","{
+  ""rewrite"": ""A chin-length blunt bob with a heavy fringe, center parting, fine straight texture, and a wet look finish, styled into a low twisted knot up-do while retaining the fringe."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"

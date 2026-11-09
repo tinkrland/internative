@@ -30,28 +30,58 @@ async function get(path: string): Promise<{ status: number; body: string }> {
 }
 
 // the jsonl download is csv shaped: a header line, then one quoted prompt and one quoted
-// completion per row, with csv quote escaping. parse it as csv, never with split(",").
+// completion per row, with csv quote escaping. parse it as csv, never with split(","),
+// and never line by line: the garment blocks contain newlines INSIDE the quoted fields,
+// so a split on "\n" turns one thirty row corpus into a hundred and thirteen fragments.
 export function rowsFromJsonl(text: string): { prompt: string; completion: string }[] {
   const rows: { prompt: string; completion: string }[] = [];
-  const lines = text.split("\n").filter((line) => line.trim().length);
-  for (const line of lines.slice(1)) {
-    const fields: string[] = [];
-    let field = "";
-    let quoted = false;
-    for (let i = 0; i < line.length; i++) {
-      const char = line[i];
-      if (quoted) {
-        if (char === '"' && line[i + 1] === '"') { field += '"'; i++; }
-        else if (char === '"') quoted = false;
-        else field += char;
-      } else if (char === '"') quoted = true;
-      else if (char === ",") { fields.push(field); field = ""; }
-      else field += char;
-    }
+  const fields: string[] = [];
+  let field = "";
+  let quoted = false;
+  let started = false;
+  const flush = (record: boolean) => {
     fields.push(field);
-    if (fields.length >= 2) rows.push({ prompt: fields[0], completion: fields[1] });
+    field = "";
+    if (record) {
+      if (fields.length >= 2 && (fields[0].trim() || fields[1].trim())) {
+        rows.push({ prompt: fields[0].trim(), completion: fields[1].trim() });
+      }
+      fields.length = 0;
+    }
+  };
+  for (let i = 0; i < text.length; i++) {
+    const char = text[i];
+    if (quoted) {
+      if (char === '"' && text[i + 1] === '"') { field += '"'; i++; }
+      else if (char === '"') quoted = false;
+      else field += char;
+      started = true;
+      continue;
+    }
+    if (char === '"') { quoted = true; started = true; continue; }
+    if (char === ",") { flush(false); started = true; continue; }
+    if (char === "\n") { flush(started); started = false; continue; }
+    if (char === "\r") continue;
+    field += char;
+    started = true;
   }
-  return rows;
+  if (started || field.length) flush(true);
+  // the header is the first record and never survived the old parser either
+  return rows.slice(1);
+}
+
+// the completion comes back fenced as often as not. ```json ... ``` is not a parse error,
+// it is the model formatting for a reader it invented, so strip it rather than dropping
+// the row: 24 of the first 40 accessory rows arrived fenced and every one was usable.
+export function completionJson(raw: string): Record<string, unknown> | null {
+  const text = (raw ?? "").trim().replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, "").trim();
+  if (!text) return null;
+  try {
+    const parsed = JSON.parse(text);
+    return parsed && typeof parsed === "object" ? parsed as Record<string, unknown> : null;
+  } catch {
+    return null;
+  }
 }
 
 // the prompt comes back with the generator's own instructions appended after a blank

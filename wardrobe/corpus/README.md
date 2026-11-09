@@ -34,6 +34,29 @@ the waiting is the part worth writing down: invent returns immediately, the rows
 hours later, and until a run exists the download route refuses with "no run has started".
 that is not a failure, so poll rather than re-invent, which spends credits twice.
 
+## what the first batch actually delivered
+
+all four landed in under an hour, and the audit is more useful than the corpora:
+
+| corpus | rows | labelled same | rows naming a moved field | unusable |
+|---|---|---|---|---|
+| accessory persistence | 40 | **40** | 1 | 24 unparsable until the fenced `json` blocks were stripped |
+| jewelry drift | 30 | 25 | 5 | 1 |
+| hairstyle drift | 30 | 24 | 5 | 1 |
+| outfit series | 30 | 30 | 0 | 0 |
+
+so the accessory corpus, the one that mattered, reproduced the generator's habit at full
+strength: forty rows, forty times "the same object", one row naming a change, and no
+device swap at all in any rewrite. eight distinct devices across forty rows, with the
+iphone 13 case repeated a dozen times. it measures the flattery, which is worth having,
+but it does not measure the contrast, so a corrected run went out the same day: a fixed
+12/12 split (twelve case swaps that are the same object, twelve device swaps that are
+not), plain JSON with no fences, and at most two rows per device.
+
+two lessons for the prompt shape, both now in the record. "include plenty of both" is not
+an instruction a generator follows, a counted split is. and a fence is not a failure:
+stripping it recovered 24 rows that had been thrown away.
+
 ## the files
 
 | file | what it is |

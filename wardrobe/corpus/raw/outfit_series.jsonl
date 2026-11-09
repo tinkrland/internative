@@ -1,0 +1,259 @@
+enhanced_prompt,enhanced_completion
+"base: silk charmeuse slip dress, bias cut, midi length
+mid: fine gauge cashmere cardigan, buttoned
+outer: camel wool blend trench, cinched waist
+footwear: nude suede pointed pump, stiletto heel
+refuse: lace trim, sequins, platform soles","{
+  ""rewrite"": ""Visualize a midi-length bias-cut silk charmeuse slip dress layered under a buttoned fine-gauge cashmere cardigan and a cinched-waist camel wool blend trench coat, finished with nude suede pointed stiletto pumps, while explicitly excluding lace trim, sequins, and platform soles."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: charcoal merino wool turtleneck, slim fit
+mid: none
+outer: camel hair double-breasted overcoat, structured, ankle length
+footwear: polished burgundy oxfords, leather sole
+refuse: sneakers, neon colors, sportswear","{
+  ""rewrite"": ""Generate an image of a figure wearing a fitted charcoal merino wool turtleneck under a structured, ankle-length camel hair double-breasted overcoat, finished with polished burgundy leather oxfords, while strictly excluding sneakers, neon colors, and sportswear."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: chalk washed linen shirt, loose, sleeves pushed up
+mid: none
+outer: oatmeal heavy brushed wool overcoat, relaxed, below the knee
+footwear: black leather derby, worn sole
+refuse: prints, synthetic sheen, logos","{""rewrite"": ""A loose chalk-washed linen shirt with rolled sleeves is layered under a relaxed, knee-length oatmeal wool overcoat, finished with worn black leather derby shoes."", ""changed_fields"": [], ""human_same"": true}"
+"base: black high-waisted tailored trousers, wide leg
+mid: sheer organza blouse, ivory, pussy-bow neck
+outer: cropped tweed jacket, monochrome, gold buttons
+footwear: black patent leather pumps, stiletto heel
+refuse: casual fabrics, athletic wear, earth tones","{
+  ""rewrite"": ""Generate an image of a figure wearing wide-leg black high-waisted tailored trousers paired with an ivory sheer organza pussy-bow blouse, topped with a monochrome cropped tweed jacket featuring gold buttons, and finished with black patent leather stiletto pumps, ensuring no casual fabrics, athletic wear, or earth tones are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: vintage indigo denim jacket, oversized, distressed hem
+mid: white ribbed cotton tank, fitted
+outer: none
+footwear: white leather high-top sneakers, clean
+refuse: floral prints, leather patches, logos","{
+  ""rewrite"": ""Generate an image of a person wearing an oversized, distressed-hem vintage indigo denim jacket over a fitted white ribbed cotton tank, paired with clean white leather high-top sneakers, ensuring no floral prints, leather patches, or logos are visible."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: rust-colored corduroy button-down, tucked in
+mid: navy blue cashmere V-neck sweater, relaxed
+outer: tan waxed canvas field jacket, multiple pockets
+footwear: mahogany leather brogues, chunky lug sole
+refuse: synthetic blends, white, minimalism","{
+  ""rewrite"": ""Generate an image of a person wearing a tucked-in rust corduroy button-down shirt under a relaxed navy cashmere V-neck sweater, topped with a multi-pocket tan waxed canvas field jacket and finished with chunky-soled mahogany leather brogues."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: indigo raw denim jacket, boxy, cuffs rolled
+mid: white heavyweight cotton tee, crew neck
+outer: none
+footwear: white leather low-top, pristine toe cap
+refuse: distressing, acid wash, branded patches","{
+  ""rewrite"": ""Generate an image of a person wearing a boxy indigo raw denim jacket with rolled cuffs over a white heavyweight cotton crew neck tee, paired with pristine white leather low-top sneakers, ensuring no distressing, acid wash, or branded patches are visible."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: cream silk slip dress, midi length, bias cut
+mid: oversized cashmere cardigan, chunky knit, off-white
+outer: none
+footwear: nude suede pointed-toe pumps
+refuse: denim, black leather, zippers","{
+  ""rewrite"": ""Generate an image of a person wearing a bias-cut cream silk midi slip dress layered under an oversized off-white chunky knit cashmere cardigan, finished with nude suede pointed-toe pumps."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: navy pinstripe dress shirt, crisp, tailored
+mid: grey V-neck cashmere sweater, fine gauge
+outer: charcoal grey tweed blazer, slim lapels
+footwear: black calfskin loafers, tassel detail
+refuse: hoodies, cargo pockets, bright red","{
+  ""rewrite"": ""A man wears a tailored navy pinstripe dress shirt under a fine-gauge grey cashmere V-neck sweater, topped with a slim-lapel charcoal tweed blazer and black tassel loafers, avoiding hoodies, cargo pockets, and bright red."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: crisp white oxford shirt, tailored fit, collar stayed
+mid: grey flannel vest, three-button
+outer: black cashmere topcoat, single breasted
+footwear: black polished cap-toe oxford, leather sole
+refuse: wrinkled fabric, casual sneakers, visible logos","{
+  ""rewrite"": ""A figure dons a tailored, collar-stayed crisp white oxford shirt beneath a three-button grey flannel vest and a single-breasted black cashmere topcoat, finished with polished black leather-soled cap-toe oxfords, ensuring no wrinkled fabric, casual sneakers, or visible logos are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: terracotta linen wide-leg trousers, high-rise, relaxed
+mid: white crochet crop top, open weave, sleeveless
+outer: none
+footwear: tan suede mules, square toe
+refuse: black leather, winter coats, heavy knits","{
+  ""rewrite"": ""A figure wears high-waisted, loose-fitting wide-leg trousers in terracotta linen paired with a sleeveless white crop top featuring an open crochet weave, completed by square-toed mules in tan suede."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: olive drab fatigue trousers, wide leg, heavy cotton
+mid: white ribbed tank top, cropped
+outer: navy blue wool peacoat, double-breasted, hip length
+footwear: brown leather combat boots, lug sole
+refuse: gold jewelry, satin, high heels","{
+  ""rewrite"": ""Generate an image of a person wearing wide-leg olive drab heavy cotton fatigue trousers, a cropped white ribbed tank top, a hip-length navy blue double-breasted wool peacoat, and brown leather combat boots with lug soles, while explicitly excluding gold jewelry, satin materials, and high heels."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: white oxford cloth button-down, crisp, sleeves buttoned
+mid: none
+outer: camel hair topcoat, structured, below the knee
+footwear: dark brown leather brogue, polished toe
+refuse: graphic prints, synthetic fibers, logos","{""rewrite"": ""A person wears a crisp white oxford button-down with buttoned sleeves under a structured, knee-length camel hair topcoat, finished with polished dark brown leather brogues, avoiding any graphics, synthetics, or logos."", ""changed_fields"": [], ""human_same"": true}"
+"base: chalk washed linen shirt, loose, sleeves pushed up
+mid: none
+outer: oatmeal heavy brushed wool overcoat, relaxed, below the knee
+footwear: black leather derby, worn sole
+refuse: prints, synthetic sheen, logos","{""rewrite"": ""A loose chalk-washed linen shirt with rolled sleeves sits under a relaxed, knee-length oatmeal wool overcoat, grounded by worn black leather derbies, avoiding any prints or shiny synthetics."", ""changed_fields"": [], ""human_same"": true}"
+"base: navy merino wool turtleneck, slim fit
+mid: none
+outer: charcoal herringbone tweed blazer, structured shoulder
+footwear: dark brown suede chelsea boot, elastic side panel
+refuse: synthetic fibers, loud patterns, athletic branding","{
+  ""rewrite"": ""Generate an image of a person wearing a slim-fitting navy merino wool turtleneck under a structured charcoal herringbone tweed blazer, paired with dark brown suede chelsea boots featuring elastic side panels, while avoiding synthetic fibers, loud patterns, and athletic branding."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: white heavyweight cotton tee, boxy fit
+mid: indigo denim trucker jacket, vintage wash, distressed
+outer: olive drab military parka, oversized, hooded
+footwear: off-white canvas high-top sneakers, scuffed
+refuse: formal wear, silk, bright patterns","{
+  ""rewrite"": ""A street-style outfit featuring a boxy heavyweight white cotton t-shirt layered under a distressed vintage-wash indigo denim trucker jacket and an oversized hooded olive drab military parka, completed with scuffed off-white canvas high-top sneakers."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: olive green cargo pants, heavy cotton drill, tapered
+mid: black ribbed turtleneck, slim fit, merino wool
+outer: cropped black leather biker jacket, silver hardware
+footwear: combat boots, matte black, lug sole
+refuse: pastel shades, sandals, formal wear","{
+  ""rewrite"": ""A figure wears tapered olive green heavy cotton drill cargo pants paired with a slim fit black merino wool ribbed turtleneck, topped with a cropped black leather biker jacket featuring silver hardware and finished with matte black lug sole combat boots."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: crimson merino wool turtleneck, fitted, sleeves extended
+mid: charcoal cashmere scarf, loosely knotted
+outer: navy technical fabric parka, hooded, mid-thigh
+footwear: grey suede desert boot, clean sole
+refuse: floral patterns, glossy finish, visible branding","{
+  ""rewrite"": ""Generate an image of a person wearing a fitted crimson merino wool turtleneck with extended sleeves, a loosely knotted charcoal cashmere scarf, a mid-thigh navy technical fabric hooded parka, and clean-soled grey suede desert boots, ensuring no floral patterns, glossy finishes, or visible branding are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: cream silk slip dress, bias cut, midi length
+mid: none
+outer: oversized charcoal cashmere cardigan, chunky knit
+footwear: silver metallic kitten heels, pointed toe
+refuse: neon colors, polyester, chunky platforms","{
+  ""rewrite"": ""Generate an image of a figure wearing a bias-cut cream silk slip dress reaching mid-calf, layered under an oversized charcoal cashmere cardigan with a chunky knit texture, and finished with pointed-toe silver metallic kitten heels."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: charcoal grey wool trousers, slim fit, pleated
+mid: pale blue oxford shirt, buttoned to the neck
+outer: navy blue quilted gilet, matte finish, zip front
+footwear: oxblood leather brogues, wingtip design
+refuse: hoodies, bright patterns, canvas shoes","{
+  ""rewrite"": ""A slim-fit pair of charcoal grey pleated wool trousers is worn with a pale blue oxford shirt buttoned to the collar, layered under a matte navy blue zip-front quilted gilet, and finished with oxblood leather wingtip brogues."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: burnt orange corduroy shirt, wide wale, unbuttoned collar
+mid: olive green utility vest, multiple pockets
+outer: none
+footwear: tan leather work boots, lug sole
+refuse: silk, satin, formal wear","{
+  ""rewrite"": ""A person wearing an unbuttoned, wide-wale burnt orange corduroy shirt layered under an olive green utility vest with multiple pockets, finished with tan leather work boots featuring lug soles."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: navy pinstripe tailored trousers, high waisted, wide leg
+mid: white poplin button-down, crisp, tucked in
+outer: camel hair double-breasted blazer, structured shoulders
+footwear: brown leather loafers, gold horsebit detail
+refuse: denim, sneakers, athletic wear","{
+  ""rewrite"": ""Generate an image of a person wearing high-waisted, wide-leg navy trousers with fine white stripes, a crisp white poplin shirt tucked neatly in, a structured camel hair double-breasted blazer, and brown leather loafers featuring a gold horsebit, while ensuring no denim, sneakers, or athletic wear are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: olive green linen blend shirt, relaxed, sleeves pushed up
+mid: none
+outer: black heavy denim jacket, oversized, hip length
+footwear: white canvas sneaker, worn laces
+refuse: embroidery, satin sheen, designer labels","{
+  ""rewrite"": ""Generate an image of a person wearing a loose-fitting olive linen-blend shirt with rolled sleeves under an oversized black heavy denim jacket that hits at the hip, paired with white canvas sneakers featuring frayed laces, while strictly avoiding any embroidery, satin finishes, or visible designer branding."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: cream silk slip dress, bias cut, midi length
+mid: oversized chunky knit cardigan, sage green, open
+outer: none
+footwear: tan leather strappy sandals, flat sole
+refuse: black, polyester, heavy hardware","{
+  ""rewrite"": ""Generate an image of a person wearing a bias-cut cream silk slip dress of midi length, layered under an open oversized sage green chunky knit cardigan, finished with flat tan leather strappy sandals."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: cream merino wool turtleneck, fine gauge, tucked in
+mid: none
+outer: charcoal grey herringbone tweed coat, structured shoulders
+footwear: dark brown suede chelsea boots, elastic side panels
+refuse: bright colors, synthetic fibers, sporty details","{
+  ""rewrite"": ""Visualize a figure wearing a tucked-in, fine-gauge cream merino wool turtleneck under a structured charcoal grey herringbone tweed coat, completed with dark brown suede chelsea boots featuring elastic side panels, while avoiding bright colors, synthetic fibers, and sporty details."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: indigo handloom cotton kurta, straight cut, cuffs rolled
+mid: none
+outer: beige raw silk angavastram, draped, ankle-length
+footwear: brown leather kolhapuri chappal, scuffed heel
+refuse: zari work, polyester blend, brand tags","{
+  ""rewrite"": ""A person wears a straight-cut indigo handloom cotton kurta with rolled cuffs, paired with an ankle-length draped beige raw silk angavastram and scuffed brown leather Kolhapuri chappals, avoiding any zari work, polyester blends, or brand tags."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: ivory silk camisole, bias cut, cowl neck
+mid: none
+outer: camel cashmere wrap coat, floor length, belt tied
+footwear: nude satin pointed pumps, stiletto heel
+refuse: lace, sequins, chunky soles","{
+  ""rewrite"": ""Generate an image of a figure wearing a bias-cut ivory silk camisole with a cowl neckline, layered under a floor-length camel cashmere wrap coat secured with a tied belt, and finished with nude satin pointed stiletto pumps, ensuring no lace, sequins, or chunky soles are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: black leather leggings, high-waisted, matte finish
+mid: emerald green velvet blazer, tailored
+outer: none
+footwear: black patent leather ankle boots, stiletto heel
+refuse: cotton t-shirts, beige, flat shoes","{
+  ""rewrite"": ""A figure clad in high-waisted matte black leather leggings and a tailored emerald green velvet blazer, finished with black patent leather stiletto ankle boots."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: charcoal merino wool turtleneck, slim fit
+mid: none
+outer: camel hair double-breasted overcoat, structured, calf-length
+footwear: dark brown suede chelsea boots, pointed toe
+refuse: neon colors, denim, sneakers","{
+  ""rewrite"": ""A slim charcoal merino wool turtleneck is layered under a structured, calf-length camel hair double-breasted overcoat and finished with pointed-toe dark brown suede chelsea boots."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"base: emerald green velvet blazer, double breasted, peak lapel
+mid: black silk slip dress, midi length
+outer: none
+footwear: black patent leather ankle boots, block heel
+refuse: denim, cotton canvas, athletic wear","{
+  ""rewrite"": ""A double-breasted emerald green velvet blazer with peak lapels worn over a black silk midi slip dress, paired with black patent leather block-heel ankle boots, avoiding denim, cotton canvas, and athletic wear."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"

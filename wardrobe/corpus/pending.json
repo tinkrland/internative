@@ -17,7 +17,7 @@
         "carried"
       ],
       "asked_for": "the device is identity and the case is styling: swapping a case is a visible change a person calls the same object, swapping the device is a different person. this is the corpus behind the accessory rule.",
-      "status": "running"
+      "status": "fetched"
     },
     {
       "name": "jewelry_drift",
@@ -30,7 +30,7 @@
         "worn"
       ],
       "asked_for": "silver for gold, a stone appearing, or the same piece on a different body part are changes; rewording the metal is not.",
-      "status": "running"
+      "status": "fetched"
     },
     {
       "name": "hairstyle_drift",
@@ -43,7 +43,7 @@
         "finish"
       ],
       "asked_for": "her own hair does not change between photographs, so a moved length, cut, parting or texture is not the same hairstyle however smoothly it is reworded.",
-      "status": "running"
+      "status": "fetched"
     },
     {
       "name": "outfit_series",
@@ -56,6 +56,18 @@
         "footwear"
       ],
       "asked_for": "a whole outfit re-told, with substitutions of garment, fabric or colour labelled as the drift they are.",
+      "status": "fetched"
+    },
+    {
+      "name": "accessory_persistence_v2",
+      "dataset_id": "5ce647f9-9973-4644-b9a5-aca19af7bd52",
+      "rows": 24,
+      "fields": [
+        "device",
+        "case",
+        "carried"
+      ],
+      "asked_for": "the v1 run labelled all 40 rows the same object and produced no device swap at all, so v2 asks for a fixed 12/12 split and plain JSON. grounded by continuity practice: a device is a tracked prop, a case is styling.",
       "status": "running"
     }
   ]

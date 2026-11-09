@@ -1,0 +1,327 @@
+enhanced_prompt,enhanced_completion
+"device: omega seamaster 36mm, gold
+strap: navy blue nato strap, nylon","{
+  ""rewrite"": ""Generate an image of a 36mm gold Omega Seamaster wristwatch fitted with a navy blue nylon NATO strap."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{""rewrite"": ""A graphite iPhone 13 with a 6.1-inch display rests in a distressed walnut brown leather case, tucked against the right hip beneath a coat, free of any stickers or pop sockets."", ""changed_fields"": [], ""human_same"": true}"
+"device: iphone 13, graphite, 6.1 inch
+case: midnight blue silicone, pristine edges
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{""rewrite"":""Generate an image of a graphite iPhone 13 with a pristine midnight blue silicone case, discreetly carried on the right hip beneath a coat, ensuring no stickers, clear plastic, or pop sockets are visible."",""changed_fields"":[],""human_same"":true}"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""A graphite 6.1-inch iPhone 13 resting in a worn walnut brown leather case is tucked beneath a coat at the right hip."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: heritage tan bridle leather tote, 32cm
+charm: brass tag, engraved","```json
+{
+  ""rewrite"": ""Produce a realistic studio shot of a 32cm heritage tote constructed from tan bridle leather with an engraved brass tag accessory."",
+  ""changed_fields"": [
+    ""charm""
+  ],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 36mm, steel
+strap: black calf leather, stitched","```json
+{
+  ""rewrite"": ""A photorealistic studio shot of a 36mm steel Omega Seamaster timepiece paired with a black stitched calf leather band."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 36mm, gold
+strap: brown alligator skin, glossy","```json
+{
+  ""rewrite"": ""A high-resolution studio close-up showcases a gold 36mm Omega Seamaster watch paired with a glossy brown alligator leather strap."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: heritage tan bridle leather tote, 32cm
+charm: brass tag, engraved","{
+  ""rewrite"": ""A studio product photograph of a 32cm heritage tote in tan bridle leather with an engraved brass tag charm attached."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: sony a7iv, black magnesium, full frame
+case: olive canvas harness, padded shoulders
+carried: chest level, across torso
+refuse: neck straps, wrist loops, plastic covers","{
+  ""rewrite"": ""A black magnesium Sony A7IV full-frame camera is worn across the torso at chest level in an olive canvas harness with padded shoulders, excluding neck straps, wrist loops, and plastic covers."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: heritage tan bridle leather tote, 32cm
+charm: silver initial pendant, unengraved
+carried: crook of elbow, against the side
+refuse: canvas lining, dust bag, receipt","```json
+{
+  ""rewrite"": ""A photorealistic image of a 32cm heritage tan bridle leather tote held in the crook of an elbow against the side, featuring an unengraved silver initial pendant charm, with no canvas lining, dust bag, or receipt visible."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{""rewrite"": ""A graphite iPhone 13 with a 6.1-inch display, housed in a weathered walnut brown leather case showing corner wear, tucked into the right hip beneath a coat, free of any stickers, clear plastic films, or pop sockets."", ""changed_fields"": [], ""human_same"": true}"
+"device: macbook pro 14, space gray, m2 pro
+case: felt sleeve, charcoal gray
+carried: under arm, in messenger bag
+refuse: skins, stickers, hard shells","{
+  ""rewrite"": ""Generate an image of a Space Gray MacBook Pro 14 with an M2 Pro chip nestled inside a charcoal gray felt sleeve, being carried under an arm within a messenger bag, explicitly avoiding any skins, stickers, or hard shell cases."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: iphone 13, silver, 6.1 inch
+case: midnight blue silicone, pristine
+carried: left hand, gripped
+refuse: stickers, clear plastic, pop sockets","{
+  ""rewrite"": ""Generate an image of a silver 6.1-inch iPhone 13 held firmly in a left hand, encased in a pristine midnight blue silicone cover, while explicitly excluding any stickers, clear plastic films, or pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: heritage navy canvas weekender, 45cm
+charm: leather luggage tag, embossed","```json
+{
+  ""rewrite"": ""A high-resolution studio shot of a 45cm heritage navy canvas weekender bag adorned with an embossed leather luggage tag."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{
+  ""rewrite"": ""Generate a photorealistic image of a 6.1-inch graphite iPhone 13 encased in distressed walnut brown leather showing corner wear, tucked at the right hip beneath a coat, ensuring no stickers, clear plastic, or pop sockets are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{
+  ""rewrite"": ""A photorealistic shot of a graphite 6.1-inch iPhone 13 in a distressed walnut brown leather case with worn corners, tucked at the right hip beneath a coat and explicitly free of stickers, clear plastic, or pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: heritage tan bridle leather tote, 32cm
+charm: silver heart locket, scratched","```json
+{
+  ""rewrite"": ""Create a photorealistic studio image of a 32cm heritage tan bridle leather tote bag adorned with a scratched silver heart locket charm."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 36mm, steel
+strap: black calf leather, stitched
+carried: left wrist, over cuff
+refuse: rubber bands, nylon nato, plastic wrap","{
+  ""rewrite"": ""A high-resolution close-up photograph showing a 36mm steel Omega Seamaster watch fitted with a stitched black calf leather band, worn on the left wrist and positioned over a garment cuff."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: omega seamaster 36mm, steel
+strap: brown alligator skin, polished","```json
+{
+  ""rewrite"": ""Generate a photorealistic luxury product shot of a 36mm steel Omega Seamaster watch paired with a polished brown alligator leather strap."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{""rewrite"": ""A graphite iPhone 13 with a 6.1-inch display sits in a weathered walnut brown leather case, tucked against the right hip beneath a coat, free of any stickers or pop sockets."", ""changed_fields"": [], ""human_same"": true}"
+"device: omega seamaster 36mm, steel
+strap: black calf leather, stitched
+carried: left wrist, over the cuff
+refuse: dive bezel rotation, lume fade, bracelet stretch","```json
+{
+  ""rewrite"": ""A high-detail photorealistic shot of a 36mm steel Omega Seamaster on a stitched black calf leather strap, worn on a left wrist over a shirt cuff, avoiding any depiction of dive bezel rotation, lume fade, or bracelet stretch."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: forest green leather, new
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{
+  ""rewrite"": ""Generate an image of a graphite iPhone 13 with a 6.1-inch screen encased in fresh forest green leather, tucked under a coat on the right hip, explicitly avoiding stickers, clear plastic, or pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: heritage tan bridle leather tote, 32cm
+charm: silver heart pendant, scratched","{
+  ""rewrite"": ""A professional studio photograph of a 32cm heritage tan bridle leather tote bag adorned with a scratched silver heart pendant charm."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: left pocket, jeans
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""A graphite 6.1-inch iPhone 13 encased in a worn walnut brown leather cover is tucked into the left pocket of a pair of jeans, with no stickers, clear plastic, or pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: leica q2, black anodized, fixed lens
+case: cognac leather half-case, brass studs
+carried: right hand, finger loop
+refuse: wrist straps, neck cords, plastic caps","```json
+{
+  ""rewrite"": ""A black anodized Leica Q2 with a fixed lens is held in the right hand using a finger loop, fitted with a cognac leather half-case detailed with brass studs, ensuring no wrist straps, neck cords, or plastic caps are present."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 36mm, steel
+strap: brushed stainless steel link, scratched","```json
+{
+  ""rewrite"": ""A detailed photograph of a 36mm steel Omega Seamaster featuring a scratched brushed stainless steel link bracelet."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 42mm, two-tone gold and steel
+strap: black calf leather, stitched
+carried: left wrist, over the cuff
+refuse: dive bezel rotation, lume fade, bracelet stretch","```json
+{
+  ""rewrite"": ""A photorealistic close-up of a 42mm Omega Seamaster in two-tone gold and steel, paired with a stitched black calf leather strap and worn over a shirt cuff on the left wrist."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, product red, 6.1 inch
+case: clear acrylic, yellowed
+carried: shoulder bag, interior slot
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""Generate an image of a 6.1 inch Product Red iPhone 13 in a yellowed clear acrylic case, resting inside the interior slot of a shoulder bag, without any stickers or pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: heritage tan bridle leather tote, 32cm
+charm: leather tassel, cream","```json
+{
+  ""rewrite"": ""A 32cm heritage tan bridle leather tote bag accessorized with a cream leather tassel charm."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: midnight blue silicone, smooth finish
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""Concealed beneath a coat on the right hip, a graphite 6.1-inch iPhone 13 rests inside a smooth midnight blue silicone case."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, starlight, 6.1 inch
+case: midnight blue silicone, pristine
+carried: left hand, gripped
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""A pristine midnight blue silicone case protects a 6.1-inch starlight iPhone 13 held firmly in a left hand, with strict instructions to exclude stickers, clear plastic, and pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: sony a7iv, black, full-frame
+case: cognac leather half-case, soft patina
+carried: across chest, under the jacket
+refuse: lens caps, neck strap, battery grip","```json
+{
+  ""rewrite"": ""A photorealistic black Sony A7IV full-frame camera nestled in a soft patina cognac leather half-case, carried discreetly across the chest beneath a jacket without any visible lens caps or neck straps."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""A graphite 6.1-inch iPhone 13 in a worn walnut brown leather case is tucked under a coat at the right hip, devoid of stickers or pop sockets."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 36mm, steel
+strap: brown alligator, cross-stitched
+carried: left wrist, over cuff
+refuse: rubber bands, nylon nato, plastic wrap","```json
+{
+  ""rewrite"": ""A detailed photograph of a steel Omega Seamaster 36mm watch fitted with a brown cross-stitched alligator strap, worn on the left wrist over a shirt cuff."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: forest green fabric, frayed edges
+carried: back pocket, jeans
+refuse: stickers, clear plastic, pop sockets","```json
+{
+  ""rewrite"": ""A graphite 6.1-inch iPhone 13, protected by a frayed forest green fabric case without any stickers or pop sockets, rests securely in the back pocket of a pair of jeans."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: omega seamaster 36mm, steel
+strap: black calf leather, stitched","{
+  ""rewrite"": ""Generate an image of a 36mm steel Omega Seamaster wristwatch featuring a black stitched calf leather strap."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}"
+"device: leica q2, silver, fixed lens
+case: none
+carried: right hand, ready position
+refuse: lens hood, filter thread, external flash","```json
+{
+  ""rewrite"": ""A silver Leica Q2 with a fixed lens is held in the right hand in a ready position, without a case, lens hood, filter thread, or external flash."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: heritage tan bridle leather tote, 32cm
+charm: brass tag, engraved
+carried: crook of elbow, against the side
+refuse: canvas lining, dust bag, receipt","```json
+{
+  ""rewrite"": ""Generate a photorealistic image of a 32cm heritage tan bridle leather tote featuring an engraved brass tag, held securely in the crook of an elbow against the side."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
+"device: iphone 13, graphite, 6.1 inch
+case: walnut brown leather, worn at the corners
+carried: right hip, under the coat
+refuse: stickers, clear plastic, pop sockets","{""rewrite"": ""A graphite iPhone 13 with a weathered walnut leather case tucked under a coat at the right hip, free of any stickers or pop sockets."", ""changed_fields"": [], ""human_same"": true}"
+"device: heritage tan bridle leather tote, 32cm
+charm: brass tag, engraved
+carried: right hand, by top handle
+refuse: keychains, silk scarves, luggage tags","```json
+{
+  ""rewrite"": ""A right hand grips the top handle of a 32cm heritage tan bridle leather tote adorned with an engraved brass tag."",
+  ""changed_fields"": [],
+  ""human_same"": true
+}
+```"
