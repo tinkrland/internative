@@ -41,12 +41,15 @@ the model's average, which is a different garment by Thursday.
 
 ## corpus
 
-`corpus/paraphrase.json` is twelve re-descriptions of one locked coat, three of which a
-person would accept as the same coat. all twelve are different strings, so all twelve
-digest differently, which is the measurement: the problem is not that a paraphrase
-cannot be detected, it is that a paraphrase cannot be undone. the corpus also keeps its
-own labels honest (a row labelled same may not change a field) and the test refuses a
-copy of the block masquerading as a rewrite.
+`corpus/` holds two sets of twelve rewrites: one written here against the invent spec,
+one invented by adaption labs. all twenty-four are different strings, so all twenty-four
+digest differently, and that is the measurement: the problem is not that a paraphrase
+cannot be detected, it is that a paraphrase cannot be undone.
+
+the invented set is the sharper finding. asked to grade its own rewording, the generator
+called all twelve "the same garment"; a careful read says nine; the digest says none. a
+model grading its own paraphrase is not a gate, which is why the drift check compares
+locks and not prose. see `corpus/README.md` for the three-answer table.
 
 ## files
 

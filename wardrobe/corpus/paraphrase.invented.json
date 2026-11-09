@@ -1,0 +1,113 @@
+{
+  "what": "twelve re-descriptions of a locked garment, invented by adaption labs, and what a careful read says about the generator's own labels",
+  "why": "the lock refuses a retyped block. this corpus measures three answers to the same twelve rewrites: the generator's, a person's, and the digest's.",
+  "source": {
+    "provider": "adaption labs",
+    "endpoint": "https://api.prod.adaptionlabs.ai/api/v1/datasets/invent",
+    "model": "gemma-4-31b-it",
+    "dataset_id": "26572b6e-dbcc-415a-83dc-12d8df2ac01f",
+    "rows": 12,
+    "credits_estimated": 2,
+    "invented_on": "2026-11-09",
+    "took": "about two hours from launch to downloadable: status ran -> succeeded, row_count 12. the first four minutes looked stalled and the download route 422d until a run existed.",
+    "artefact": "the generator appended its own task instructions after the garment block in enhanced_prompt. only the block is kept here. it also put jeans, a cardigan and a blazer in the outer slot, which this wardrobe refuses: a text corpus does not know our vocabulary, a lock does.",
+    "curation": "the generator labelled all twelve same_garment. a careful read says nine. the three relabelled are recorded with the reason."
+  },
+  "rows": [
+    {
+      "locked": "outer: indigo raw denim straight leg jean\nfit: slim through thigh; ankle length\ndetails: copper rivets; chain-stitched hem; five-pocket construction\navoid: distressed fading; elastic waistband",
+      "rewrite": "This garment is a pair of ankle-length, straight-leg jeans crafted from raw indigo denim with a slim thigh fit, featuring copper rivets, chain-stitched hems, and a classic five-pocket design while explicitly avoiding any distressed fading or elastic waistbands.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: oatmeal heavy brushed wool wool overcoat\nfit: relaxed, below the knee\ndetails: double breasted; horn buttons; patch pockets\navoid: belted waist; synthetic sheen",
+      "rewrite": "A voluminous, knee-length overcoat crafted from dense oatmeal brushed wool, featuring a double-breasted horn-button closure and practical patch pockets while eschewing any waist definition or artificial luster.",
+      "generated_same_garment": true,
+      "human_same": false,
+      "changed_fields": [
+        "fit",
+        "kind"
+      ],
+      "why": "'voluminous' and 'knee-length' are not 'relaxed, below the knee': the hem line moved"
+    },
+    {
+      "locked": "outer: charcoal grey double-breasted peak lapel blazer\nfit: tailored, slim waist\ndetails: silver-tone buttons; jetted pockets; silk lining\navoid: patch pockets; oversized shoulders",
+      "rewrite": "This tailored charcoal grey double-breasted blazer features a slim waist, peak lapels, silver-tone buttons, jetted pockets, and a silk lining while avoiding patch pockets or oversized shoulders.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: oatmeal heavy brushed wool overcoat\nfit: relaxed, below the knee\ndetails: double breasted; horn buttons; patch pockets\navoid: belted waist; synthetic sheen",
+      "rewrite": "This relaxed-fit, knee-length overcoat is crafted from heavy brushed wool in an oatmeal hue, featuring a double-breasted closure with horn buttons and patch pockets while avoiding any belt or synthetic sheen.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: oatmeal heavy brushed wool overcoat\nfit: relaxed, below the knee\ndetails: double breasted; horn buttons; patch pockets\navoid: belted waist; synthetic sheen",
+      "rewrite": "This relaxed, knee-skimming overcoat is crafted from substantial oatmeal-hued brushed wool, featuring a double-breasted silhouette with horn buttons and patch pockets while eschewing belts or synthetic luster.",
+      "generated_same_garment": true,
+      "human_same": false,
+      "changed_fields": [
+        "fit"
+      ],
+      "why": "'knee-skimming' is a shorter hem than 'below the knee'"
+    },
+    {
+      "locked": "outer: oatmeal heavy brushed wool overcoat\nfit: relaxed, below the knee\ndetails: double breasted; horn buttons; patch pockets\navoid: belted waist; synthetic sheen",
+      "rewrite": "This loose-fitting, knee-length topcoat is crafted from thick, napped oatmeal wool and features a double-breasted closure with horn buttons and patch pockets, while eschewing belts and synthetic luster.",
+      "generated_same_garment": true,
+      "human_same": false,
+      "changed_fields": [
+        "kind",
+        "fit"
+      ],
+      "why": "'topcoat' is not an 'overcoat', and 'loose-fitting' is not 'relaxed'"
+    },
+    {
+      "locked": "outer: oatmeal heavy brushed wool overcoat\nfit: relaxed, below the knee\ndetails: double breasted; horn buttons; patch pockets\navoid: belted waist; synthetic sheen",
+      "rewrite": "A relaxed, below-the-knee overcoat crafted from heavy brushed oatmeal wool, featuring a double-breasted closure with horn buttons and patch pockets, while omitting a belted waist and synthetic sheen.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: vintage wash indigo high-rise straight leg jean\nfit: relaxed through the thigh, tapered ankle\ndetails: contrast tobacco stitching; five-pocket styling; raw hem\navoid: distressed knees; skinny fit",
+      "rewrite": "This garment is a pair of high-waisted, straight-leg jeans in a vintage indigo wash featuring a relaxed thigh that tapers to the ankle, finished with raw hems and contrasting tobacco stitching in a classic five-pocket design.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: cream chunky cable-knit oversized cardigan\nfit: slouchy, mid-thigh length\ndetails: tortoise shell buttons; ribbed cuffs; balloon sleeves\navoid: cropped length; v-neck",
+      "rewrite": "This garment is an oversized, slouchy cardigan in a cream hue featuring a chunky cable-knit texture, balloon sleeves with ribbed cuffs, and tortoise shell buttons, falling to mid-thigh.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: midnight blue raw selvedge denim jean\nfit: straight leg, high rise\ndetails: contrast tobacco stitching; copper rivets; coin pocket\navoid: distressed knees; tapered ankle",
+      "rewrite": "These high-rise, straight-leg jeans are crafted from midnight blue raw selvedge denim and feature tobacco contrast stitching, copper rivets, and a coin pocket, while explicitly avoiding distressed knees or a tapered ankle.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: cream heavyweight cable knit cashmere cardigan\nfit: oversized, dropped shoulder\ndetails: chunky ribbed cuffs; toggle closures; deep v-neck\navoid: cropped length; metallic zippers",
+      "rewrite": "This oversized cream cardigan is crafted from heavyweight cable-knit cashmere with dropped shoulders, deep V-neck, toggle closures, and chunky ribbed cuffs.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    },
+    {
+      "locked": "outer: charcoal grey herringbone wool blazer\nfit: slim fit, tailored waist\ndetails: notched lapel; two-button closure; flapped hip pockets\navoid: shoulder pads; gold buttons",
+      "rewrite": "This slim-fit, tailored-waist blazer is crafted from charcoal grey herringbone wool and features a notched lapel, two-button closure, and flapped hip pockets, while omitting shoulder pads and gold buttons.",
+      "generated_same_garment": true,
+      "human_same": true,
+      "changed_fields": []
+    }
+  ]
+}
