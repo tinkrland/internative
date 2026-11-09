@@ -1,0 +1,17 @@
+{
+  "url": "https://indiefy.net/distribute",
+  "labels": [
+    "Start your release",
+    "Drag and drop your audio file",
+    "WAV, MP3, FLAC, AAC · up to 200 MB",
+    "Track title *",
+    "Artist name *",
+    "Main genre",
+    "Already have an account? Sign In"
+  ],
+  "buttons": [
+    "Send my release to 150+ stores",
+    "Get started"
+  ],
+  "captured": "2026-11-09"
+}

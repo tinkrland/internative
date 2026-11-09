@@ -33,7 +33,7 @@ bank account.
 
 **the mouth never redraws the face.**
 
-a surface branch never edits `persona/`, `core/` or `media/`. it syncs them from
+a surface branch never edits `persona/`, `core/`, `memory/` or `media/`. it syncs them from
 main with `tools/sync-context.sh` and gets a byte-identical copy. a surface that
 finds itself wanting a different name, promise, refusal or disclosure is not
 allowed to want one: that is a config change on the head, reviewed once, for
@@ -96,6 +96,9 @@ media/       how pictures are sourced: render vs generate, and the closet
 publishing/  where a post can go, what each place requires, who has an account, and the gate it passes
 generation/  provider adapters, observations, verification
 core/        the surface contract every branch implements
+memory/      the memory client and the scope rule, one per surface call
+agentid/     the agent's own ids: signup, verification, consented browser forms,
+             and the distribution flows it can drive without help
 tools/       sync, checkers, reports
 tests/       the suite, one file per contract
 docs/        architecture, coverage, roadmap, and the oss survey

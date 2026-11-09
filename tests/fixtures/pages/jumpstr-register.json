@@ -1,0 +1,17 @@
+{
+  "url": "https://app.jumpstr.io/register",
+  "labels": [
+    "Sign up for Jumpstr",
+    "Name",
+    "Email",
+    "Password",
+    "Confirm Password",
+    "We attach great importance to your privacy. Jumpstr uses the information you provide to contact you about our relevant content, products, and services. You can unsubscribe from these messages at any time.",
+    "Already have an account? Log in"
+  ],
+  "buttons": [
+    "Register",
+    "Sign Up with Google"
+  ],
+  "captured": "2026-11-09"
+}

@@ -5,7 +5,7 @@
 // rules are not duplicated here. this file builds the DECLARATION a
 // surface sends, so the head has something to enforce against.
 
-import { platformClass, resolveConnection, type Connection } from "./connections.ts";
+import { platformClass, resolveConnection, type Connection } from "../core/connections.ts";
 
 export interface MemoryScope {
   // the persona in play. undefined = the shared graph only.

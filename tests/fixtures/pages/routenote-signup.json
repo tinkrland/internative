@@ -1,0 +1,21 @@
+{
+  "url": "https://www.routenote.com/rn/signup_page/design",
+  "labels": [
+    "Log in",
+    "Create your account",
+    "Username",
+    "Email address",
+    "Create password",
+    "Confirm password",
+    "Password strength",
+    "Security question",
+    "Security answer",
+    "Got a referral code?",
+    "Stay up to date with RouteNote news",
+    "I agree to RouteNote's Terms & Conditions"
+  ],
+  "buttons": [
+    "Sign up"
+  ],
+  "captured": "2026-11-09"
+}
