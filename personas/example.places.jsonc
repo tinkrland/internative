@@ -1,0 +1,46 @@
+// the places: rooms that stay the same room.
+//
+// each place is authored before it is shot in, with the things a person's real
+// room keeps constant, and with reference plates that later shots reuse as
+// structure. the plate paths are recorded here as the contract; the images
+// themselves are authored assets and land with the shoot.
+{
+  "persona": "example",
+  "places": [
+    {
+      "id": "bathroom-mirror",
+      "name": "the bathroom mirror",
+      "kind": "bathroom_mirror",
+      "invariants": [
+        "mirror is a plain rectangle above a white ceramic sink, no frame",
+        "one warm bulb overhead, slightly right of centre",
+        "tiles are small white squares with cracked grout at the bottom left",
+        "a toothbrush cup on the left of the sink, never moved"
+      ],
+      "light": "single warm overhead bulb, soft shadow under the chin, slight glow on the tiles",
+      "recurring": true,
+      "plates": [
+        { "id": "wide", "uri": "assets/places/bathroom-mirror/wide.png", "role": "wide" },
+        { "id": "mirror", "uri": "assets/places/bathroom-mirror/mirror.png", "role": "mirror" },
+        { "id": "sink", "uri": "assets/places/bathroom-mirror/sink.png", "role": "detail" }
+      ]
+    },
+    {
+      "id": "car-interior",
+      "name": "her car, driver's seat",
+      "kind": "car_interior",
+      "invariants": [
+        "dark grey cloth seats, worn on the driver's bolster",
+        "small chip in the windscreen, lower left of the passenger side",
+        "phone mount on the centre vent, always occupied",
+        "light comes through the driver's window in the afternoon"
+      ],
+      "light": "afternoon sun through the driver's window, hard edge on the dashboard, shade across the far seat",
+      "recurring": true,
+      "plates": [
+        { "id": "wide", "uri": "assets/places/car-interior/wide.png", "role": "wide" },
+        { "id": "dash", "uri": "assets/places/car-interior/dashboard.png", "role": "detail" }
+      ]
+    }
+  ]
+}
