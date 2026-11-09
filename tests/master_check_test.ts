@@ -1,6 +1,7 @@
 import { assertEquals } from "jsr:@std/assert@1";
 import { loudnessProblems, measureLoudness, normaliseArgs, parseLoudnorm } from "../music/master_check.ts";
 import { STREAMING_TARGET } from "../music/master.ts";
+import { toolsAvailable } from "./tools.ts";
 
 const stderr = `
 [Parsed_loudnorm_0 @ 0x55] 
@@ -50,7 +51,10 @@ Deno.test("normalising is two passes: measure, then apply the measurement", () =
   assertEquals(louder.some((a) => a.startsWith("volume=-5.00dB")), true, "a loud mix is turned down, not up");
 });
 
-Deno.test("a real file is measured with ffmpeg, and a quiet tone is caught", async () => {
+Deno.test({
+  name: "a real file is measured with ffmpeg, and a quiet tone is caught",
+  ignore: !toolsAvailable("ffmpeg", "ffprobe"),
+  fn: async () => {
   const dir = await Deno.makeTempDir();
   const tone = `${dir}/-9lufs.wav`;
   const made = await new Deno.Command("ffmpeg", {
@@ -91,4 +95,5 @@ Deno.test("a real file is measured with ffmpeg, and a quiet tone is caught", asy
   const missing = await measureLoudness(`${dir}/not-a-file.wav`);
   assertEquals(missing.problems.length > 0, true);
   await Deno.remove(dir, { recursive: true });
+  },
 });

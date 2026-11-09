@@ -1,7 +1,9 @@
 {
   "tasks": {
-    "test": "deno test --allow-read",
+    "test": "deno test --allow-read --allow-write --allow-env --allow-net --allow-run",
     "check": "deno check music/*.ts tests/*.ts"
   },
-  "fmt": { "lineWidth": 120 }
+  "fmt": {
+    "lineWidth": 120
+  }
 }

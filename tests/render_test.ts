@@ -4,6 +4,7 @@ import { composeScore } from "../music/score.ts";
 import { loudnessProblems, measureLoudness } from "../music/master_check.ts";
 import { STREAMING_TARGET } from "../music/master.ts";
 import type { SongSpec } from "../music/song.ts";
+import { toolsAvailable } from "./tools.ts";
 
 const song: SongSpec = {
   title: "Second Draft",
@@ -87,7 +88,12 @@ Deno.test("a render is deterministic, and the seed is audible rather than decora
   assertEquals(other.length === a.length && a.every((byte, i) => byte === other[i]), false, "different chords, different audio");
 });
 
-Deno.test("a real render is measured by ffmpeg, and the master contract has something to judge", async () => {
+const haveFfmpeg = toolsAvailable("ffmpeg", "ffprobe");
+
+Deno.test({
+  name: "a real render is measured by ffmpeg, and the master contract has something to judge",
+  ignore: !haveFfmpeg,
+  fn: async () => {
   const dir = await Deno.makeTempDir();
   const path = `${dir}/render.wav`;
   await Deno.writeFile(path, renderScoreToWav(score, { bars: 8 }));
@@ -107,6 +113,7 @@ Deno.test("a real render is measured by ffmpeg, and the master contract has some
   const against = loudnessProblems(measured.measurement!, STREAMING_TARGET);
   assertEquals(against.length > 0, true, "the render is a mix, not a master");
   await Deno.remove(dir, { recursive: true });
+  },
 });
 
 Deno.test("stems come from the same score, so a mixdown can never disagree with them", () => {

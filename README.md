@@ -96,6 +96,11 @@ carries the ai disclosure, because the stores ask and the listener is owed it.
 deno task test    # includes a real ffmpeg measurement of a real tone
 ```
 
+the task carries `--allow-run` because two tests shell out to ffmpeg and ffprobe. without
+the permission, or on a machine with neither binary, those two report as ignored rather
+than failed: a missing tool is not broken audio, and a suite that cries wolf about its
+own dependencies stops being believed.
+
 the branch vendors nothing from the head. it takes a brief, and `briefProblems`
 refuses a brief with no aipn or no register, so a song cannot be planned for a
 personality that has no number yet.
