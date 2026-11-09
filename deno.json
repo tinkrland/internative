@@ -1,0 +1,13 @@
+{
+  "name": "clawbuzz",
+  "version": "0.1.0",
+  "exports": {
+    "./persona": "./persona/loader.ts",
+    "./core": "./core/surface.ts"
+  },
+  "tasks": {
+    "test": "deno test --allow-env --allow-read",
+    "check": "deno check persona/*.ts core/*.ts",
+    "matrix": "deno run --allow-env --allow-read tools/matrix.ts"
+  }
+}

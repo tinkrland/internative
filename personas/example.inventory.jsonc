@@ -1,0 +1,83 @@
+// where her clothes come from. three of these were written by hand, one is a
+// photo of a dress that nobody has named yet, one came out of a closet app as a
+// screenshot, and one is a look she liked in a shop window.
+{
+  "persona": "example",
+  "items": [
+    {
+      "id": "oxblood-slip",
+      "kind": "dress",
+      "detail": "oxblood silk slip, mid calf",
+      "layer": "base",
+      "palette": ["#5a1f22", "#2b2b2b"],
+      "source": "authored",
+      "state": "confirmed",
+      "seasons": ["warm", "cold"]
+    },
+    {
+      "id": "grey-wool",
+      "kind": "overcoat",
+      "detail": "charcoal wool overcoat, three quarter",
+      "layer": "outer",
+      "palette": ["#3a3a3c"],
+      "source": "authored",
+      "state": "confirmed",
+      "seasons": ["cold"]
+    },
+    {
+      "id": "black-boots",
+      "kind": "boots",
+      "detail": "black leather ankle boots, block heel",
+      "layer": "footwear",
+      "palette": ["#141414"],
+      "source": "authored",
+      "state": "confirmed",
+      "seasons": ["cold"]
+    },
+    {
+      "id": "camel-coat",
+      "kind": "coat",
+      "detail": "camel wool wrap coat, belted",
+      "layer": "outer",
+      "palette": ["#c19a6b"],
+      "source": "whering",
+      "state": "confirmed",
+      "ref": "captures/whering-camel-coat.png",
+      "seasons": ["cold"]
+    },
+    {
+      "id": "ltk-cream-knit",
+      "kind": "knit",
+      "detail": "cream ribbed merino knit, cropped",
+      "layer": "mid",
+      "palette": ["#efe6d2"],
+      "source": "ltk",
+      "state": "confirmed",
+      "ref": "https://shop.my.co/look/cream-knit",
+      "seasons": ["cold"]
+    },
+    {
+      "id": "gold-slip-photo",
+      "kind": "",
+      "detail": "",
+      "layer": "base",
+      "palette": [],
+      "source": "photo",
+      "state": "candidate",
+      "ref": "incoming_files/gold-slip.jpg"
+    }
+  ],
+  "media": [
+    {
+      "id": "post-0912",
+      "surface": "static",
+      "shows": ["oxblood-slip", "black-boots"],
+      "place": "bathroom-mirror"
+    },
+    {
+      "id": "reel-0914",
+      "surface": "shortform",
+      "shows": ["oxblood-slip", "camel-coat"]
+    }
+  ]
+}
