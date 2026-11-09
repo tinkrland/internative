@@ -39,6 +39,44 @@ same picture, not a convincing cousin of it.
 `avoid` is required and not decorative. a garment that refuses nothing drifts toward
 the model's average, which is a different garment by Thursday.
 
+## the site taxonomy: accessories are a body, not a slot
+
+"accessory" hid the real axis. a site answers where a thing is worn, and every site
+declares the slots it holds, so a belt on the neck is refused by name rather than drawn:
+
+| site | slots |
+|---|---|
+| `hair` | hat, beanie, beret, cap, hairband, bandana, scrunchie, clip |
+| `face/eyes` | glasses, sunglasses, vr |
+| `face/nose` | nostril, septum, bridge |
+| `face/lips` | labret, lipring |
+| `ears/piercings` | lobe, helix, tragus, conch, daith, rook, industrial |
+| `ears/hearing` | earbud, headphones, hearingaid, earplug |
+| `neck` | necklace, choker, pendant, scarf |
+| `waist` | belt, chain |
+| `bags` | tote, shoulder, clutch, backpack |
+| `wrists` | watch, bracelet |
+| `hands` | ring |
+| `ankles` | anklet |
+
+`ears/piercings` and `ears/hearing` are separate on purpose: an earring and an earbud are
+in the same place and never the same object. paired sites (ears, hands, wrists, nostrils)
+demand a side, and occupancy is one item per `(site, slot, side)`, so she cannot wear two
+beanies and can wear two lobe earrings. the check runs across all three modules at once,
+because a collision does not care which module proposed the second beanie.
+
+## material and style: silver minimalistic, gold chunky, clay colourful
+
+the adjectives decide whether two descriptions are one object. so a piece carries a
+**material** and a **style**, and both are validated:
+
+- material is a substance, and the 16 CFR 23 rule applies only where a fineness exists.
+  `18k yellow gold`, `sterling silver`, `bronze clay`, `enamel on brass` pass. `gold`
+  (no karat) and `gold tone` are refused. clay needs no karat because it has none.
+- style is a vocabulary, one to three words: minimal, minimalistic, delicate, chunky,
+  statement, sculptural, colourful, rustic, organic, beaded, hammered, polished, matte,
+  glossy, brushed, engraved, vintage.
+
 ## three kinds of thing, and why the wardrobe needed the distinction
 
 a coat is **styling**: it changes daily, and a shot may re-roll it from a locked set. a
@@ -76,9 +114,12 @@ haircut.
 | file | what it owns |
 |---|---|
 | `module.ts` | garments, plates, the outfit lock |
-| `accessory.ts` | devices and their dressings, the upgrade gate |
+| `accessory.ts` | devices and their dressings, the upgrade gate, and where a worn device sits |
 | `jewelry.ts` | fixed and styling pieces, the series gate |
 | `hair.ts` | the cut, the up-do toggle, the restyle gate |
+| `sites.ts` | the body taxonomy, occupancy, sides |
+| `style.ts` | material and style vocabularies, the fineness rule |
+| `worn.ts` | hats, bandanas, belts, totes: site items that are neither device nor jewelry |
 | `look.ts` | the composition, and the two digests |
 
 ## corpus

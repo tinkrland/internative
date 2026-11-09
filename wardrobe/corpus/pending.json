@@ -69,6 +69,19 @@
       ],
       "asked_for": "the v1 run labelled all 40 rows the same object and produced no device swap at all, so v2 asks for a fixed 12/12 split and plain JSON. grounded by continuity practice: a device is a tracked prop, a case is styling.",
       "status": "running"
+    },
+    {
+      "name": "jewelry_style_contrast",
+      "dataset_id": "15b94284-acc9-4543-83e2-11f8313f1c89",
+      "rows": 24,
+      "fields": [
+        "piece",
+        "material",
+        "style",
+        "worn"
+      ],
+      "asked_for": "anne's vocabulary, tested: silver minimalistic vs gold chunky vs clay colourful are different objects. counted 12/12 split, plain json, at most two rows per piece.",
+      "status": "running"
     }
   ]
 }

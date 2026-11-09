@@ -3,6 +3,7 @@ import { loadPersonaFile } from "../persona/loader.ts";
 import { lockOutfit, type GarmentItem } from "../wardrobe/module.ts";
 import { lockAccessory, type Accessory } from "../wardrobe/accessory.ts";
 import { lockJewelry, type JewelryPiece } from "../wardrobe/jewelry.ts";
+import { lockWorn, type WornItem } from "../wardrobe/worn.ts";
 import { lockHair, type Hairstyle } from "../wardrobe/hair.ts";
 import { identityDrift, identityProblems, lookProblems, planLook, seriesLookProblems } from "../wardrobe/look.ts";
 import { lockPlace, type Place } from "../environment/module.ts";
@@ -39,13 +40,23 @@ const phone = (over: Partial<Accessory> = {}): Accessory => ({
 });
 
 const band = (over: Partial<JewelryPiece> = {}): JewelryPiece => ({
-  id: "wedding-band", name: "the band", piece: "plain court band, 2mm", metal: "18k yellow gold", stone: "none",
-  site: "finger", worn: "left ring finger", persistence: "fixed", avoid: ["stones", "engraving"], plates: plates("band"), ...over,
+  id: "wedding-band", name: "the band", piece: "plain court band, 2mm",
+  site: "hands", slot: "ring", side: "left",
+  material: "18k yellow gold", style: ["minimal"], worn: "left ring finger",
+  persistence: "fixed", avoid: ["stones", "engraving"], plates: plates("band"), ...over,
 });
 
 const hoops = (over: Partial<JewelryPiece> = {}): JewelryPiece => ({
-  id: "huggie-hoops", name: "the hoops", piece: "huggie hoops, 8mm", metal: "sterling silver", stone: "none",
-  site: "ear", worn: "both earlobes", persistence: "styling", avoid: ["pearls"], plates: plates("hoops"), ...over,
+  id: "huggie-hoops", name: "the hoops", piece: "huggie hoops, 8mm",
+  site: "ears/piercings", slot: "lobe", side: "both",
+  material: "sterling silver", style: ["minimal"], worn: "both earlobes",
+  persistence: "styling", avoid: ["pearls"], plates: plates("hoops"), ...over,
+});
+
+const beanie = (over: Partial<WornItem> = {}): WornItem => ({
+  id: "the-beanie", name: "black ribbed beanie", kind: "beanie", site: "hair", slot: "beanie",
+  material: "merino wool", style: ["minimal", "matte"], colour: { name: "black", hex: "#101010" },
+  worn: "pulled to the brow", persistence: "styling", avoid: ["pom pom"], plates: plates("beanie"), ...over,
 });
 
 const bob = (over: Partial<Hairstyle> = {}): Hairstyle => ({
@@ -148,6 +159,52 @@ Deno.test("a dressing she does not own fails the look, not the render", async ()
   await assertRejects(() => planLook("tuesday-look", parts), Error, "not a dressing she owns");
 });
 
+Deno.test("site items are in the block, in body order, and fixed ones join the identity", async () => {
+  const parts = { ...(await world()), worn: [await lockWorn(beanie({ persistence: "fixed" }))] };
+  const look = await planLook("winter-look", parts);
+  assertEquals(lookProblems(look), []);
+  const order = look.value.lines.map((line) => line.part);
+  assertEquals(order, ["outfit", "accessory", "jewelry", "jewelry", "worn", "hair"]);
+  assert(look.block.includes("beanie: black ribbed beanie"));
+  assertEquals(look.value.identity.fixed_worn.length, 1, "a beanie she wears every winter is identity");
+});
+
+Deno.test("two beanies are refused whichever module proposed the second one", async () => {
+  const parts = {
+    ...(await world()),
+    worn: [await lockWorn(beanie()), await lockWorn(beanie({ id: "the-other-beanie", name: "grey ribbed beanie" }))],
+  };
+  await assertRejects(() => planLook("winter-look", parts), Error, "2 things on the beanie");
+});
+
+Deno.test("a lobster earring and an earbud share an ear and not a place", async () => {
+  const parts = {
+    ...(await world()),
+    accessories: [
+      await lockAccessory({
+        id: "her-earbuds", name: "her earbuds", carries: "audio",
+        device: { make: "apple", model: "airpods pro 2", colour: "white" }, worn: "both ears, seated",
+        site: "ears/hearing", slot: "earbud", side: "both" as const,
+        dressings: [], avoid: ["silicone tips showing"], plates: plates("earbuds"),
+      }),
+    ],
+  };
+  const look = await planLook("commute-look", parts);
+  assertEquals(lookProblems(look), []);
+  assert(look.block.includes("device: apple airpods pro 2"));
+  assert(look.block.includes("piece: huggie hoops, 8mm"));
+});
+
+Deno.test("an earbud on a wrist is refused, because a device knows where it sits", async () => {
+  const earbuds = {
+    id: "her-earbuds", name: "her earbuds", carries: "audio" as const,
+    device: { make: "apple", model: "airpods pro 2", colour: "white" }, worn: "seated",
+    site: "wrists", slot: "earbud", side: "both" as const,
+    dressings: [], avoid: ["tips"], plates: plates("earbuds"),
+  };
+  await assertRejects(() => lockAccessory(earbuds), Error, "does not sit on wrists/earbud");
+});
+
 Deno.test("a dressed shot puts the whole look on the wardrobe axis", async () => {
   const persona = await loadPersonaFile("personas/example.persona.jsonc");
   const place = await lockPlace({
@@ -172,6 +229,6 @@ Deno.test("a dressed shot puts the whole look on the wardrobe axis", async () =>
   });
   assertEquals(shot.axes.wardrobe, look.block);
   assert(shot.prompt.includes("wedding-band") === false, "the block is what ships, not the ids");
-  assert(shot.prompt.includes("metal: 18k yellow gold"));
+  assert(shot.prompt.includes("material: 18k yellow gold"));
   assert(shot.prompt.startsWith("character:"));
 });

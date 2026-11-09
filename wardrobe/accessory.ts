@@ -19,10 +19,11 @@
 
 import { digestOf, idProblems, lockProblems, movedFields, seedFrom, type Lock } from "../lock.ts";
 import { plateProblems, type Plate } from "./module.ts";
+import { siteProblems, type Side } from "./sites.ts";
 
-export type Carries = "phone" | "watch" | "bag" | "eyewear";
+export type Carries = "phone" | "watch" | "bag" | "eyewear" | "audio" | "camera";
 
-export const CARRIES: Carries[] = ["phone", "watch", "bag", "eyewear"];
+export const CARRIES: Carries[] = ["phone", "watch", "bag", "eyewear", "audio", "camera"];
 
 export interface Device {
   make: string;
@@ -41,6 +42,33 @@ export const DRESSING_SLOTS: Record<Carries, DressingSlot[]> = {
   watch: ["strap"],
   bag: ["charm"],
   eyewear: ["chain"],
+  audio: ["case", "charm"],
+  camera: ["strap", "charm"],
+};
+
+// where a device sits, when it sits anywhere. a phone and a camera are carried rather than
+// worn, so they hold no site and collide with nothing; a watch and a pair of earbuds are on
+// a body part that wardrobe/sites.ts already knows about, and one earbud per ear is the
+// occupancy rule doing its job.
+export const CARRIES_SITES: Record<Carries, { site: string; slot: string }[]> = {
+  phone: [],
+  camera: [],
+  watch: [{ site: "wrists", slot: "watch" }],
+  eyewear: [
+    { site: "face/eyes", slot: "glasses" },
+    { site: "face/eyes", slot: "sunglasses" },
+  ],
+  bag: [
+    { site: "bags", slot: "tote" },
+    { site: "bags", slot: "shoulder" },
+    { site: "bags", slot: "clutch" },
+    { site: "bags", slot: "backpack" },
+  ],
+  audio: [
+    { site: "ears/hearing", slot: "earbud" },
+    { site: "ears/hearing", slot: "headphones" },
+    { site: "ears/hearing", slot: "hearingaid" },
+  ],
 };
 
 export interface Dressing {
@@ -64,6 +92,10 @@ export interface Accessory {
   plates_missing_reason?: string;
   // a device change is an event, not a version bump on its own
   upgrade?: { on: string; why: string };
+  // set when the device is worn rather than carried, so the occupancy rule can see it
+  site?: string;
+  slot?: string;
+  side?: Side;
 }
 
 const VAGUE_MODELS = ["phone", "device", "watch", "bag", "glasses", "eyewear", "generic", "unknown", "tbd", "new"];
@@ -97,6 +129,18 @@ export function accessoryProblems(acc: Accessory): string[] {
       problems.push(`${who}: a ${dressing.slot} does not go on ${acc.carries}. allowed: ${allowed.join(", ") || "none"}`);
     }
     if ((dressing.name ?? "").trim().length < 3) problems.push(`${who}: dressing "${dressing.id}" needs a name a model can draw`);
+  }
+  if (acc.site) {
+    const allowed = CARRIES_SITES[acc.carries] ?? [];
+    if (!allowed.length) {
+      problems.push(`${who}: a ${acc.carries} is carried, so it has no site. drop it and say where it is carried`);
+    } else if (!allowed.some((entry) => entry.site === acc.site && entry.slot === acc.slot)) {
+      problems.push(
+        `${who}: a ${acc.carries} does not sit on ${acc.site}/${acc.slot}. it sits on ${allowed.map((e) => `${e.site}/${e.slot}`).join(", ")}`,
+      );
+    } else {
+      problems.push(...siteProblems(acc.site, acc.slot ?? "", acc.side ?? "none", who));
+    }
   }
   if (acc.upgrade) {
     if (!/^\d{4}-\d{2}-\d{2}$/.test(acc.upgrade.on ?? "")) problems.push(`${who}: upgrade date must be yyyy-mm-dd`);

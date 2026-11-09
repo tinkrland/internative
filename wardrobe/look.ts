@@ -19,16 +19,19 @@ import type { JewelryLock } from "./jewelry.ts";
 import { jewelryBlock } from "./jewelry.ts";
 import type { OutfitLock } from "./module.ts";
 import { outfitBlock } from "./module.ts";
+import { occupancyProblems, SITE_PATHS, type Side } from "./sites.ts";
+import { wornBlock, type WornLock } from "./worn.ts";
 
 export interface LookLine {
-  part: "outfit" | "accessory" | "jewelry" | "hair";
+  part: "outfit" | "accessory" | "jewelry" | "worn" | "hair";
   id: string;
   block: string;
 }
 
 export interface IdentityParts {
   devices: { id: string; make: string; model: string; colour: string; size?: string }[];
-  fixed_jewelry: { id: string; piece: string; metal: string; stone: string; site: string }[];
+  fixed_jewelry: { id: string; piece: string; material: string; style: string[]; site: string; slot: string; side: string }[];
+  fixed_worn: { id: string; kind: string; material: string; style: string[]; site: string; slot: string; side: string }[];
   hair: { id: string; hair: string; parting: string; texture: string; finish: string };
 }
 
@@ -56,6 +59,8 @@ export interface LookParts {
   // accessory id -> dressing id, or "none" for a bare device
   dressed?: Record<string, string>;
   jewelry?: JewelryLock[];
+  // site items that are neither devices nor jewelry: hats, beanies, bandanas, belts, totes
+  worn?: WornLock[];
   hair: HairLock;
   // worn up. a toggle, not a version.
   up?: boolean;
@@ -74,11 +79,17 @@ function identityOf(parts: LookParts): IdentityParts {
     .filter((lock) => lock.value.persistence === "fixed")
     .map((lock) => lock.value)
     .sort((a, b) => a.id.localeCompare(b.id))
-    .map((j) => ({ id: j.id, piece: j.piece, metal: j.metal, stone: j.stone, site: j.site }));
+    .map((j) => ({ id: j.id, piece: j.piece, material: j.material, style: j.style, site: j.site, slot: j.slot, side: j.side ?? "none" }));
+  const fixedWorn = (parts.worn ?? [])
+    .filter((lock) => lock.value.persistence === "fixed")
+    .map((lock) => lock.value)
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((w) => ({ id: w.id, kind: w.kind, material: w.material, style: w.style, site: w.site, slot: w.slot, side: w.side ?? "none" }));
   const hair = parts.hair.value;
   return {
     devices,
     fixed_jewelry: fixed,
+    fixed_worn: fixedWorn,
     hair: { id: hair.id, hair: hair.hair, parting: hair.parting, texture: hair.texture, finish: hair.finish },
   };
 }
@@ -103,14 +114,30 @@ export async function planLook(id: string, parts: LookParts, version = 1): Promi
     }
   }
   for (const lock of jewelry) lines.push({ part: "jewelry", id: lock.id, block: jewelryBlock(lock.value) });
+  const worn = [...(parts.worn ?? [])].sort(
+    (a, b) => SITE_PATHS.indexOf(a.value.site) - SITE_PATHS.indexOf(b.value.site) || a.id.localeCompare(b.id),
+  );
+  for (const lock of worn) lines.push({ part: "worn", id: lock.id, block: wornBlock(lock.value) });
   try {
     lines.push({ part: "hair", id: parts.hair.id, block: hairVariantBlock(parts.hair, parts.up ?? false) });
   } catch (error) {
     problems.push((error as Error).message);
   }
+  // the occupancy gate runs across every module at once: an earring and an earbud are on
+  // the same ear, and a second beanie is a second beanie whichever module made it.
+  const sited: { site: string; slot: string; side?: Side }[] = [
+    ...accessories.filter((lock) => lock.value.site).map((lock) => ({
+      site: lock.value.site!,
+      slot: lock.value.slot ?? "",
+      side: lock.value.side,
+    })),
+    ...jewelry.map((lock) => ({ site: lock.value.site, slot: lock.value.slot, side: lock.value.side })),
+    ...worn.map((lock) => ({ site: lock.value.site, slot: lock.value.slot, side: lock.value.side })),
+  ];
+  problems.push(...occupancyProblems(sited));
   if (problems.length) throw new Error(`look "${id}": cannot plan:\n  ${problems.join("\n  ")}`);
 
-  const identity = identityOf({ ...parts, accessories, jewelry });
+  const identity = identityOf({ ...parts, accessories, jewelry, worn });
   const value: LookValue = { lines, identity };
   const digest = await digestOf({ kind: "look", id, value });
   const identity_digest = await digestOf(identity);
@@ -141,12 +168,13 @@ export async function identityProblems(lock: Look): Promise<string[]> {
 const IDENTITY_LABELS: Record<string, string> = {
   devices: "device",
   fixed_jewelry: "fixed jewelry",
+  fixed_worn: "fixed item",
   hair: "hair",
 };
 
 export function identityDrift(before: IdentityParts, after: IdentityParts): string[] {
   const moved: string[] = [];
-  for (const key of ["devices", "fixed_jewelry", "hair"] as const) {
+  for (const key of ["devices", "fixed_jewelry", "fixed_worn", "hair"] as const) {
     const a = before[key] as unknown as unknown[];
     const b = after[key] as unknown as unknown[];
     const listA = Array.isArray(a) ? a : [a];
