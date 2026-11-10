@@ -96,12 +96,26 @@ media/       how pictures are sourced: render vs generate, and the closet
 publishing/  where a post can go, what each place requires, who has an account, and the gate it passes
 generation/  provider adapters, observations, verification
 core/        the surface contract every branch implements
-memory/      the memory client and the scope rule, one per surface call
+memory/      the memory client, the scope rule, and the mem0 + falkordb plan
+knowledge/   what she knows, on three human axes (origin, articulation, function)
+             plus the two a machine forces on you (evidence, volatility)
+interests/   what she reaches for when nobody is paying her to
+access/      what she is allowed to touch: tool grants, never knowledge
 agentid/     the agent's own ids: signup, verification, consented browser forms,
              and the distribution flows it can drive without help
 tools/       sync, checkers, reports
 tests/       the suite, one file per contract
 docs/        architecture, coverage, roadmap, and the oss survey
+```
+
+two more branches carry no code yet and are deliberately empty:
+
+```
+research     questions with sources, before they become code
+revenue      numbers with receipts, kept apart from the product questions
+```
+
+```
 ```
 
 ## running it
