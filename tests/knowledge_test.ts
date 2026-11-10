@@ -92,7 +92,7 @@ Deno.test("what expires says when, and her own taste never expires", () => {
 
 Deno.test("origin and source have to agree", () => {
   const experienced = base({ origin: "experienced", volatility: "durable", review_after: undefined });
-  assert(itemProblems(experienced).some((p) => p.includes("without an episode")));
+  assert(itemProblems(experienced).some((p) => p.includes("experienced needs an episode")));
   const studied = base({ origin: "studied", source: { kind: "conversation", ref: "t", at: "2026-11-01" } });
   assert(itemProblems(studied).some((p) => p.includes("needs the document")));
 });
