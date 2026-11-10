@@ -1,29 +1,31 @@
-// knowledge is not one thing, and a persona that stores it as one thing is a search box.
+// an item of knowledge, checked by the three axes it sits on.
 //
-// the human split this borrows from is older than the software: a priori against
-// empirical (what she brought against what the world gave her), explicit against tacit
-// (what she can tell against what she can only do: Ryle's knowing-how, Polanyi's "we can
-// know more than we can tell"), and by function, factual against procedural against
-// explanatory against acquaintance (Russell's knowledge OF a thing, by meeting it,
-// against knowledge about it, by description).
+// the axes live in their own folders because each has its own failure mode and its own
+// rules: origin/ decides what receipt a claim needs, articulation/ decides whether it may
+// be written down at all, function/ decides what shape it takes. this file composes them
+// and adds the parts that belong to no single axis but to the machine: evidence, volatility,
+// scope.
 //
-// two axes are added because a machine makes them impossible to ignore, and both are
-// failure modes this repo has already met once in another layer:
+// two of those exist because a machine forces them, and both are failure modes this repo has
+// already met in another layer:
 //
 //   evidence    how do we know. a claim with no source is a claim a later run will
 //               contradict with another claim with no source, and nothing will notice.
 //   volatility  does it expire. a taste does not; a price, a phone model and a room's
 //               furniture arrangement do.
+//
+// what she can REACH is not here: that is access/, because knowing how to do a thing and
+// being allowed to do it are different questions with different answers.
 
 import { sha256Hex } from "../persona/aipn.ts";
+import { originProblems, type Origin } from "./origin/module.ts";
+import { articulationProblems, type Articulation } from "./articulation/module.ts";
+import { functionProblems, type KnowledgeFunction } from "./function/module.ts";
 
-export type Origin = "experienced" | "testimony" | "studied";
-// innate is deliberately absent: there is nowhere to store it. her architecture is
-// declared in the pack (model, version), never remembered as a fact, because a memory
-// that can be edited is not an architecture.
+export type { Origin, Articulation, KnowledgeFunction };
+// the earlier name, kept so callers do not have to care about the rename
+export type Function = KnowledgeFunction;
 
-export type Articulation = "explicit" | "implicit_tacit" | "inherent_tacit";
-export type Function = "propositional" | "procedural" | "explanatory" | "acquaintance";
 export type Evidence = "verified" | "reported" | "inferred" | "assumed";
 export type Volatility = "durable" | "seasonal" | "volatile";
 export type Scope = "persona" | "owner" | "world" | "project";
@@ -41,19 +43,20 @@ export interface KnowledgeItem {
   subject: string;
   origin: Origin;
   articulation: Articulation;
-  function: Function;
+  function: KnowledgeFunction;
   evidence: Evidence;
   volatility: Volatility;
   scope: Scope;
   at: string;
-  // stated knowledge: propositional and explanatory carry it, tacit may not, because a
-  // tacit item that has been written down as prose has stopped being tacit
+  // stated knowledge: propositional carries it, explanatory carries it with a phenomenon,
+  // tacit may not carry it at all
   claim?: string;
   phenomenon?: string;
   // acquainted knowledge names the thing met, never a claim about it
   entity?: string;
   // tacit and procedural point at the demonstration: a procedure, an example, an eval
   demonstrated_by?: string;
+  reflection?: string;
   source?: Source;
   basis?: string;
   why_assumed?: string;
@@ -72,35 +75,11 @@ export function itemProblems(item: KnowledgeItem, ids: Set<string> = new Set()):
   if (!SLUG.test(item.id ?? "")) problems.push(`id: "${item.id}" is not a slug`);
   if ((item.subject ?? "").trim().length < 3) problems.push("subject: what is this knowledge about");
   if (!ISO.test(item.at ?? "")) problems.push("at: when was this learned, as a date");
-  if (!["experienced", "testimony", "studied", "innate"].includes(item.origin)) {
-    problems.push(`origin: "${item.origin}" is not one of experienced, testimony, studied`);
-  }
-  if ((item.origin as string) === "innate") {
-    problems.push("origin: an innate item is not storable. her architecture is declared in the pack, not remembered: a fact that can be edited is not an architecture");
-  }
 
-  // the articulation axis, enforced
-  const tacit = item.articulation === "implicit_tacit" || item.articulation === "inherent_tacit";
-  if (!tacit && item.function !== "acquaintance" && !(item.claim ?? "").trim()) {
-    problems.push(`function: a ${item.function} item with no claim is a label, not knowledge`);
-  }
-  if (tacit && (item.claim ?? "").trim()) {
-    problems.push("articulation: a tacit item may not carry a written claim. if it can be stated it is explicit; if it cannot, point at the demonstration");
-  }
-  if (tacit && !(item.demonstrated_by ?? "").trim()) {
-    problems.push("articulation: tacit knowledge is held by a demonstration (procedure, example, eval). without one this is a claim wearing a costume");
-  }
-
-  // the function axis, enforced
-  if (item.function === "procedural" && !(item.demonstrated_by ?? "").trim()) {
-    problems.push("function: procedural knowledge points at the steps or the skill, not at a sentence");
-  }
-  if (item.function === "explanatory" && !(item.phenomenon ?? "").trim()) {
-    problems.push("function: explanatory knowledge names the phenomenon it explains");
-  }
-  if (item.function === "acquaintance" && !(item.entity ?? "").trim()) {
-    problems.push("function: acquaintance names the thing she has met, not a fact about it");
-  }
+  // the three axes, each in its own folder
+  problems.push(...originProblems(item));
+  problems.push(...articulationProblems(item));
+  problems.push(...functionProblems(item));
 
   // evidence, which is where a machine taxonomy has to leave the human one
   if (item.evidence === "verified" && !(item.source?.ref ?? "").trim()) {
@@ -125,17 +104,6 @@ export function itemProblems(item: KnowledgeItem, ids: Set<string> = new Set()):
   }
   if (item.volatility !== "durable" && item.scope === "persona") {
     problems.push("volatility: her own taste does not expire. a persona fact that expires is a fact about the world that got filed wrong");
-  }
-
-  // sources have to exist for the origins that are made of them
-  if (item.origin === "experienced" && !["experience", "measurement"].includes(item.source?.kind ?? "")) {
-    problems.push("origin: experienced without an episode is a story she was told about herself");
-  }
-  if (item.origin === "studied" && item.source?.kind !== "document") {
-    problems.push("origin: studied needs the document it was studied from");
-  }
-  if (item.origin === "testimony" && !["conversation", "document"].includes(item.source?.kind ?? "")) {
-    problems.push("origin: testimony names who told her, or what she read");
   }
 
   if (!["persona", "owner", "world", "project"].includes(item.scope)) {
