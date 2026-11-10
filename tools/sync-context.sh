@@ -23,8 +23,8 @@ set -e
 git fetch origin main
 # the synced folders become exactly main's content, so a file deleted on the head does
 # not live forever on a mouth
-git rm -rq --ignore-unmatch persona core memory knowledge access media generation publishing personas >/dev/null 2>&1 || true
-git checkout FETCH_HEAD -- persona core memory knowledge access media generation publishing personas requirements.txt tools/sync-context.sh
+git rm -rq --ignore-unmatch persona core memory knowledge interests access media generation publishing personas >/dev/null 2>&1 || true
+git checkout FETCH_HEAD -- persona core memory knowledge interests access media generation publishing personas requirements.txt tools/sync-context.sh
 python3 -m pip install -q -r requirements.txt 2>/dev/null || \
   echo "clawbuzz: retelldb not installed here (no python); the pin in requirements.txt still records the version."
 echo "head synced: persona/, core/, memory/, knowledge/ and access/ are byte-identical to main, retelldb pinned per requirements.txt."
