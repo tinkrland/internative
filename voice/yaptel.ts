@@ -23,6 +23,9 @@ export type Coverage = "real" | "sandbox" | "absent";
 export interface YaptelProfile {
   id: string;
   version: string;
+  // whose voice this measures. one profile describes one person, and a compiler that ignores
+  // this can rent a voice out to anybody, which is an impression rather than a reconstruction.
+  subject?: string;
   // measured at, by what, and against how much material
   measured_from: { minutes: number; sources: string[]; method: "real_sample_comparison" | "llm_judge" };
   lingvist?: {
