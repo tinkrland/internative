@@ -1,0 +1,26 @@
+{
+  "runs": [
+    {
+      "name": "prosody_register_drift",
+      "dataset_id": "66987601-9f9d-44a9-b41a-cd1208e69bd1",
+      "rows": 12,
+      "model": "gemma-4-31b-it",
+      "launched": "2026-11-10T13:44Z",
+      "status": "running",
+      "question": "does a reworded description of a measured voice keep its measurements",
+      "block_lines": [
+        "medium",
+        "f0_median",
+        "f0_span",
+        "rate",
+        "pause_median"
+      ],
+      "split": "6 of 12 keep every value, 6 change exactly one (rate or f0_span)",
+      "why": "the same contrast as the wardrobe corpora, moved to prosody: a rewording that drops a unit or rounds a span is drift even when the prose reads the same",
+      "curation": "tools/corpus-curate.ts style: positive evidence only, a claimed change is kept only if the block value is gone AND a competing value arrived with its unit"
+    }
+  ],
+  "not_used": {
+    "autoscientist": "GET /api/v1/autoscientist lists fine-tuning runs (dataset, model, iterations, target_win_rate, best_win_rate, lora hyperparams). it co-optimises data and a training recipe, it does not read literature. the honest use is training a small drift classifier on the curated corpora, not research."
+  }
+}
