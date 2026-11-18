@@ -1,4 +1,4 @@
-import { assertEquals } from "jsr:@std/assert@1";
+import { assertEquals, assert } from "jsr:@std/assert@1";
 import {
   AUTOMATION_POLICY,
   claimProblems,
@@ -7,8 +7,7 @@ import {
   distributionBrief,
   distributor,
   DISTRIBUTORS,
-  planDistribution,
-} from "../music/distribution.ts";
+  planDistribution, taxProblems, payoutGate } from "../music/distribution.ts";
 import { STREAMING_TARGET } from "../music/master.ts";
 import type { Release } from "../music/release.ts";
 import type { ArtistIdentity } from "../music/distribution.ts";
@@ -57,8 +56,12 @@ Deno.test("a run plans a browser session that stops where a person has to sign",
   assertEquals(run.start_url, "https://routenote.com");
   assertEquals(run.steps[0].action, "navigate");
   assertEquals(run.stop_reasons.length, 3);
-  assertEquals(run.steps.some((s) => s.target === "tax details and payout" && s.action === "stop_for_human"), true);
   assertEquals(run.steps.some((s) => s.target === "final submit" && s.action === "stop_for_human"), true);
+  // the money stop exists, and it comes after the release is out, not before it
+  const targets = run.steps.map((s) => s.target);
+  const submit = targets.indexOf("final submit");
+  const money = targets.findIndex((t) => t.startsWith("payout method and tax details"));
+  assertEquals(money > submit, true, "tax belongs to the payout gate, after delivery");
   const brief = distributionBrief(run);
   assertEquals(brief.includes(AUTOMATION_POLICY), true);
   assertEquals(brief.includes("Example"), true);
@@ -85,4 +88,37 @@ Deno.test("the artist profile is claimable only after something is live, and onl
   assertEquals(claimProblems({ aipn: "AIPN-000001", platform: "spotify", claimed: false }, [{ distributor: "routenote", isrc: "GBUM72600001", release_title: "x", live: true }]), []);
   assertEquals(claimProblems({ aipn: "AIPN-000001", platform: "spotify", claimed: true }, []).some((p) => p.includes("has a url")), true);
   assertEquals(claimProblems({ aipn: "spotify", platform: "spotify", claimed: false }, []).some((p) => p.includes("numbered internative")), true);
+});
+
+Deno.test("no distributor asks for a tax form before a release exists", () => {
+  for (const d of DISTRIBUTORS) {
+    assertEquals(taxProblems(d), [], d.id);
+    assertEquals(d.upload_requires.some((r) => /tax|w-?8|w-?9|vat/i.test(r)), false, d.id);
+  }
+});
+
+Deno.test("the tax placement is a payout gate with a source, on every verified distributor", () => {
+  for (const d of DISTRIBUTORS.filter((x) => x.verified)) {
+    assertEquals(d.payout.tax.required_at, "first_payout", d.id);
+    assertEquals(Boolean(d.payout.tax.note.trim()), true, d.id);
+    assertEquals(Boolean(d.payout.tax.evidence.trim()), true, d.id);
+  }
+});
+
+Deno.test("nobody is owed money below the threshold, so nothing needs signing", () => {
+  const routenote = distributor("routenote")!;
+  const early = payoutGate(routenote, 12.4);
+  assertEquals(early.due, false);
+  assertEquals(early.stops, []);
+  assert(early.why.includes("nothing is payable"));
+
+  const due = payoutGate(routenote, 50);
+  assertEquals(due.due, true);
+  assertEquals(due.stops.length, 2);
+  assert(due.stops[1].includes("tax details"));
+});
+
+Deno.test("a distributor that moved tax into the upload list is refused", () => {
+  const wrong = { ...distributor("routenote")!, upload_requires: ["legal name", "tax form"] };
+  assert(taxProblems(wrong).some((p) => p.includes("is listed as an upload requirement")));
 });

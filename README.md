@@ -52,11 +52,15 @@ that can be read, reviewed and re-performed without it.
 
 there is no open upload endpoint in the music chain. `music/distribution.ts` holds the
 free distributors as data (what they keep, which stores, what they demand) and plans a
-**browser run** against one of them: navigate, fill, upload, and three hard stops. the
+**browser run** against one of them: navigate, fill, upload, and the hard stops a person has to make. the
 policy is not negotiable and it is a line of code rather than a paragraph:
 a session may create the draft, fill the metadata and upload the files, while account
-creation, the tax form and the final submit belong to the human behind the internative,
-because those are the human's liability. `claimProblems` waits until a release is
+creation and the final submit belong to the human behind the internative, because those are
+the human's liability. the payout details and the tax form are the human's too, but they are
+a **payout gate and not an upload gate**: none of the services read here asks for tax before a
+release exists, so a release is delivered first and the money questions arrive when somebody
+is actually owed something. `payoutGate` decides that, and `taxProblems` refuses any entry that
+moves tax back into the upload list without a source. `claimProblems` waits until a release is
 actually live before a spotify for artists profile can be claimed, and one isrc may
 only be live through one distributor, since two claims on one recording gets both
 rejected.
