@@ -18,6 +18,28 @@
       "split": "6 of 12 keep every value, 6 change exactly one (rate or f0_span)",
       "why": "the same contrast as the wardrobe corpora, moved to prosody: a rewording that drops a unit or rounds a span is drift even when the prose reads the same",
       "curation": "tools/corpus-curate.ts style: positive evidence only, a claimed change is kept only if the block value is gone AND a competing value arrived with its unit"
+    },
+    {
+      "name": "style_drift_pairs",
+      "dataset_id": "7e40c30c-dc99-4474-a55a-8edeb0ac000d",
+      "rows": 12,
+      "model": "gemma-4-31b-it",
+      "launched": "2026-11-18T12:45Z",
+      "status": "running",
+      "question": "does a rewrite of a caption keep a measured style profile, or only look like it does",
+      "block_lines": [
+        "register",
+        "sentence_length",
+        "function_word_rate",
+        "contraction_rate",
+        "ellipsis_rate",
+        "hedge_rate",
+        "emoji_rate",
+        "yule_k"
+      ],
+      "split": "6 of 12 keep every value, 6 change exactly one of sentence_length, ellipsis_rate, hedge_rate, contraction_rate",
+      "why": "stylometry is the writing half of the same problem the wardrobe corpora test on the visual half: whether a reworded description still measures the same person",
+      "curation": "a changed_feature claim is kept only if the prose no longer supports that value; a same claim is kept only if nothing measured moved"
     }
   ],
   "not_used": {
