@@ -41,10 +41,18 @@ export function interiorWords(text: string): string[] {
   return INTERIOR_STEMS.filter((stem) => new RegExp(`\\b${stem}`, "i").test(lower));
 }
 
+// what the movement is FOR, in the taxonomy the literature actually uses (Ekman and Friesen:
+// emblems, illustrators, affect displays, regulators, adaptors). the six kinds say where and
+// how; this says what job it does, and the jobs fail differently.
+export type MannerismFunction = "emblem" | "illustrator" | "affect_display" | "regulator" | "adaptor";
+
 export interface Mannerism {
   id: string;
   name: string;
   kind: MannerismKind;
+  // optional: an item with no function is placed but unexplained, which is honest for a
+  // habit nobody has classified yet.
+  function?: MannerismFunction;
   // where on the body it happens, in the wardrobe's site vocabulary, so a plant is placed
   site: string;
   // what the camera sees: a movement, a hold, a rhythm
@@ -56,6 +64,9 @@ export interface Mannerism {
   surfaces?: string[];
   // the mannerisms it cannot coexist with, by id
   conflicts_with?: string[];
+  // only emblems need this: illustrators, regulators and adaptors read across cultures far
+  // more than an agreed gesture does.
+  culture?: string;
   evidence: "observed" | "authored";
   avoid?: string[];
 }
