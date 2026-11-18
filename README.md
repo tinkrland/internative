@@ -12,6 +12,7 @@ they are fixed in the same place.
 | `wardrobe/` | the clothes as locks: items, reference plates, a digest, a drift report |
 | `environment/` | the rooms as locks: invariants, plates, a structure source, a drift report |
 | `voice/` | the voice backend seam: adapters, registration, the style a surface asks for |
+| `mannerisms/` | what her body does: posture, gesture, gaze, habit, space, timing. always-on ones fold into `identity_digest` |
 | `scene.ts` | one shot assembled from the locks, plus the framing a photographer chooses |
 
 `appearance/` is tuning, not generation. it produces a fixed-order description the

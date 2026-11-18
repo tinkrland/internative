@@ -14,6 +14,7 @@ import { digestOf, idProblems, lockProblems, seedFrom, type Lock } from "../lock
 import type { AccessoryLock } from "./accessory.ts";
 import { dressingFor, dressedBlock } from "./accessory.ts";
 import type { HairLock } from "./hair.ts";
+import type { Mannerism } from "../mannerisms/module.ts";
 import { hairVariantBlock } from "./hair.ts";
 import type { JewelryLock } from "./jewelry.ts";
 import { jewelryBlock } from "./jewelry.ts";
@@ -33,6 +34,9 @@ export interface IdentityParts {
   fixed_jewelry: { id: string; piece: string; material: string; style: string[]; site: string; slot: string; side: string }[];
   fixed_worn: { id: string; kind: string; material: string; style: string[]; site: string; slot: string; side: string }[];
   hair: { id: string; hair: string; parting: string; texture: string; finish: string };
+  // always-on mannerisms only. a habit in every photograph is identity; one she shows
+  // sometimes is styling.
+  mannerisms: { id: string; kind: string; site: string; what: string }[];
 }
 
 export interface LookValue {
@@ -64,6 +68,10 @@ export interface LookParts {
   hair: HairLock;
   // worn up. a toggle, not a version.
   up?: boolean;
+  // what her body does. only the always-on ones are identity: a habit she has in every
+  // photograph is as much her as the phone in her hand, and a mannerism she shows sometimes
+  // is styling, the way a coat is.
+  mannerisms?: Mannerism[];
 }
 
 export function lookBlock(value: LookValue): string {
@@ -86,11 +94,16 @@ function identityOf(parts: LookParts): IdentityParts {
     .sort((a, b) => a.id.localeCompare(b.id))
     .map((w) => ({ id: w.id, kind: w.kind, material: w.material, style: w.style, site: w.site, slot: w.slot, side: w.side ?? "none" }));
   const hair = parts.hair.value;
+  const mannerisms = (parts.mannerisms ?? [])
+    .filter((m) => m.frequency === "always")
+    .sort((a, b) => a.id.localeCompare(b.id))
+    .map((m) => ({ id: m.id, kind: m.kind, site: m.site, what: m.what }));
   return {
     devices,
     fixed_jewelry: fixed,
     fixed_worn: fixedWorn,
     hair: { id: hair.id, hair: hair.hair, parting: hair.parting, texture: hair.texture, finish: hair.finish },
+    mannerisms,
   };
 }
 
@@ -170,11 +183,12 @@ const IDENTITY_LABELS: Record<string, string> = {
   fixed_jewelry: "fixed jewelry",
   fixed_worn: "fixed item",
   hair: "hair",
+  mannerisms: "mannerism",
 };
 
 export function identityDrift(before: IdentityParts, after: IdentityParts): string[] {
   const moved: string[] = [];
-  for (const key of ["devices", "fixed_jewelry", "fixed_worn", "hair"] as const) {
+  for (const key of ["devices", "fixed_jewelry", "fixed_worn", "hair", "mannerisms"] as const) {
     const a = before[key] as unknown as unknown[];
     const b = after[key] as unknown as unknown[];
     const listA = Array.isArray(a) ? a : [a];

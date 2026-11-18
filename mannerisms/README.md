@@ -44,3 +44,19 @@ podcast timing mannerism out of a photograph.
 not animation. the block is text a renderer or a model reads, in the same shape as the
 wardrobe block, so the same consistency rules apply. lip-sync and skeletal performance belong
 to their own projects; this is the authored inventory those projects would animate.
+
+## the fold into identity
+
+an always-on mannerism is not styling, so it is not treated as styling. `look.ts` folds every
+mannerism with `frequency: "always"` into the identity parts, which means it enters
+`identity_digest` beside the device, the fixed jewelry and the hair.
+
+the line is the same one the wardrobe already draws. a habit she has in every photograph is
+as much her as the phone in her hand; a mannerism she shows under stress, or sometimes, is
+styling, the way a coat is. so a series may bring the knuckle press in and out, and may not
+lose the tuck: `identityDrift` names it as `mannerism hair-tuck: gone`, and `seriesLookProblems`
+refuses the series before it spends anything.
+
+`intensity` and `surfaces` stay out of the digest on purpose. they change how the habit reads
+in a frame, not whether it is hers, and a digest that moves when a mannerism is turned up is a
+digest that will be retuned for no reason.
