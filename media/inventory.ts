@@ -2,10 +2,10 @@
 //
 // wardrobe.jsonc answers "what is she wearing today". this answers the question
 // underneath it: where did the thing come from, is it hers, and does the post have
-// to say so. that matters because the pieces arrive from four different places and
+// to say so. that matters because the pieces arrive from several different places and
 // two of them are shop windows.
 //
-// neither whering nor ltk publishes an api a creator can read their own closet
+// none of the closet apps (whering, alta, wardrowbe, stylebook) nor ltk publishes an api a creator can read their own closet
 // through, so nothing here is an integration. it is a capture: a screenshot, a
 // pasted look url, a photo. captured things arrive as pixels, and pixels do not
 // know what a garment is called or what fibre it is, so a capture is a candidate
@@ -15,7 +15,7 @@ import type { MediaSurface } from "./paths.ts";
 import { type Outfit } from "../persona/wardrobe.ts";
 import { stripJsonc } from "../persona/loader.ts";
 
-export type ItemSource = "authored" | "whering" | "ltk" | "photo";
+export type ItemSource = "authored" | "whering" | "alta" | "wardrowbe" | "stylebook" | "ltk" | "photo";
 export type ItemState = "confirmed" | "candidate";
 export type Layer = "base" | "mid" | "outer" | "footwear" | "accessory";
 
@@ -46,6 +46,27 @@ export const SOURCE_RULES: Record<ItemSource, SourceRule> = {
     needsDisclosure: false,
     how: "screenshot or photo of an item from the closet app",
     why: "it is her closet, but the app has no api, so the item is a caption someone has to write",
+  },
+  alta: {
+    owned: true,
+    needsConfirm: true,
+    needsDisclosure: false,
+    how: "screenshot or photo of an item from the closet app",
+    why: "alta fills in fabric and fit itself, and an app's guess with a ui is still a guess: the item is hers, the description is not evidence",
+  },
+  wardrowbe: {
+    owned: true,
+    needsConfirm: true,
+    needsDisclosure: false,
+    how: "screenshot or photo of an item from the closet app",
+    why: "her closet, no documented export and no api, so the item arrives as pixels and leaves as a caption",
+  },
+  stylebook: {
+    owned: true,
+    needsConfirm: true,
+    needsDisclosure: false,
+    how: "screenshot or photo of an item from the closet app, or a photo pulled from an icloud backup",
+    why: "stylebook syncs and backs up through icloud rather than exporting, so the backup is the only machine-readable copy and it is not a format anyone agreed to",
   },
   ltk: {
     owned: false,
