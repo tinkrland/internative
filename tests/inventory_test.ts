@@ -56,6 +56,15 @@ Deno.test("a shop window is not a closet, and only it needs a disclosure", () =>
   assertEquals(SOURCE_RULES.whering.owned, true);
   assertEquals(SOURCE_RULES.whering.needsDisclosure, false);
   assertEquals(SOURCE_RULES.photo.needsConfirm, true);
+  // every closet app is hers, none is an integration, and none needs a disclosure:
+  // a disclosure is owed to a shop window, not to an app she uses
+  for (const app of ["whering", "alta", "wardrowbe", "stylebook"] as const) {
+    assertEquals(SOURCE_RULES[app].owned, true);
+    assertEquals(SOURCE_RULES[app].needsConfirm, true);
+    assertEquals(SOURCE_RULES[app].needsDisclosure, false);
+    assertEquals(SOURCE_RULES[app].how.includes("closet app"), true);
+  }
+  assertEquals(SOURCE_RULES.alta.why.includes("guess"), true);
   assertEquals(inventoryProblems(inventory), []);
 });
 
