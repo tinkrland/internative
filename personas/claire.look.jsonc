@@ -1,0 +1,437 @@
+{
+  "id": "claire",
+  "aipn": "AIPN-000002",
+  "kind": "look references",
+  "source": {
+    "kind": "playbook",
+    "org": "internative",
+    "board": "claire @digi.junkie",
+    "board_id": 51415208,
+    "board_token": "CvQJzWk4cKUULtBrBNMSBNiy",
+    "parent_board": "internative",
+    "fetched": "2026-11-20"
+  },
+  "owned": true,
+  "note": "her own reference set, not a shop window and not somebody else's photo, so no caption owes a disclosure. the files here are downscaled copies; the board is the original and the token is how to find it again.",
+  "measured": {
+    "assets": 23,
+    "series": 7,
+    "average_colours": [
+      "#150F13",
+      "#171214",
+      "#171216",
+      "#181317",
+      "#1A1315",
+      "#1A1617",
+      "#1D1618",
+      "#1E171A",
+      "#343F50",
+      "#373534",
+      "#383838",
+      "#393434",
+      "#393939",
+      "#3A3535",
+      "#3E3E3E",
+      "#3F4444",
+      "#42434C",
+      "#584F4B",
+      "#625040",
+      "#755C4E"
+    ],
+    "reading": "the set averages between #150F13 and #755C4E, so the look is dark and warm rather than bright studio white, and the black and white carousel is a treatment of the same shoot rather than a second look."
+  },
+  "treatments": [
+    "colour",
+    "black and white"
+  ],
+  "places": [
+    "indoors",
+    "train station",
+    "car"
+  ],
+  "rules": [
+    "a treatment is not a person: the black and white carousel is the same shoot graded twice",
+    "every file here is hers, so nothing in this set needs a caption disclosure",
+    "appearance tuning happens on likeness, and identity_digest is derived from these references rather than written from prose",
+    "a new shoot matches an existing series' character and location and may vary composition only"
+  ],
+  "series": [
+    {
+      "title": "b/w photoshoot carousel",
+      "count": 9,
+      "palette": [
+        "#373534",
+        "#383838",
+        "#393434",
+        "#393939",
+        "#3A3535",
+        "#3E3E3E"
+      ],
+      "files": [
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880944.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880938.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880932.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880928.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880925.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880946.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879588.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879587.jpg",
+        "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880950.jpg"
+      ]
+    },
+    {
+      "title": "car photoshoot",
+      "count": 5,
+      "palette": [
+        "#171214",
+        "#171216",
+        "#181317",
+        "#1A1315",
+        "#1D1618"
+      ],
+      "files": [
+        "assets/claire/group-of-5-assets-car-photoshoot-683881150.jpg",
+        "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881226.jpg",
+        "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881340.jpg",
+        "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881317.jpg",
+        "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881293.jpg"
+      ]
+    },
+    {
+      "title": "train station",
+      "count": 3,
+      "palette": [
+        "#343F50",
+        "#3F4444",
+        "#42434C"
+      ],
+      "files": [
+        "assets/claire/train-station-train-station-683881478.jpg",
+        "assets/claire/train-station-train-station-683881431.jpg",
+        "assets/claire/train-station-train-station-683881426.jpg"
+      ]
+    },
+    {
+      "title": "car shoot",
+      "count": 3,
+      "palette": [
+        "#150F13",
+        "#1A1617",
+        "#1E171A"
+      ],
+      "files": [
+        "assets/claire/car-shoot-car-shoot-683881422.jpg",
+        "assets/claire/car-shoot-car-shoot-683881419.jpg",
+        "assets/claire/car-shoot-car-shoot-683881389.jpg"
+      ]
+    },
+    {
+      "title": "live/candid",
+      "count": 1,
+      "palette": [
+        "#755C4E"
+      ],
+      "files": [
+        "assets/claire/live-candid-683882168.jpg"
+      ]
+    },
+    {
+      "title": "photoshoot indoors",
+      "count": 1,
+      "palette": [
+        "#625040"
+      ],
+      "files": [
+        "assets/claire/photoshoot-indoors-683881739.jpg"
+      ]
+    },
+    {
+      "title": "colored photoshoot version",
+      "count": 1,
+      "palette": [
+        "#584F4B"
+      ],
+      "files": [
+        "assets/claire/colored-photoshoot-version-683881095.jpg"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": 683882168,
+      "title": "live/candid",
+      "series": "live/candid",
+      "file": "assets/claire/live-candid-683882168.jpg",
+      "dimensions": [
+        444,
+        512
+      ],
+      "average_colour": "#755C4E",
+      "playbook_token": "JqWxgFpfRA5pQa7wmqJUyhWH"
+    },
+    {
+      "id": 683881739,
+      "title": "photoshoot indoors",
+      "series": "photoshoot indoors",
+      "file": "assets/claire/photoshoot-indoors-683881739.jpg",
+      "dimensions": [
+        760,
+        902
+      ],
+      "average_colour": "#625040",
+      "playbook_token": "zB2mLzsYkgsRPxmddnuniW8G"
+    },
+    {
+      "id": 683881478,
+      "title": "train station",
+      "series": "train station",
+      "file": "assets/claire/train-station-train-station-683881478.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#343F50",
+      "playbook_token": "584RwnoEm7MhT2WXaoFCUoAo"
+    },
+    {
+      "id": 683881431,
+      "title": "train station",
+      "series": "train station",
+      "file": "assets/claire/train-station-train-station-683881431.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#3F4444",
+      "playbook_token": "KijFdVsYkjWW2vE5hwpLiiR2"
+    },
+    {
+      "id": 683881426,
+      "title": "train station",
+      "series": "train station",
+      "file": "assets/claire/train-station-train-station-683881426.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#42434C",
+      "playbook_token": "bzuWDYCVQgsk3YoLgN2kgNsF"
+    },
+    {
+      "id": 683881422,
+      "title": "car shoot",
+      "series": "car shoot",
+      "file": "assets/claire/car-shoot-car-shoot-683881422.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#150F13",
+      "playbook_token": "27sJsiM55jvp2ryjX3mCjXuN"
+    },
+    {
+      "id": 683881419,
+      "title": "car shoot",
+      "series": "car shoot",
+      "file": "assets/claire/car-shoot-car-shoot-683881419.jpg",
+      "dimensions": [
+        760,
+        778
+      ],
+      "average_colour": "#1A1617",
+      "playbook_token": "89XCy8xvcjfGkc9PECL9m1VU"
+    },
+    {
+      "id": 683881389,
+      "title": "car shoot",
+      "series": "car shoot",
+      "file": "assets/claire/car-shoot-car-shoot-683881389.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#1E171A",
+      "playbook_token": "4gzaPnemnS83J7S6nR88AWjw"
+    },
+    {
+      "id": 683881150,
+      "title": "car photoshoot",
+      "series": "car photoshoot",
+      "file": "assets/claire/group-of-5-assets-car-photoshoot-683881150.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#1D1618",
+      "playbook_token": "yxjfgbeKSqXmATHEJg1WDmJ5"
+    },
+    {
+      "id": 683881226,
+      "title": "Pasted image at 2026-11-20 at 11.29.36 AM",
+      "series": "car photoshoot",
+      "file": "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881226.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#171216",
+      "playbook_token": "agKRpGN5XvUf9dJbe5425xSw"
+    },
+    {
+      "id": 683881340,
+      "title": "Pasted image at 2026-11-20 at 11.30.21 AM",
+      "series": "car photoshoot",
+      "file": "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881340.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#171214",
+      "playbook_token": "oo9DWjXkZCTpE28KxP5amFSc"
+    },
+    {
+      "id": 683881317,
+      "title": "Pasted image at 2026-11-20 at 11.30.13 AM",
+      "series": "car photoshoot",
+      "file": "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881317.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#1A1315",
+      "playbook_token": "3NYGA1BDTrTmh18n4hv9UwDk"
+    },
+    {
+      "id": 683881293,
+      "title": "Pasted image at 2026-11-20 at 11.30.06 AM",
+      "series": "car photoshoot",
+      "file": "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881293.jpg",
+      "dimensions": [
+        760,
+        760
+      ],
+      "average_colour": "#181317",
+      "playbook_token": "12rdRVFgAqGYjBeEGRUQUr1D"
+    },
+    {
+      "id": 683881095,
+      "title": "colored photoshoot version",
+      "series": "colored photoshoot version",
+      "file": "assets/claire/colored-photoshoot-version-683881095.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#584F4B",
+      "playbook_token": "T9Xqdx7Z516kA7b9N3LSjt1K"
+    },
+    {
+      "id": 683880944,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880944.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#383838",
+      "playbook_token": "t4Y4bZ6rDSeGpUJRr5xqwEXs"
+    },
+    {
+      "id": 683880938,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880938.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#393434",
+      "playbook_token": "GKriv9cQV2zLVXfKMydv9w1a"
+    },
+    {
+      "id": 683880932,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880932.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#373534",
+      "playbook_token": "KYWYdo9p3peN3LuGrFrF4SCT"
+    },
+    {
+      "id": 683880928,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880928.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#3A3535",
+      "playbook_token": "RdpR7B3vrwuNQ4haSkD65cw7"
+    },
+    {
+      "id": 683880925,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880925.jpg",
+      "dimensions": [
+        760,
+        1219
+      ],
+      "average_colour": "#393939",
+      "playbook_token": "Uv2okynuvNsidWhA5o4siS4m"
+    },
+    {
+      "id": 683880946,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880946.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#393939",
+      "playbook_token": "9N5HtLhfzsmWBR95dyC6QrvQ"
+    },
+    {
+      "id": 683879588,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879588.jpg",
+      "dimensions": [
+        760,
+        1219
+      ],
+      "average_colour": "#393939",
+      "playbook_token": "QpCvND3cY67qdPWjuLc6m59z"
+    },
+    {
+      "id": 683879587,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879587.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#3A3535",
+      "playbook_token": "8gQXVed1Vmc1GbzbUB6megKL"
+    },
+    {
+      "id": 683880950,
+      "title": "b/w photoshoot carousel",
+      "series": "b/w photoshoot carousel",
+      "file": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880950.jpg",
+      "dimensions": [
+        760,
+        1217
+      ],
+      "average_colour": "#3E3E3E",
+      "playbook_token": "TmQ4jnEZYEsSWTeCDeEioQ1i"
+    }
+  ]
+}
