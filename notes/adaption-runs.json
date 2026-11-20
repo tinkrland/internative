@@ -6,7 +6,7 @@
       "rows": 12,
       "model": "gemma-4-31b-it",
       "launched": "2026-11-10T13:44Z",
-      "status": "running",
+      "status": "succeeded",
       "question": "does a reworded description of a measured voice keep its measurements",
       "block_lines": [
         "medium",
@@ -17,7 +17,9 @@
       ],
       "split": "6 of 12 keep every value, 6 change exactly one (rate or f0_span)",
       "why": "the same contrast as the wardrobe corpora, moved to prosody: a rewording that drops a unit or rounds a span is drift even when the prose reads the same",
-      "curation": "tools/corpus-curate.ts style: positive evidence only, a claimed change is kept only if the block value is gone AND a competing value arrived with its unit"
+      "curation": "tools/corpus-curate.ts style: positive evidence only, a claimed change is kept only if the block value is gone AND a competing value arrived with its unit",
+      "dataset_name": "voice_measurement_rewrites",
+      "outcome": "11 unique pairs, 7 same / 4 different, 0 relabels, 0 drops. curated at likeness voice/corpus/prosody_drift.curated.json"
     },
     {
       "name": "style_drift_pairs",
@@ -25,7 +27,7 @@
       "rows": 12,
       "model": "gemma-4-31b-it",
       "launched": "2026-11-18T12:45Z",
-      "status": "running",
+      "status": "succeeded",
       "question": "does a rewrite of a caption keep a measured style profile, or only look like it does",
       "block_lines": [
         "register",
@@ -39,10 +41,12 @@
       ],
       "split": "6 of 12 keep every value, 6 change exactly one of sentence_length, ellipsis_rate, hedge_rate, contraction_rate",
       "why": "stylometry is the writing half of the same problem the wardrobe corpora test on the visual half: whether a reworded description still measures the same person",
-      "curation": "a changed_feature claim is kept only if the prose no longer supports that value; a same claim is kept only if nothing measured moved"
+      "curation": "a changed_feature claim is kept only if the prose no longer supports that value; a same claim is kept only if nothing measured moved",
+      "outcome": "105 unique pairs, 37 malformed (block echoed as the seed), 65 kept, 26 same / 39 different, 10 relabelled, 3 dropped. curated at likeness voice/corpus/style_drift.curated.json"
     }
   ],
   "not_used": {
     "autoscientist": "GET /api/v1/autoscientist lists fine-tuning runs (dataset, model, iterations, target_win_rate, best_win_rate, lora hyperparams). it co-optimises data and a training recipe, it does not read literature. the honest use is training a small drift classifier on the curated corpora, not research."
-  }
+  },
+  "lesson": "a corpus is only curatable where the claim is checkable. numbers with units (prosody) curate clean; prose about garments or habits does not, so those corpora need positive-evidence relabelling and drop counts."
 }
