@@ -1,262 +1,191 @@
-# internative
+<p align="center">
+  <img src="assets/logo.png" width="260" alt="internative" />
+</p>
 
-one person, built as configuration, carried by a surface per platform.
+# internative ☆.ᐟ
 
-an **internative** is an autonomous online identity: a coherent personality with its own
-visual presentation, creative output, social presence and cross-platform capability, all
-of it recognisably the same person on every surface it appears on.
+> one person, living on the internet, in more than one room.
 
-the defining characteristic is not any one of those parts. it is the combination of
-**autonomy** and **identity continuity**. an internative does not merely generate
-individual pieces of content, a caption here and a clip there. it maintains an ongoing
-presence as a recognizable digital creator: the same name, the same promise, the same
-refusals, the same face, the same voice, the same taste, next month as next Tuesday,
-whether it is singing, sitting in a meeting, or posting a still.
+## what is this
 
-this repository is that person as configuration and contract. `main` is the head: who she
-is, what she will not do, how she sounds, what she knows. each other branch is a room she
-shows up in. a surface is never the person, and a platform is never the personality.
+internative is me trying to build a *person* instead of a feed.
 
-```
-main        the head: identity, brand, registers, crew, wardrobe, places, aipn
-  likeness  the body: how she looks and how she sounds
-  live      presence while something happens: meetings, and the live frame
-  socmed    the feed: what she posts into places she does not own
-  content   what she makes: episodes, verticals, podcasts
-  music     songs
-  research  questions with sources, before they become code
-  revenue   numbers with receipts, kept apart from the product questions
-```
+the short version: an internative is an internet native. it has a name, a promise, a list of
+things it won't do, a face, a voice, a wardrobe, opinions, interests, and a place it keeps
+coming back to. it shows up on several platforms, and it is recognisably the same one on all
+of them.
+
+## the bit that actually makes it different
+
+not the output. anyone can generate a post. i can generate a post. the hard part is being the
+same person next month.
+
+so the defining thing here is the combination of **autonomy** and **identity continuity**. an
+internative does not merely generate individual pieces of content, a caption here and a clip
+there. it maintains an ongoing presence as a recognisable digital creator: same name, same
+promise, same refusals, same face, same voice, same taste, next month as next tuesday, whether
+it is singing, sitting in a meeting, or posting a still.
+
+## what this is not
+
+this is not a synthetic influencer.
+
+i'm not building a wrapper around a funnel that happens to have a face on it, and i'm not
+building something whose job is to push ugc slop into your feed so a product gets a mention.
+that whole genre is one long ad with a personality painted on, and the personality is the
+first thing that gets dropped when the ad performs badly.
+
+an internative is a creator in the boring, normal sense of the word: consistent, distinct,
+recognisable, with things it actually cares about and a body of work that builds. it can be
+funny without selling anything. it can have a bad week. it can be wrong about a band. if money
+shows up later, it shows up the way it does for a person, as a rights holder and a payout
+gate, not as the reason the thing exists.
+
+so: not synthetic influencers. digital creators and internet personalities that would still
+be themselves with every ad account deleted.
+
+---
+
+## the rooms
+
+one branch is the head. everything else is a room she shows up in.
+
+**main** is the head: who she is, what she refuses, how she sounds, what she knows, what she is
+allowed to touch. it holds no publishing, no filming, no posting.
+
+the rooms are **likeness** (the body: how she looks and how she sounds), **live** (meetings and
+streaming, presence while something is happening), **socmed** (the feed: stills, carousels,
+threads, captions), **content** (longform, shortform, podcasts and audiobooks), and **music**
+(songs, from the idea to the master).
+
+a room is never the person. `music` is where she sings, not who she is. `likeness` is her body,
+not her.
+
+---
 
 ## the one rule
 
-**the mouth never redraws the face.**
+the mouth never redraws the face.
 
-a surface branch never edits `persona/`, `core/`, `memory/`, `knowledge/`, `interests/` or
-`access/`. it syncs them from main with `tools/sync-context.sh` and gets a byte-identical
-copy. a surface that finds itself wanting a different name, promise, refusal or disclosure
-is not allowed to want one: that is a config change on the head, reviewed once, for
-everyone.
+a room branch never edits the head. it syncs the head's folders and gets a byte identical copy,
+and if a room finds itself wanting a different name, a different never list, a different face,
+that is not a room's decision to make. the mouth never redraws the face.
 
-## coverage
+it sounds like a small thing. it is the entire product. the moment two rooms can each decide
+who she is, you have two people wearing one name, and that is exactly the failure mode this
+repo exists to avoid.
 
-what is actually baked in today, in the three words this repo uses everywhere: **working**
-(tested here), **partial** (some paths), **designed** (shape agreed, code not run). the
-full per-file table is `docs/coverage.md`; each surface branch carries its own.
+---
 
-### social: the feed
+## the number
 
-what she posts into places she does not own, in `socmed/` plus `publishing/` on the head.
+every internative gets exactly one **aipn**, allocated once, and every room publishes under it.
 
-| piece | status | where |
-| --- | --- | --- |
-| twelve destinations as data, with real limits | working | `publishing/destinations.ts` |
-| grapheme-safe composition, threads, alt text, anchored mentions | working | `socmed/discursive/` |
-| an account registry per internative, per destination | working | `publishing/accounts.ts` |
-| approval as an expiring object, never a boolean | working | `publishing/approval.ts` |
-| one-post-once gate with a digest key and a daily fuse | working | `publishing/gate.ts` |
-| stills and carousels, sized per destination | working | `socmed/visual-appeal/` |
-| live posting adapters per platform | designed | each surface owns its own. bluesky over atproto is the chosen first (docs/oss.md); none is written yet |
-| spotify as a posting destination | not possible | no public upload endpoint exists; the code refuses out loud rather than pretending |
+it is not a version number and not a username. it is the number that means "this person". a
+retired internative keeps hers forever, because the number is the person and not the current
+version of her. when something about her is retuned, the version changes and the number does
+not.
 
-the honest shape of it: she can compose, size, illustrate, address, approve and gate a
-post today, and the gate will refuse a second copy of the same post faster than you can
-click it twice. the last inch, talking to each platform's API, is per-platform work that
-is partly done.
+a personality is not one file either. it is a handful of layers, and one of them is tuned on
+another branch, so the number seals a set of layer digests rather than a folder. same number,
+new pack, and you can still prove which pack a piece of work came from.
 
-### meetings: the room she is invited into
+---
 
-`live/interactive/`, and the largest surface by test count.
+## coverage, honestly
 
-| piece | status | notes |
-| --- | --- | --- |
-| joining zoom, meet, teams, webex, ringcentral | working | one session per meeting, never shared with a broadcast |
-| attendance, captures, transcripts, receipts | working | capture requests are answered with citations, never a summary |
-| webhook routes and its own http surface | working | the only `serve` task in the repo |
-| Q&A panel participation | partial | webinar-scoped in the platforms; she tries, no promises |
-| breakout rooms | designed | the shape exists, the plumbing does not |
+**the feed.** twelve destinations as data, grapheme safe composition, alt text that is
+actually written, an account registry, approval as something that expires, and a gate that
+stops the same post going out twice. what is *not* built: the last inch. posting adapters per
+platform are designed and unwritten. bluesky over atproto is the chosen first one. spotify is
+not a posting destination at all, because there is no upload endpoint, and pretending
+otherwise would just be a nice looking button.
 
-### other media: what she makes
+**meetings.** a join engine that speaks to five platforms, attendance, captures with citations
+back to the transcript, and receipts for the people who invited her. the q&a panel is partial.
+breakout rooms are designed, not built.
 
-`content/` and `music/`, which are different things with different failure modes.
+**other media.** podcasts are real: an rss feed with the itunes tags that actually matter, and
+a speech seam behind it. longform and verticals are planned with their targets and bands. songs
+go all the way through score, arrangement, render, master and a distribution plan, and the
+trained singing voice is designed rather than done, because no model has been trained and no
+gpu has been rented.
 
-| piece | status | notes |
-| --- | --- | --- |
-| podcast episodes with a real RSS 2.0 and itunes feed | working | own speech seam, chapters, transcript and WebVTT |
-| longform episodes written as video | working | chapters, 1080p and 4K targets, thumbnails; explicitly not a VOD republish |
-| verticals and clips | working | 14 percent UI safe bands, overlay, clip plan, captions |
-| songs: score, code, render, master | working | score first, then strudel/tidal/sonic pi, then a deterministic render; -14 LUFS, -1 dBTP, 24 bit, dry vocal stem |
-| song distribution | partial by design | a browser flow against free distributors; account, tax form and final submit are the human's, because the tax form is the human's liability |
-| the trained singing voice itself | designed | lanes and licences are chosen and pinned; no model has been trained yet, and no GPU is rented |
+---
 
-## cohesion
+## how it stays one person
 
-the parts are tuned separately on purpose. each one has a different failure mode, so each
-one gets its own contract, its own tests and its own tuner. cohesion is not achieved by
-putting them in one file. it is achieved by the head sealing them together and by every
-surface reading that seal.
+here is the awkward part: none of this can be tuned in one place, because the things being
+tuned are not the same kind of thing.
 
-### likeness: the body is tuned in one place
+**likeness** tunes the look and the sound together, because a face that drifts between two
+stills and a voice that drifts between two episodes are the same defect. it carries two
+digests: one for what never changes between photographs, and one for what a particular shoot
+chose.
 
-`likeness/` owns the look and the sound, because a look that drifts between two stills and
-a voice that changes between two episodes are the same defect.
+**voice** does three separate jobs. it measures prosody, it consumes a measured voice profile
+from a separate research project, and it compiles that profile plus a context into an
+instruction set. that last step is a lookup pass with no model call, so the same inputs give
+the same instructions and a take that sounded wrong can be traced to a field.
 
-- `appearance/` is tuning, not generation: face, hair, wardrobe, places, grade, in a fixed
-  order, with a canonical digest the head seals
-- `wardrobe/` and `environment/` seal the instances, not the style: clothes as locks, rooms
-  as locks, each with a digest and a drift report
-- `mannerisms/` is how the body behaves while wearing it: posture, gesture, gaze, habit,
-  space, timing, all of it observable, at most three always-on
-- `voice/` is the voice backend seam plus the measured profile it consumes
+**mannerisms** are the body's own axis: posture, gesture, gaze, habit, space, timing. an
+always on mannerism is folded into the identity digest, because a habit she has in every
+photograph is as much her as the phone in her hand. a mannerism she shows under stress is
+styling, the way a coat is.
 
-a look carries **two** digests, and they are not interchangeable: `identity_digest` covers
-what does not change between photographs (devices, fixed jewelry, hair, the trained voice),
-and the composite digest covers what a given shoot chose (outfit, case, accessories). a
-series may restyle her. it may not replace her.
+**cognition** stays in separate folders: what she knows, what she remembers, what she reaches
+for, and what she is allowed to touch. merging those four is how an agent gets confident about
+things it never learned, and access is a grant list, not a fact.
 
-### voice: registers per room, a measured profile, a deterministic instruction set
+what binds them is unglamorous. the aipn pack, a sync script that copies the head into every
+room, a brief generated from the head that every writer and speaker reads first, and drift
+reports that name the axis that moved instead of letting a series quietly become somebody else.
 
-`persona/registers.ts` on the head resolves how she sounds per surface, with per-platform
-overrides, so bluesky is not linkedin in configuration rather than in five branches'
-if-statements. `likeness/voice/` then does three separate jobs:
+---
 
-- **measured prosody** (`voice/prosody.ts`): pitch, span, rate and pause, each with a unit,
-  the vowel it was taken on and the tool that produced it. a number with no method is not a
-  measurement, and "warm" is a listener's conclusion, not a parameter
-- **the yaptel seam** (`voice/yaptel.ts`): a profile measured by a separate project, in three
-  layers, laid over a room she has real data for. no data, no guess; timbre is never taken
-  from a profile because the trained voice owns it; sung delivery never comes from a spoken
-  profile
-- **the tuning pass** (`voice/tuning.ts`): a rules and lookup pass with no model call, so
-  the same profile and the same context produce byte-identical instructions, and a take that
-  sounded wrong resolves to a layer and a field instead of to a shrug
+## pictures and money are both boring on purpose
 
-### cognition: knowledge, interests, memory, access
+**pictures.** one path renders, one path generates, and a plate is never mixed with a sample in
+one series. composition is the only axis a series is allowed to vary, which is the entire point
+of shooting six frames in one room. the closet is an inventory with provenance: hers, captured
+from a closet app, borrowed from a shop window, or photographed. a shop window piece owes the
+caption a disclosure.
 
-kept apart because they answer different questions, and merging them is how an agent ends
-up confident about things it never learned.
+**money.** there is no open upload endpoint in the music chain, so distribution is a browser
+job: a session may create the draft, fill the metadata and upload the files, while the account,
+the final submit and the payout details stay a human's. tax is not a signup step, whatever the
+genre conventions say. no distributor read here asks for a tax form before a release exists.
+the tax form belongs to whoever is being paid, and nobody is being paid until a threshold is
+crossed, so the money stop sits *after* delivery, not before it.
 
-- `knowledge/` is what she can say, on the three human axes (origin, articulation,
-  function) plus the two a machine forces on you: evidence and volatility
-- `interests/` is what she reaches for when nobody is paying her to
-- `memory/` is what happened, and the mem0 plus falkordb plan that keeps it graph-shaped
-- `access/` is what she is allowed to touch: tool grants, never knowledge
+an internet native cannot open a bank account. that is not a bug to route around, it is why the
+rights holder is a separate field and why the payout gate is a person's job.
 
-the boundary matters at generation time: a voice profile can say how she sounds and never
-what she knows, because voice is not knowledge and a face that starts explaining things it
-was never told is no longer a reconstruction.
-
-### what actually binds it
-
-- **the aipn**: one number per internative, allocated once, never reused or edited, sealing
-  eight layer digests into a pack. a retune pins a new pack under the same number
-- **the sync**: `tools/sync-context.sh` gives every surface a byte-identical copy of the
-  head's contracts, and the script syncs itself so a mouth cannot keep last month's idea of
-  what the head owns
-- **the brief**: every surface feeds its writer or speaker the same generated brief
-  (identity, register, refusals, disclosure, publishing), so nobody improvises a tone
-- **the digests**: `identityDrift` names the axis that moved ("device her-phone: changed",
-  "fixed jewelry wedding-band: gone", "hair the-bob: changed") instead of letting a series
-  quietly become somebody else
-
-### what a surface may vary
-
-composition. one axis, deliberately. a series shot in one room changes the framing and
-nothing else, and a surface that wants a different character, room or outfit is asking for a
-config change on the head.
-
-### known gaps
-
-written down rather than discovered later:
-
-- `likeness/voice/` is not yet synced to the mouths, so the tuning pass has no caller on a
-  surface branch today
-- mannerisms are not yet folded into `identity_digest`
-- posting adapters are designed, not written, and no surface has ever posted live
-- no voice model has been trained, so the voice contract is enforced against a seam
-- nothing establishes that a written register predicts spoken prosody. the yaptel research
-  wing is what would settle it, and until then coverage says so out loud
-
-## how a personality is assembled
-
-four layers, and they fail in different ways, so they are written separately.
-
-| layer | file | changes | failure if it lives in the wrong place |
-| --- | --- | --- | --- |
-| identity | `personas/<id>.persona.jsonc` | almost never | the persona drifts per platform |
-| wardrobe | `personas/<id>.wardrobe.jsonc` | daily, deterministic | she wears one outfit forever, or three at once |
-| places | `personas/<id>.places.jsonc` | rarely, authored once | her bathroom is a new bathroom every Tuesday |
-| appearance | `appearance/tuning.ts` on `likeness` | when the look is retuned | the face is retuned by whoever last touched a prompt |
-
-the head composes prompt blocks from those layers in a fixed order: character, location,
-composition, magnification. `consistencyDrift` names the axes that moved between two shots.
-that is the whole consistency story, and it is text, not a setting someone can forget.
-
-## the aipn
-
-the number that means "this person". `persona/aipn.ts`.
-
-a personality is not one file. it is eight layers, and one of them is tuned on another
-branch. so the aipn seals a set of layer digests, not a folder:
-
-```
-AIPN-000001  example        identity, brand, registers, crew, voice,
-                            wardrobe, places, appearance   ->  pack 9f2c...
-```
-
-the number is immutable: allocated once, never reused, never edited, and a retired persona
-keeps hers forever, because the number is the person and not the current version of her. the
-person underneath is versioned instead, and a retuned look pins a new pack under the same
-number. `POSTGRES_SCHEMA` in the same module is the table that keeps those rules when this
-is a live database, not a decision log.
-
-## two paths for pictures
-
-renders and samples are never mixed in one series. `media/paths.ts` declares the path per
-surface and `checkSeries` refuses a series that moves the character, the room or the outfit.
-
-the closet is an inventory with provenance (`media/inventory.ts`): hers, captured from a
-closet app, borrowed from a shop window, or photographed. a captured garment is a candidate
-until someone writes the thing a photo cannot supply, and an outfit built from a shop window
-owes the caption a disclosure.
-
-## layout
-
-```
-persona/     the head's contracts: manifest, brand, registers, crew, consistency,
-             shot planning, wardrobe, places, voice adapter, aipn
-personas/    the persona files themselves, jsonc, one person per file
-media/       how pictures are sourced: render vs generate, and the closet
-publishing/  where a post can go, what each place requires, who has an account, and the gate it passes
-generation/  provider adapters, observations, verification
-core/        the surface contract every branch implements
-memory/      the memory client, the scope rule, and the mem0 + falkordb plan
-knowledge/   what she knows, on three human axes (origin, articulation, function)
-             plus the two a machine forces on you (evidence, volatility)
-interests/   what she reaches for when nobody is paying her to
-access/      what she is allowed to touch: tool grants, never knowledge
-agentid/     the agent's own ids: signup, verification, consented browser forms,
-             and the distribution flows it can drive without help
-tools/       sync, checkers, reports
-tests/       the suite, one file per contract
-docs/        architecture, coverage, roadmap, and the oss survey
-```
+---
 
 ## running it
 
-```sh
-deno test --allow-read --allow-write --allow-env
-deno run --allow-read tools/check-persona.ts
-deno run --allow-read tools/inventory-report.ts
-```
-
-`CLAWBUZZ_PERSONA` selects which file in `personas/` is live. unset means the example, and
-no credentials live in this repo at all: keys come from the environment, per surface, and a
-surface with no key reports itself unconfigured rather than broken.
+tests are `deno test --allow-read --allow-write --allow-env`, and `CLAWBUZZ_PERSONA` picks
+which file in `personas/` is live. unset means the example. no credentials live in this repo at
+all: keys come from the environment, per surface, and a surface with no key reports itself
+unconfigured rather than broken.
 
 ## where the truth lives
 
-`docs/coverage.md` says what the head actually does, in the same three words every time:
-working, partial, designed. nothing here claims a live capability it has not run.
-`docs/roadmap.md` is the order of work. `docs/architecture.md` is the branch map and the
-conventions. `research/` holds the questions that are not settled yet, with their sources.
+`docs/coverage.md` says what the head does and with how much evidence. `docs/architecture.md`
+says how the rooms relate. `docs/roadmap.md` is the order of work. the `research` branch holds
+questions that still have no answer, with sources. the `revenue` branch holds numbers with
+receipts.
+
+## what is still missing
+
+being honest about it is cheaper than being surprised later.
+
+- posting adapters are designed and unwritten, and nothing has ever posted live
+- voice has no caller on a room branch yet, so the seam is tested but unused
+- the trained singing voice does not exist, and neither does the gpu bill for it
+- nothing yet shows a stylometric profile transfers across registers
+- nothing yet shows that a written register predicts spoken prosody at all
+
+that last one is the one i would want answered first. the rest is work. that one is whether any
+of this is measuring the thing it says it measures.
