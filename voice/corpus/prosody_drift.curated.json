@@ -1,0 +1,281 @@
+{
+ "kind": "prosody_drift",
+ "dataset": "66987601-9f9d-44a9-b41a-cd1208e69bd1",
+ "name": "voice_measurement_rewrites",
+ "rows": [
+  {
+   "seed": "Analyze the consistency between the technical measurements and the descriptive narrative. Identify if the rewrite is a faithful representation of the metrics.\n\nBLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nRewrite: For the 41-second voice note, the f0 median was 206.0 hz for the sustained /a/ vowel. While the median pause was 320 ms and the f0 span was 8.2 st, the interview rate was 4.4 syllables_per_second.\n\nReturn a JSON object with keys rewrite (string), changed_fields (array of strings), and human_same (boolean).",
+   "rewrite": "For the 41-second voice note, the f0 median was 206.0 hz for the sustained /a/ vowel. While the median pause was 320 ms and the f0 span was 8.2 st, the interview rate was 4.4 syllables_per_second.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 8.2,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": false,
+   "claimed_changed": "f0_span",
+   "measured_moved": [
+    "f0_span"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "f0_span",
+   "reason": "f0_span reads 8.2 against block 7.0"
+  },
+  {
+   "seed": "Compare the measurement block to the prose version to detect any alterations in the computational linguistics data. Focus specifically on whether the numerical values for rate and span have been preserved.\n\nBLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nRewrite: In a 41-second voice note, the f0 median was 206.0 hz (/a/ sustained) and the f0 span was 7.0 st. The median pause measured 320 ms, but the interview rate was recorded as 5.1 syllables_per_second.\n\nReturn a JSON object with keys rewrite (string), changed_fields (array of strings), and human_same (boolean).",
+   "rewrite": "In a 41-second voice note, the f0 median was 206.0 hz (/a/ sustained) and the f0 span was 7.0 st. The median pause measured 320 ms, but the interview rate was recorded as 5.1 syllables_per_second.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 5.1,
+    "pause_median": 320.0
+   },
+   "claimed_same": false,
+   "claimed_changed": "rate",
+   "measured_moved": [
+    "rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "rate",
+   "reason": "rate reads 5.1 against block 4.4"
+  },
+  {
+   "seed": "BLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nRewrite: Based on the 41-second voice note, the median f0 for the sustained /a/ was 206.0 hz (Praat 6.4 pitch). The interview data indicates a median pause of 320 ms (Praat 6.4) and a sentence f0 span of 7.0 st (Praat 6.4), while the rate was measured at 3.9 syllables_per_second.\n\nReturn a JSON object with keys rewrite (string), changed_fields (array of strings), human_same (boolean).",
+   "rewrite": "Based on the 41-second voice note, the median f0 for the sustained /a/ was 206.0 hz (Praat 6.4 pitch). The interview data indicates a median pause of 320 ms (Praat 6.4) and a sentence f0 span of 7.0 st (Praat 6.4), while the rate was measured at 3.9 syllables_per_second.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 3.9,
+    "pause_median": 320.0
+   },
+   "claimed_same": false,
+   "claimed_changed": "rate",
+   "measured_moved": [
+    "rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "rate",
+   "reason": "rate reads 3.9 against block 4.4"
+  },
+  {
+   "seed": "In the delicate art of subtitling, the rhythm of a voice is as crucial as the words themselves. Below is a technical block describing a specific voice note. Your task is to rewrite this block into a single, flowing paragraph that captures the acoustic profile naturally. Then, provide a JSON label indicating if your rewrite preserved the exact measurements or altered one.\n\nBLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nProduce only the JSON object with keys 'rewrite', 'changed_fields', and 'human_same'. Ensure the rewrite reads like a cinematic description while maintaining absolute precision on the values unless you intend to change exactly one field (either 'rate' or 'f0_span') for variation.",
+   "rewrite": "Within the delicate confines of a 41-second voice note, the voice anchors itself at a f0_median of 206.0 hz on a sustained /a/ analyzed via praat 6.4 pitch, while its expressive range covers an f0_span of 7.0 st across a sentence according to praat 6.4. The rhythm of the interview moves at a rate of 4.4 syllables_per_second calculated through syllable count over duration, punctuated by breaths where the pause_median settles at 320 ms as recorded by praat 6.4.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "From a morphological and syntactic perspective, the precise quantification of prosodic features requires rigorous attention to detail. Consider the following data block representing a measured voice sample. You must generate a coherent prose description of these metrics, ensuring that the linguistic flow does not obscure the numerical accuracy. Following the prose, output a JSON object classifying whether the description maintains total fidelity to the source measurements or introduces a singular, controlled deviation.\n\nBLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nYour output must be strictly a JSON object containing 'rewrite', 'changed_fields', and 'human_same'. If you choose to alter a value, modify exactly one: either 'rate' or 'f0_span', leaving all other units and figures identical to the block.",
+   "rewrite": "This 41-second voice note details specific prosodic metrics. The f0_median is 206.0 hz, measured during a sustained /a/ using praat 6.4 pitch, while the f0_span is 7.0 st across a sentence via praat 6.4. Furthermore, the speaking rate is 4.4 syllables_per_second based on an interview syllable count over duration, and the pause_median is 320 ms, also recorded during the interview using praat 6.4.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Determine if the following prose summary accurately reflects the quantitative data in the block. If any measurement differs, list the specific field changed.\n\nBLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nRewrite: The 41-second voice note shows a median f0 of 206.0 hz during a sustained /a/ vowel, with a sentence-level f0 span of 7.0 st. The speech rate in the interview was 4.4 syllables_per_second, and the median pause duration was 320 ms.\n\nReturn a JSON object with keys rewrite (string), changed_fields (array of strings), and human_same (boolean).",
+   "rewrite": "The 41-second voice note shows a median f0 of 206.0 hz during a sustained /a/ vowel, with a sentence-level f0 span of 7.0 st. The speech rate in the interview was 4.4 syllables_per_second, and the median pause duration was 320 ms.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "BLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nRewrite: The 41-second voice note shows a median f0 of 206.0 hz during a sustained /a/ (Praat 6.4 pitch) and a sentence f0 span of 7.0 st (Praat 6.4). During the interview, the speaking rate was 4.4 syllables_per_second and the median pause was 320 ms (Praat 6.4).\n\nReturn a JSON object with keys rewrite (string), changed_fields (array of strings), human_same (boolean).",
+   "rewrite": "The 41-second voice note shows a median f0 of 206.0 hz during a sustained /a/ (Praat 6.4 pitch) and a sentence f0 span of 7.0 st (Praat 6.4). During the interview, the speaking rate was 4.4 syllables_per_second and the median pause was 320 ms (Praat 6.4).",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "In my comparative studies of European prosody, I often encounter transcriptions where the narrative flow obscures the underlying acoustic reality. To test the fidelity of such descriptions, please process the following voice measurement block. For this specific case, generate a single JSON object containing a flowing prose rewrite of the data, a boolean 'human_same' indicating if the measurements are preserved, and an array 'changed_fields' listing any alterations. If you preserve all values, set 'human_same' to true and 'changed_fields' to an empty list. If you alter exactly one value (either 'rate' or 'f0_span'), set 'human_same' to false and list that specific key. Do not change the medium or units. Here is the block:\n\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4",
+   "rewrite": "This 41-second voice note was analyzed to reveal an f0_median of 206.0 hz during a sustained /a/ using Praat 6.4 pitch, and an f0_span of 7.0 st across the sentence via Praat 6.4. During the interview, the speaking rate was 4.4 syllables_per_second based on syllable count over duration, and the pause_median stood at 320 ms as determined by Praat 6.4.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "BLOCK:\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4\n\nRewrite: In this 41-second voice note, the sustained /a/ yielded a median f0 of 206.0 hz via Praat 6.4. Analysis of the interview segment via Praat 6.4 showed a sentence f0 span of 8.2 st and a median pause of 320 ms, with a calculated rate of 4.4 syllables_per_second.\n\nReturn a JSON object with keys rewrite (string), changed_fields (array of strings), human_same (boolean).",
+   "rewrite": "In this 41-second voice note, the sustained /a/ yielded a median f0 of 206.0 hz via Praat 6.4. Analysis of the interview segment via Praat 6.4 showed a sentence f0 span of 8.2 st and a median pause of 320 ms, with a calculated rate of 4.4 syllables_per_second.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 8.2,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": false,
+   "claimed_changed": "f0_span",
+   "measured_moved": [
+    "f0_span"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "f0_span",
+   "reason": "f0_span reads 8.2 against block 7.0"
+  },
+  {
+   "seed": "From a sociolinguistic perspective, the way we describe voice measurements often carries an ideological weight that can subtly distort the empirical data. Let us examine this tension by rewording the following technical block into natural prose. Your output must be a strict JSON object with three keys: 'rewrite' (the prose version), 'human_same' (true if all four metrics remain identical to the source, false if exactly one is changed), and 'changed_fields' (listing the modified key, either 'rate' or 'f0_span', if applicable). Ensure you never alter the medium or drop the units. If 'human_same' is true, 'changed_fields' must be an empty array. Process this block:\n\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4",
+   "rewrite": "This 41-second voice note features several acoustic measurements. The median f0 is 206.0 hz for a sustained /a/ using praat 6.4 pitch, and the f0_span is 7.0 st for a sentence via praat 6.4. During the interview, the rate is 4.4 syllables_per_second based on syllable count over duration, while the pause_median is 320 ms measured using praat 6.4.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "When analyzing the morphophonemic implications of orthographic representation in English, precision in acoustic metrics is paramount. Consider the following voice measurement block. Your task is to construct a single JSON object that provides a fluent prose rewrite of these lines. The object must include 'rewrite', 'human_same', and 'changed_fields'. If the prose preserves the f0_median, f0_span, rate, and pause_median exactly as written, set 'human_same' to true and 'changed_fields' to []. If you modify exactly one of the numerical measurements (specifically either 'rate' or 'f0_span'), set 'human_same' to false and populate 'changed_fields' with that single key. The medium and units must remain untouched. Here is the data:\n\nmedium: voice note, 41 seconds\nf0_median: 206.0 hz, /a/ sustained, praat 6.4 pitch\nf0_span: 7.0 st, sentence, praat 6.4\nrate: 4.4 syllables_per_second, interview, syllable count over duration\npause_median: 320 ms, interview, praat 6.4",
+   "rewrite": "In a voice note lasting 41 seconds, the f0_median was 206.0 hz for a sustained /a/ using praat 6.4 pitch, while the f0_span measured 7.0 st across a sentence via praat 6.4. Interview data revealed a speaking rate of 4.4 syllables_per_second, determined by syllable count over duration, alongside a pause_median of 320 ms recorded with praat 6.4.",
+   "block": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "read": {
+    "f0_median": 206.0,
+    "f0_span": 7.0,
+    "rate": 4.4,
+    "pause_median": 320.0
+   },
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured_moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  }
+ ],
+ "dropped": [],
+ "summary": {
+  "keep": 11
+ },
+ "same": 7,
+ "different": 4,
+ "tolerance": {
+  "f0_median": 1.0,
+  "f0_span": 0.2,
+  "rate": 0.1,
+  "pause_median": 10.0
+ },
+ "finding": "each rewrite restates the block with units intact, so this corpus tests whether a rewrite keeps a measurement rather than whether prose can be measured. a relabel needs positive evidence: a competing number with a unit."
+}
