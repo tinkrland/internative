@@ -1,0 +1,1623 @@
+{
+ "source": "style_drift_pairs 7e40c30c-dc99-4474-a55a-8edeb0ac000d",
+ "seed_count": 7,
+ "tolerances": {
+  "sentence_length": 2.0,
+  "contraction_rate": 1.0,
+  "ellipsis_rate": 0.5,
+  "hedge_rate": 1.0
+ },
+ "summary": {
+  "keep": 55,
+  "relabel": 10
+ },
+ "same": 26,
+ "different": 39,
+ "rows": [
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 7.5,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 6.67,
+    "hedge_rate": 6.67
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "Sunrise over the valley is stunning. Stay?",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 3.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -4.0,
+    "contraction_rate": -6.67,
+    "ellipsis_rate": -6.67,
+    "hedge_rate": -6.67
+   },
+   "moved": [
+    "sentence_length",
+    "contraction_rate",
+    "ellipsis_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "sentence_length",
+   "reason": "sentence_length moved -4.00 (tolerance 2.0)"
+  },
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "The sunrise over the valley is quite stunning today, isn't it, and given the beauty, maybe we should stay here for a while?",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 23.0,
+    "contraction_rate": 4.35,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 4.35
+   },
+   "deltas": {
+    "sentence_length": 15.5,
+    "contraction_rate": -2.32,
+    "ellipsis_rate": -6.67,
+    "hedge_rate": -2.32
+   },
+   "moved": [
+    "sentence_length",
+    "contraction_rate",
+    "ellipsis_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "sentence_length",
+   "reason": "sentence_length moved +15.50 (tolerance 2.0)"
+  },
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "The sunrise over the valley is quite stunning today, isn't it? Maybe we should stay.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 7.5,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 6.67
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": -6.67,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved -6.67 (tolerance 0.5)"
+  },
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "The sunrise... over the valley is quite stunning today... isn't it... maybe we should stay?",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 3.75,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 20.0,
+    "hedge_rate": 6.67
+   },
+   "deltas": {
+    "sentence_length": -3.75,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 13.33,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "sentence_length",
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved +13.33 (tolerance 0.5)"
+  },
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "The sunrise over the valley is stunning today, isn't it... we should stay?",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 6.5,
+    "contraction_rate": 7.69,
+    "ellipsis_rate": 7.69,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -1.0,
+    "contraction_rate": 1.02,
+    "ellipsis_rate": 1.02,
+    "hedge_rate": -6.67
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved -6.67 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunrise over the valley is quite stunning today, isn't it... maybe we should stay?",
+   "rewrite": "The sunrise over the valley is quite stunning today, is it not... maybe we should stay?",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 8.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 6.25,
+    "hedge_rate": 6.25
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -6.67,
+    "ellipsis_rate": -0.42,
+    "hedge_rate": -0.42
+   },
+   "moved": [
+    "contraction_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved -6.67 (tolerance 1.0)"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget! It is honestly a game changer.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Look at this new gadget! It is honestly a game changer.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new device! It is honestly a game changer.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget! It is truly a game changer.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget! It is honestly a huge changer.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget! It is honestly a real changer.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget because it is honestly a game changer.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 12.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 6.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "sentence_length"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "sentence_length",
+   "reason": "sentence_length moved +6.50 (tolerance 2.0)"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget! It's honestly a game changer.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -0.5,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved +10.00 (tolerance 1.0)"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget... It is honestly a game changer.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 9.09,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 9.09,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved +9.09 (tolerance 0.5)"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "Check out this new gadget! It is perhaps honestly a game changer.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 6.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 8.33
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 8.33
+   },
+   "moved": [
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved +8.33 (tolerance 1.0)"
+  },
+  {
+   "seed": "Check out this new gadget! It is honestly a game changer.",
+   "rewrite": "New gadget! Game changer.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 2.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -3.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "sentence_length"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "sentence_length",
+   "reason": "sentence_length moved -3.50 (tolerance 2.0)"
+  },
+  {
+   "seed": "The sunset is quite lovely today... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely today... it's almost surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 11.11,
+    "ellipsis_rate": 11.11,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely today... it's almost surreal.",
+   "rewrite": "This sunset is quite lovely today... it's almost surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 11.11,
+    "ellipsis_rate": 11.11,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely today... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely today. It's almost surreal.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 11.11,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": -11.11,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved -11.11 (tolerance 0.5)"
+  },
+  {
+   "seed": "The sunset is quite lovely today... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely today... it is almost surreal.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -11.11,
+    "ellipsis_rate": -1.11,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved -11.11 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is quite lovely today... it's almost surreal.",
+   "rewrite": "The sunset is lovely today... it's surreal.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 3.5,
+    "contraction_rate": 14.29,
+    "ellipsis_rate": 14.29,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -1.0,
+    "contraction_rate": 3.18,
+    "ellipsis_rate": 3.18,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed hedge_rate changed but it moved +0.00"
+  },
+  {
+   "seed": "The sunset is quite lovely today... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely today and the sky is pink... it's almost surreal to behold.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 8.0,
+    "contraction_rate": 6.25,
+    "ellipsis_rate": 6.25,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 3.5,
+    "contraction_rate": -4.86,
+    "ellipsis_rate": -4.86,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "sentence_length",
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "sentence_length",
+   "reason": "sentence_length moved +3.50 (tolerance 2.0)"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee might be cold... it's a shame.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I feel the coffee might be cold... it's a shame.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -10.0
+   },
+   "moved": [
+    "hedge_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "labelled same but hedge_rate moved -10.00"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the brew might be cold... it's a shame.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee may be cold... it's a shame.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I guess the coffee might be cold... it's a shame.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee could be cold... it's a shame.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "The coffee might be cold... it's a shame.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -1.0,
+    "contraction_rate": 2.5,
+    "ellipsis_rate": 2.5,
+    "hedge_rate": -10.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate",
+    "hedge_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed sentence_length changed but it moved -1.00"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the hot coffee might be cold... it's a shame.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 9.09,
+    "ellipsis_rate": 9.09,
+    "hedge_rate": 9.09
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -0.91,
+    "ellipsis_rate": -0.91,
+    "hedge_rate": -0.91
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "claimed sentence_length changed but it moved +0.50"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee might be cold. It's a shame.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": -10.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved -10.00 (tolerance 0.5)"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee might be cold... it's a shame...",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 20.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved +10.00 (tolerance 0.5)"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee is cold... it's a shame.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 11.11,
+    "ellipsis_rate": 11.11,
+    "hedge_rate": 11.11
+   },
+   "deltas": {
+    "sentence_length": -0.5,
+    "contraction_rate": 1.11,
+    "ellipsis_rate": 1.11,
+    "hedge_rate": 1.11
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved +1.11 (tolerance 1.0)"
+  },
+  {
+   "seed": "I think the coffee might be cold... it's a shame.",
+   "rewrite": "I think the coffee might be cold... it is a shame.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 9.09,
+    "hedge_rate": 9.09
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -10.0,
+    "ellipsis_rate": -0.91,
+    "hedge_rate": -0.91
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved -10.00 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset looks beautiful today. I think it's quite peaceful.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today. I feel it's quite peaceful.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -10.0
+   },
+   "moved": [
+    "hedge_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "labelled same but hedge_rate moved -10.00"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful now. I think it's quite peaceful.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today. I think it's very peaceful.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "Today the sunset is beautiful. I think it's quite peaceful.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today. I think it's quite peaceful.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today. I think it is quite peaceful.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 5.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 9.09
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -0.91
+   },
+   "moved": [
+    "contraction_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved -10.00 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today. It is quite peaceful.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -0.5,
+    "contraction_rate": -10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -10.0
+   },
+   "moved": [
+    "contraction_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved -10.00 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today... I think it's quite peaceful.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 5.0,
+    "contraction_rate": 10.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 10.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 10.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved +10.00 (tolerance 0.5)"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -1.0,
+    "contraction_rate": -10.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -10.0
+   },
+   "moved": [
+    "contraction_rate",
+    "hedge_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed sentence_length changed but it moved -1.00"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset's beautiful today. I think it's quite peaceful.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 22.22,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 11.11
+   },
+   "deltas": {
+    "sentence_length": -0.5,
+    "contraction_rate": 12.22,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 1.11
+   },
+   "moved": [
+    "contraction_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved +12.22 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is beautiful today. I think it's quite peaceful.",
+   "rewrite": "The sunset is beautiful today. I suppose I think it's quite peaceful.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 6.0,
+    "contraction_rate": 8.33,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 8.33
+   },
+   "deltas": {
+    "sentence_length": 1.0,
+    "contraction_rate": -1.67,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -1.67
+   },
+   "moved": [
+    "contraction_rate",
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved -1.67 (tolerance 1.0)"
+  },
+  {
+   "seed": "Looking at the old architecture... it's probably the best part of the city, I guess.",
+   "rewrite": "Looking at the old architecture... it's probably the best part of the city, I guess.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 7.5,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 6.67,
+    "hedge_rate": 13.33
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "Looking at the old architecture... it's probably the best part of the city, I guess.",
+   "rewrite": "Looking at the old architecture, it's probably the best part of the city, I guess.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 15.0,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 13.33
+   },
+   "deltas": {
+    "sentence_length": 7.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": -6.67,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "sentence_length",
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved -6.67 (tolerance 0.5)"
+  },
+  {
+   "seed": "Looking at the old architecture... it's probably the best part of the city, I guess.",
+   "rewrite": "Looking at the old architecture... it's truly the best part of the city, I guess.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 7.5,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 6.67,
+    "hedge_rate": 6.67
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -6.66
+   },
+   "moved": [
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved -6.66 (tolerance 1.0)"
+  },
+  {
+   "seed": "Looking at the old architecture... it's probably the best part of the city, I guess.",
+   "rewrite": "Looking at the old architecture... it is probably the best part of the city, I guess.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 8.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 6.25,
+    "hedge_rate": 12.5
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -6.67,
+    "ellipsis_rate": -0.42,
+    "hedge_rate": -0.83
+   },
+   "moved": [
+    "contraction_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved -6.67 (tolerance 1.0)"
+  },
+  {
+   "seed": "Looking at the old architecture... it's probably the best part of the city, I guess.",
+   "rewrite": "Looking at the old architecture... it's certainly the best part of the city, I guess.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 7.5,
+    "contraction_rate": 6.67,
+    "ellipsis_rate": 6.67,
+    "hedge_rate": 6.67
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": -6.66
+   },
+   "moved": [
+    "hedge_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "hedge_rate",
+   "reason": "hedge_rate moved -6.66 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely... it's almost surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "This sunset is quite lovely... it's almost surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset looks quite lovely... it's almost surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely... it's truly surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely... it's rather surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "That sunset is quite lovely... it's almost surreal.",
+   "claimed_same": true,
+   "claimed_changed": null,
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 12.5,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "moved": [],
+   "verdict": "keep",
+   "curated_same": true,
+   "curated_changed": null,
+   "reason": "nothing measured moved"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely today... it's almost surreal.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 11.11,
+    "ellipsis_rate": 11.11,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -1.39,
+    "ellipsis_rate": -1.39,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed sentence_length changed but it moved +0.50"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely. It's almost surreal.",
+   "claimed_same": false,
+   "claimed_changed": "ellipsis_rate",
+   "measured": {
+    "sentence_length": 4.0,
+    "contraction_rate": 12.5,
+    "ellipsis_rate": 0.0,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.0,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": -12.5,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "ellipsis_rate",
+   "reason": "ellipsis_rate moved -12.50 (tolerance 0.5)"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is lovely... it's almost surreal.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 3.5,
+    "contraction_rate": 14.29,
+    "ellipsis_rate": 14.29,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -0.5,
+    "contraction_rate": 1.79,
+    "ellipsis_rate": 1.79,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed hedge_rate changed but it moved +0.00"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely... it is almost surreal.",
+   "claimed_same": false,
+   "claimed_changed": "contraction_rate",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 0.0,
+    "ellipsis_rate": 11.11,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -12.5,
+    "ellipsis_rate": -1.39,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "keep",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "contraction_rate moved -12.50 (tolerance 1.0)"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely... it's surreal.",
+   "claimed_same": false,
+   "claimed_changed": "sentence_length",
+   "measured": {
+    "sentence_length": 3.5,
+    "contraction_rate": 14.29,
+    "ellipsis_rate": 14.29,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": -0.5,
+    "contraction_rate": 1.79,
+    "ellipsis_rate": 1.79,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed sentence_length changed but it moved -0.50"
+  },
+  {
+   "seed": "The sunset is quite lovely... it's almost surreal.",
+   "rewrite": "The sunset is quite lovely... it's almost very surreal.",
+   "claimed_same": false,
+   "claimed_changed": "hedge_rate",
+   "measured": {
+    "sentence_length": 4.5,
+    "contraction_rate": 11.11,
+    "ellipsis_rate": 11.11,
+    "hedge_rate": 0.0
+   },
+   "deltas": {
+    "sentence_length": 0.5,
+    "contraction_rate": -1.39,
+    "ellipsis_rate": -1.39,
+    "hedge_rate": 0.0
+   },
+   "moved": [
+    "contraction_rate",
+    "ellipsis_rate"
+   ],
+   "verdict": "relabel",
+   "curated_same": false,
+   "curated_changed": "contraction_rate",
+   "reason": "claimed hedge_rate changed but it moved +0.00"
+  }
+ ],
+ "malformed_rows": 37,
+ "finding": "the locked block's numbers are invented anchors, not measurements of any seed text, so only the seed to rewrite delta is meaningful. the generator labelled 34 rewrites 'same' whose measured style had moved beyond tolerance, and echoed the block itself as a seed in the malformed rows.",
+ "dropped_rows": 3,
+ "dropped_why": "claimed a feature changed and nothing measured moved, so the pair is not evidence of drift"
+}
