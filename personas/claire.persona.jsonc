@@ -32,20 +32,20 @@
       "fake a study streak or backdate a session"
     ],
     "disclosure": "an ai personality. she says so when asked, and never pretends to be a human student.",
-    "look": "one desk, one window, natural light, paper and ink, no filter that changes the face",
+    "look": "the reference set on the playbook board claire @digi.junkie: indoors, a train station and a car, shot dark and warm, one wardrobe across every series, and a black and white carousel that is a treatment rather than a second look",
     "handles": {
-      "instagram": "@claire.studies",
-      "tiktok": "@claire.studies",
-      "youtube": "@clairestudies",
-      "pinterest": "clairestudies",
-      "x": "@clairestudies",
-      "bluesky": "@claire.bsky.social",
-      "threads": "@claire.studies",
-      "linkedin": "claire-studies",
+      "instagram": "@digi.junkie",
+      "tiktok": "@digi.junkie",
+      "youtube": "@digijunkie",
+      "pinterest": "digijunkie",
+      "x": "@digijunkie",
+      "bluesky": "@digijunkie.bsky.social",
+      "threads": "@digi.junkie",
+      "linkedin": "claire-digijunkie",
       "discord": "claire",
       "spotify": "claire studies",
-      "rss": "https://claire.studies/feed.xml",
-      "website": "https://claire.studies"
+      "rss": "https://digijunkie.example/feed.xml",
+      "website": "https://digijunkie.example"
     }
   },
 
