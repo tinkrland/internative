@@ -1,0 +1,213 @@
+{
+  "persona": "claire",
+  "places": [
+    {
+      "id": "car-interior-night",
+      "name": "her car, at night",
+      "kind": "car_interior",
+      "invariants": [
+        "window showing night street",
+        "dark vehicle cabin interior",
+        "nighttime outdoor background",
+        "dark interior cabin space"
+      ],
+      "light": "front light, hard, night; front light, mixed, night",
+      "recurring": true,
+      "surfaces": [
+        {
+          "what": "seat",
+          "material": "leather",
+          "hex": "#0a0a0a"
+        },
+        {
+          "what": "seat",
+          "material": "leather",
+          "hex": "#0a0a0c"
+        },
+        {
+          "what": "seat",
+          "material": "leather",
+          "hex": "#1a1a1a"
+        }
+      ],
+      "props": [],
+      "evidence": {
+        "assets": 8,
+        "files": [
+          "assets/claire/car-shoot-car-shoot-683881389.jpg",
+          "assets/claire/car-shoot-car-shoot-683881419.jpg",
+          "assets/claire/car-shoot-car-shoot-683881422.jpg",
+          "assets/claire/group-of-5-assets-car-photoshoot-683881150.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881226.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881293.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881317.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881340.jpg"
+        ]
+      },
+      "plates": [
+        {
+          "id": "wide",
+          "uri": "assets/claire/car-shoot-car-shoot-683881389.jpg",
+          "role": "wide"
+        },
+        {
+          "id": "detail",
+          "uri": "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881340.jpg",
+          "role": "detail"
+        }
+      ]
+    },
+    {
+      "id": "studio-paper",
+      "name": "the studio backdrop",
+      "kind": "studio",
+      "invariants": [
+        "minimalist interior space",
+        "absence of furniture",
+        "plain neutral background",
+        "absence of architectural detail"
+      ],
+      "light": "side light, hard, day; side light, soft, day",
+      "recurring": true,
+      "surfaces": [
+        {
+          "what": "wall",
+          "material": "matte paper",
+          "hex": "#cccccc"
+        },
+        {
+          "what": "wall",
+          "material": "matte plaster",
+          "hex": "#d3d3d3"
+        },
+        {
+          "what": "wall",
+          "material": "matte studio paper",
+          "hex": "#cccccc"
+        },
+        {
+          "what": "wall",
+          "material": "paper",
+          "hex": "#cccccc"
+        }
+      ],
+      "props": [],
+      "evidence": {
+        "assets": 10,
+        "files": [
+          "assets/claire/colored-photoshoot-version-683881095.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879587.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879588.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880925.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880928.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880932.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880938.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880944.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880946.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880950.jpg"
+        ]
+      },
+      "plates": [
+        {
+          "id": "wide",
+          "uri": "assets/claire/colored-photoshoot-version-683881095.jpg",
+          "role": "wide"
+        },
+        {
+          "id": "detail",
+          "uri": "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880950.jpg",
+          "role": "detail"
+        }
+      ]
+    },
+    {
+      "id": "indoor-lounge",
+      "name": "the indoor lounge",
+      "kind": "other",
+      "invariants": [
+        "plain white wall background",
+        "ornate gold mirror on right",
+        "minimalist interior space",
+        "gold framed mirror on left wall"
+      ],
+      "light": "front light, soft, day; front light, mixed, evening",
+      "recurring": true,
+      "surfaces": [
+        {
+          "what": "wall",
+          "material": "plaster",
+          "hex": "#fdfdfd"
+        },
+        {
+          "what": "wall",
+          "material": "textured wallpaper",
+          "hex": "#d2b48c"
+        },
+        {
+          "what": "seat",
+          "material": "patterned fabric",
+          "hex": "#c2b280"
+        }
+      ],
+      "props": [
+        "decorative gold mirror",
+        "table lamp",
+        "wall sconce"
+      ],
+      "evidence": {
+        "assets": 2,
+        "files": [
+          "assets/claire/live-candid-683882168.jpg",
+          "assets/claire/photoshoot-indoors-683881739.jpg"
+        ]
+      },
+      "plates": [
+        {
+          "id": "wide",
+          "uri": "assets/claire/live-candid-683882168.jpg",
+          "role": "wide"
+        },
+        {
+          "id": "detail",
+          "uri": "assets/claire/photoshoot-indoors-683881739.jpg",
+          "role": "detail"
+        }
+      ]
+    },
+    {
+      "id": "metro-platform",
+      "name": "the metro platform",
+      "kind": "street",
+      "invariants": [
+        "industrial transit environment",
+        "blue train carriage in background",
+        "motion blur on train windows",
+        "industrial urban environment"
+      ],
+      "light": "front light, diffused, night; front light, soft, night",
+      "recurring": true,
+      "surfaces": [],
+      "props": [],
+      "evidence": {
+        "assets": 3,
+        "files": [
+          "assets/claire/train-station-train-station-683881426.jpg",
+          "assets/claire/train-station-train-station-683881431.jpg",
+          "assets/claire/train-station-train-station-683881478.jpg"
+        ]
+      },
+      "plates": [
+        {
+          "id": "wide",
+          "uri": "assets/claire/train-station-train-station-683881426.jpg",
+          "role": "wide"
+        },
+        {
+          "id": "detail",
+          "uri": "assets/claire/train-station-train-station-683881478.jpg",
+          "role": "detail"
+        }
+      ]
+    }
+  ]
+}
