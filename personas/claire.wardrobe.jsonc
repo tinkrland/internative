@@ -1,0 +1,123 @@
+{
+  "persona": "claire",
+  "default_outfit": "carousel-slip",
+  "outfits": [
+    {
+      "id": "carousel-slip",
+      "name": "the slip, alone",
+      "season": "any",
+      "garments": [
+        {
+          "kind": "slip dress",
+          "detail": "black satin slip, slim, thin spaghetti straps, straight neckline",
+          "avoid": [
+            "floral print",
+            "midi length",
+            "short sleeves"
+          ]
+        }
+      ],
+      "palette": [
+        "#000000"
+      ],
+      "accessories": [],
+      "evidence": {
+        "assets": 9,
+        "files": [
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879587.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683879588.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880925.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880928.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880932.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880938.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880944.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880946.jpg",
+          "assets/claire/pasted-image-at-2026-11-20-at-11-22-b-w--683880950.jpg"
+        ]
+      }
+    },
+    {
+      "id": "car-night",
+      "name": "car, at night",
+      "season": "cold",
+      "garments": [
+        {
+          "kind": "slip dress",
+          "detail": "black satin slip, thin straps"
+        },
+        {
+          "kind": "leather jacket",
+          "detail": "burgundy leather jacket, oversized, slumped off the shoulders, worn off-the-shoulder",
+          "avoid": [
+            "black biker jacket",
+            "cropped fit",
+            "studs"
+          ]
+        }
+      ],
+      "palette": [
+        "#000000",
+        "#4a1a2c",
+        "#1a1a1a",
+        "#4a1a1a"
+      ],
+      "accessories": [],
+      "evidence": {
+        "assets": 8,
+        "files": [
+          "assets/claire/car-shoot-car-shoot-683881389.jpg",
+          "assets/claire/car-shoot-car-shoot-683881419.jpg",
+          "assets/claire/car-shoot-car-shoot-683881422.jpg",
+          "assets/claire/group-of-5-assets-car-photoshoot-683881150.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881226.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881293.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881317.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881340.jpg"
+        ]
+      }
+    },
+    {
+      "id": "station-layer",
+      "name": "platform layers",
+      "season": "cold",
+      "garments": [
+        {
+          "kind": "camisole",
+          "detail": "black lace camisole, thin spaghetti straps, partially hidden by jacket",
+          "avoid": [
+            "t-shirt",
+            "white cotton"
+          ]
+        },
+        {
+          "kind": "trousers",
+          "detail": "black denim trousers, dark wash fabric, knees pulled up to chest"
+        },
+        {
+          "kind": "leather jacket",
+          "detail": "burgundy leather jacket, oversized"
+        }
+      ],
+      "palette": [
+        "#000000",
+        "#4a1a2c",
+        "#1a1a1a",
+        "#4a1a1a"
+      ],
+      "accessories": [],
+      "evidence": {
+        "assets": 8,
+        "files": [
+          "assets/claire/car-shoot-car-shoot-683881389.jpg",
+          "assets/claire/car-shoot-car-shoot-683881419.jpg",
+          "assets/claire/car-shoot-car-shoot-683881422.jpg",
+          "assets/claire/group-of-5-assets-car-photoshoot-683881150.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881226.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881293.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881317.jpg",
+          "assets/claire/group-of-5-assets-pasted-image-at-2026-1-683881340.jpg"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "persona": "claire",
+  "items": [
+    {
+      "id": "black-slip-dress",
+      "kind": "slip dress",
+      "detail": "black satin slip, slim, thin spaghetti straps, straight neckline",
+      "layer": "base",
+      "palette": [
+        "#000000"
+      ],
+      "source": "photo",
+      "state": "candidate",
+      "seasons": [
+        "warm",
+        "cold"
+      ],
+      "evidence": {
+        "assets": 9,
+        "note": "seen alone in the nine black and white frames, and under the jacket in the car"
+      }
+    },
+    {
+      "id": "burgundy-leather-jacket",
+      "kind": "leather jacket",
+      "detail": "burgundy leather jacket, oversized, worn off the shoulders",
+      "layer": "outer",
+      "palette": [
+        "#4a1a2c"
+      ],
+      "source": "photo",
+      "state": "candidate",
+      "seasons": [
+        "cold"
+      ],
+      "evidence": {
+        "assets": 8,
+        "note": "the one outer layer in the set, and the only strong colour in it"
+      }
+    },
+    {
+      "id": "black-lace-camisole",
+      "kind": "camisole",
+      "detail": "black lace camisole, thin spaghetti straps",
+      "layer": "mid",
+      "palette": [
+        "#000000"
+      ],
+      "source": "photo",
+      "state": "candidate",
+      "seasons": [
+        "warm"
+      ],
+      "evidence": {
+        "assets": 5,
+        "note": "under the jacket at the platform"
+      }
+    },
+    {
+      "id": "black-denim-trousers",
+      "kind": "trousers",
+      "detail": "black denim trousers, dark wash",
+      "layer": "base",
+      "palette": [
+        "#1a1a1a"
+      ],
+      "source": "photo",
+      "state": "candidate",
+      "seasons": [
+        "any"
+      ],
+      "evidence": {
+        "assets": 5,
+        "note": "the only trouser in the set"
+      }
+    },
+    {
+      "id": "black-bodycon-dress",
+      "kind": "dress",
+      "detail": "black jersey bodycon dress, high neck",
+      "layer": "base",
+      "palette": [
+        "#000000"
+      ],
+      "source": "photo",
+      "state": "candidate",
+      "seasons": [
+        "warm"
+      ],
+      "evidence": {
+        "assets": 1,
+        "note": "a single frame, so it is the least evidenced piece here"
+      }
+    }
+  ]
+}

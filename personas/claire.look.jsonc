@@ -167,7 +167,17 @@
         512
       ],
       "average_colour": "#755C4E",
-      "playbook_token": "JqWxgFpfRA5pQa7wmqJUyhWH"
+      "playbook_token": "JqWxgFpfRA5pQa7wmqJUyhWH",
+      "observed": {
+        "treatment": "colour",
+        "setting": "indoor room",
+        "garments": [
+          "base:tank top"
+        ],
+        "hair": "brown, centre parting, wavy, down",
+        "framing": "centered portrait, close",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881739,
@@ -179,7 +189,17 @@
         902
       ],
       "average_colour": "#625040",
-      "playbook_token": "zB2mLzsYkgsRPxmddnuniW8G"
+      "playbook_token": "zB2mLzsYkgsRPxmddnuniW8G",
+      "observed": {
+        "treatment": "colour",
+        "setting": "indoor lounge",
+        "garments": [
+          "outer:blazer"
+        ],
+        "hair": "brown, centre parting, straight, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881478,
@@ -191,7 +211,17 @@
         760
       ],
       "average_colour": "#343F50",
-      "playbook_token": "584RwnoEm7MhT2WXaoFCUoAo"
+      "playbook_token": "584RwnoEm7MhT2WXaoFCUoAo",
+      "observed": {
+        "treatment": "colour",
+        "setting": "metro station",
+        "garments": [
+          "outer:oversized coat"
+        ],
+        "hair": "brunette, centre parting, straight with slight wave, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881431,
@@ -203,7 +233,17 @@
         760
       ],
       "average_colour": "#3F4444",
-      "playbook_token": "KijFdVsYkjWW2vE5hwpLiiR2"
+      "playbook_token": "KijFdVsYkjWW2vE5hwpLiiR2",
+      "observed": {
+        "treatment": "colour",
+        "setting": "subway platform",
+        "garments": [
+          "outer:oversized blazer"
+        ],
+        "hair": "brunette, centre parting, straight with slight wave, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881426,
@@ -215,7 +255,17 @@
         760
       ],
       "average_colour": "#42434C",
-      "playbook_token": "bzuWDYCVQgsk3YoLgN2kgNsF"
+      "playbook_token": "bzuWDYCVQgsk3YoLgN2kgNsF",
+      "observed": {
+        "treatment": "colour",
+        "setting": "metro station",
+        "garments": [
+          "outer:overcoat"
+        ],
+        "hair": "brown, centre parting, straight, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881422,
@@ -227,7 +277,19 @@
         760
       ],
       "average_colour": "#150F13",
-      "playbook_token": "27sJsiM55jvp2ryjX3mCjXuN"
+      "playbook_token": "27sJsiM55jvp2ryjX3mCjXuN",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "mid:camisole",
+          "outer:leather jacket",
+          "base:trousers"
+        ],
+        "hair": "long brown, centre parting, straight, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881419,
@@ -239,7 +301,19 @@
         778
       ],
       "average_colour": "#1A1617",
-      "playbook_token": "89XCy8xvcjfGkc9PECL9m1VU"
+      "playbook_token": "89XCy8xvcjfGkc9PECL9m1VU",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "outer:oversized leather jacket",
+          "base:lace camisole",
+          "base:trousers"
+        ],
+        "hair": "long brown, centre parting, straight, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881389,
@@ -251,7 +325,19 @@
         760
       ],
       "average_colour": "#1E171A",
-      "playbook_token": "4gzaPnemnS83J7S6nR88AWjw"
+      "playbook_token": "4gzaPnemnS83J7S6nR88AWjw",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "mid:camisole",
+          "outer:leather jacket",
+          "base:trousers"
+        ],
+        "hair": "long brown, centre parting, straight, down",
+        "framing": "three-quarter view, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881150,
@@ -263,7 +349,19 @@
         760
       ],
       "average_colour": "#1D1618",
-      "playbook_token": "yxjfgbeKSqXmATHEJg1WDmJ5"
+      "playbook_token": "yxjfgbeKSqXmATHEJg1WDmJ5",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "base:lace camisole",
+          "outer:leather jacket",
+          "base:trousers"
+        ],
+        "hair": "brown, centre parting, straight, down",
+        "framing": "three-quarter shot, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881226,
@@ -275,7 +373,19 @@
         760
       ],
       "average_colour": "#171216",
-      "playbook_token": "agKRpGN5XvUf9dJbe5425xSw"
+      "playbook_token": "agKRpGN5XvUf9dJbe5425xSw",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "base:lace camisole",
+          "outer:leather jacket",
+          "base:denim jeans"
+        ],
+        "hair": "long brown, centre parting, straight, down",
+        "framing": "three-quarter view, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881340,
@@ -287,7 +397,18 @@
         760
       ],
       "average_colour": "#171214",
-      "playbook_token": "oo9DWjXkZCTpE28KxP5amFSc"
+      "playbook_token": "oo9DWjXkZCTpE28KxP5amFSc",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "base:camisole",
+          "outer:oversized jacket"
+        ],
+        "hair": "long brown, centre parting, wavy, down",
+        "framing": "three-quarter view, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881317,
@@ -299,7 +420,18 @@
         760
       ],
       "average_colour": "#1A1315",
-      "playbook_token": "3NYGA1BDTrTmh18n4hv9UwDk"
+      "playbook_token": "3NYGA1BDTrTmh18n4hv9UwDk",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "base:camisole",
+          "outer:leather jacket"
+        ],
+        "hair": "long brown, centre parting, straight, down",
+        "framing": "centered portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881293,
@@ -311,7 +443,19 @@
         760
       ],
       "average_colour": "#181317",
-      "playbook_token": "12rdRVFgAqGYjBeEGRUQUr1D"
+      "playbook_token": "12rdRVFgAqGYjBeEGRUQUr1D",
+      "observed": {
+        "treatment": "colour",
+        "setting": "car interior",
+        "garments": [
+          "base:camisole",
+          "outer:leather jacket",
+          "base:trousers"
+        ],
+        "hair": "brunette, centre parting, straight, down",
+        "framing": "three-quarter view, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683881095,
@@ -323,7 +467,17 @@
         1217
       ],
       "average_colour": "#584F4B",
-      "playbook_token": "T9Xqdx7Z516kA7b9N3LSjt1K"
+      "playbook_token": "T9Xqdx7Z516kA7b9N3LSjt1K",
+      "observed": {
+        "treatment": "colour",
+        "setting": "studio backdrop",
+        "garments": [
+          "base:bodycon dress"
+        ],
+        "hair": "long brunette, side parting, wavy, down",
+        "framing": "three-quarter portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880944,
@@ -335,7 +489,17 @@
         1217
       ],
       "average_colour": "#383838",
-      "playbook_token": "t4Y4bZ6rDSeGpUJRr5xqwEXs"
+      "playbook_token": "t4Y4bZ6rDSeGpUJRr5xqwEXs",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long wavy hair, side parting, voluminous waves, down",
+        "framing": "three-quarter profile, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880938,
@@ -347,7 +511,17 @@
         1217
       ],
       "average_colour": "#393434",
-      "playbook_token": "GKriv9cQV2zLVXfKMydv9w1a"
+      "playbook_token": "GKriv9cQV2zLVXfKMydv9w1a",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio backdrop",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long wavy hair, side parting, voluminous, down",
+        "framing": "three-quarter profile, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880932,
@@ -359,7 +533,17 @@
         1217
       ],
       "average_colour": "#373534",
-      "playbook_token": "KYWYdo9p3peN3LuGrFrF4SCT"
+      "playbook_token": "KYWYdo9p3peN3LuGrFrF4SCT",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long wavy, side parting, voluminous, down",
+        "framing": "three-quarter profile, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880928,
@@ -371,7 +555,17 @@
         1217
       ],
       "average_colour": "#3A3535",
-      "playbook_token": "RdpR7B3vrwuNQ4haSkD65cw7"
+      "playbook_token": "RdpR7B3vrwuNQ4haSkD65cw7",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio backdrop",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long brunette, centre parting, wavy, down",
+        "framing": "three-quarter portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880925,
@@ -383,7 +577,17 @@
         1219
       ],
       "average_colour": "#393939",
-      "playbook_token": "Uv2okynuvNsidWhA5o4siS4m"
+      "playbook_token": "Uv2okynuvNsidWhA5o4siS4m",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long wavy, side parting, layered, down",
+        "framing": "three-quarter portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880946,
@@ -395,7 +599,17 @@
         1217
       ],
       "average_colour": "#393939",
-      "playbook_token": "9N5HtLhfzsmWBR95dyC6QrvQ"
+      "playbook_token": "9N5HtLhfzsmWBR95dyC6QrvQ",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long wavy hair, centre parting, voluminous waves, down",
+        "framing": "three-quarter profile, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683879588,
@@ -407,7 +621,17 @@
         1219
       ],
       "average_colour": "#393939",
-      "playbook_token": "QpCvND3cY67qdPWjuLc6m59z"
+      "playbook_token": "QpCvND3cY67qdPWjuLc6m59z",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long layered, side parting, wavy, down",
+        "framing": "three-quarter portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683879587,
@@ -419,7 +643,17 @@
         1217
       ],
       "average_colour": "#3A3535",
-      "playbook_token": "8gQXVed1Vmc1GbzbUB6megKL"
+      "playbook_token": "8gQXVed1Vmc1GbzbUB6megKL",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio backdrop",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long brunette, centre parting, wavy, down",
+        "framing": "vertical portrait, medium",
+        "confidence": "high"
+      }
     },
     {
       "id": 683880950,
@@ -431,7 +665,25 @@
         1217
       ],
       "average_colour": "#3E3E3E",
-      "playbook_token": "TmQ4jnEZYEsSWTeCDeEioQ1i"
+      "playbook_token": "TmQ4jnEZYEsSWTeCDeEioQ1i",
+      "observed": {
+        "treatment": "black and white",
+        "setting": "studio",
+        "garments": [
+          "base:slip dress"
+        ],
+        "hair": "long wavy hair, side parting, voluminous, down",
+        "framing": "three-quarter portrait, medium",
+        "confidence": "high"
+      }
     }
-  ]
+  ],
+  "observed_reading": {
+    "model": "gemma-4-31b-it via adaptionlabs, one pass per asset, 22 nov 2026",
+    "hair": "long brown, centre or side parting, worn down in every frame: no up-do anywhere in the set, so an up-do is a styling decision and not something the references show",
+    "wardrobe": "one silhouette repeated with one variable: a black satin slip alone in nine frames, the same slip under a burgundy oversized leather jacket in eight, a black lace camisole with black denim at the platform",
+    "places": "car interior at night, a studio backdrop, and a metro platform; nothing in the set is a room with a window and a desk, which retires the studygram desk i invented before the board existed",
+    "treatment": "the nine frame carousel is the same shoot in black and white, so a treatment is not a second look",
+    "what_it_does_not_show": "no footwear in any frame, no bag, no jewellery that survived as a fixed item, and no daylight interior. those are gaps to fill deliberately rather than invent quietly"
+  }
 }
