@@ -104,6 +104,9 @@ export interface ClosetItem {
   palette: string[];
   source: ItemSource;
   state: ItemState;
+  // who chose the layer: a person, or a vision pass suggesting it from pixels. a suggested
+  // layer is fine on a candidate and is refused on a confirmed item.
+  layer_source?: "authored" | "suggested";
   ref?: string;
   seasons?: Array<"warm" | "cold">;
   notes?: string;
@@ -140,6 +143,9 @@ export function itemProblems(item: ClosetItem): string[] {
   }
   if (item.state === "confirmed" && rule?.needsConfirm && !item.ref) {
     problems.push(`${item.id}: captured and confirmed with no reference, so nothing can check the claim later`);
+  }
+  if (item.state === "confirmed" && item.layer_source === "suggested") {
+    problems.push(`${item.id}: confirmed with a layer a vision pass guessed, and the layer is what the collision rules turn on`);
   }
   if (rule && rule.owned === false && item.notes?.toLowerCase().includes("mine")) {
     problems.push(`${item.id}: comes from a shop window and is described as hers`);
@@ -210,6 +216,8 @@ export function confirmItem(
       detail: authored.detail.trim(),
       palette: authored.palette,
       state: "confirmed",
+      // confirming is a person naming the garment, so the layer is authored from here on
+      layer_source: "authored",
     },
   };
 }
